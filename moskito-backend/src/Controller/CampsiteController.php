@@ -8,36 +8,47 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\CampsiteRepository;
 use App\Entity\Campsite;
+use App\Serializer\CampsiteSerializer;
 
 class CampsiteController extends AbstractController
 {
     /**
      * @Route("/campsite", methods={"GET"})
      */
-    public function index(Request $request, CampsiteRepository $campsiteRepository): JsonResponse
+    public function index(Request $request, CampsiteRepository $campsiteRepository, CampsiteSerializer $serializer): JsonResponse
     {
         $campsites = $campsiteRepository->findAll();
 
-        $campsitesJson = [];
-        foreach($campes as $camp) {
-            $campsitesJson[] = [
-                'name' => $camp->getName(),
-                'street' => $camp->getStreet(),
-                'postalCode' => $camp->getPostalCode(),
-                'place' => $camp->getPlace(),
-                'telephone' => $camp->getTelephone(),
-                'email' => $camp->getEmail(),
-                'coordinates' => $camp->getCoordinates()
-            ];
-        }
-
-        
         return new JsonResponse(
-            // $serializer->serialize($campsites, 'json'),
-            \json_encode($campsitesJson),
+            $serializer->serialize($campsites),
             JsonResponse::HTTP_OK,
             [],
             true
         );
+    }
+
+    /**
+     * @Route("/campsite", methods={"POST"})
+     */
+
+    public function create(
+        Request $request, 
+        CampsiteRepository $campsiteRepository, 
+        CampsiteSerializer $serializer
+        ): JsonResponse {
+    
+            $campsite = $serializer->deserialize($request->getContent());
+            
+            /*$game = $serializer->deserialize($request->getContent(), BingoGame::class, 'json');
+            $game->setUser($user);*/
+            
+            $campsiteRepository->save($campsite);
+    
+            return new JsonResponse(
+                $serializer->serialize($campsite),
+                JsonResponse::HTTP_OK,
+                [],
+                true
+            );
     }
 }

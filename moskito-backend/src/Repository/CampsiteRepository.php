@@ -19,6 +19,13 @@ class CampsiteRepository extends ServiceEntityRepository
         parent::__construct($registry, Campsite::class);
     }
 
+    public function save(Campsite $campsite): Campsite  {
+        $this->_em->persist($campsite);
+        $this->_em->flush();
+        return $campsite;
+    }
+
+
     // /**
     //  * @return Campsite[] Returns an array of Campsite objects
     //  */
