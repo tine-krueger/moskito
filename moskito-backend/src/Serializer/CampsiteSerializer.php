@@ -37,16 +37,16 @@ class CampsiteSerializer {
     public function deserialize($content){
 
             $postData = \json_decode($content);
-            $campsite = new Campsite();
-            $campsite->setName($postData->name);
-            $campsite->setStreet($postData->street);
-            $campsite->setPostalCode($postData->postalCode);
-            $campsite->setPlace($postData->place);
-            $campsite->setTelephone($postData->telephone);
-            $campsite->setEmail($postData->email);
-            $campsite->setCoordinates($postData->coordinates);
+            $classObject = new Campsite();
+            $classObject->setName($postData->name);
+            $classObject->setStreet($postData->street);
+            $classObject->setPostalCode($postData->postalCode);
+            $classObject->setPlace($postData->place);
+            $classObject->setTelephone($postData->telephone);
+            $classObject->setEmail($postData->email);
+            $classObject->setCoordinates($postData->coordinates);
 
-            return $campsite;
+            return $classObject;
 
     }
 }
