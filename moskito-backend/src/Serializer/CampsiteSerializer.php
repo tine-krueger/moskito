@@ -5,33 +5,32 @@ namespace App\Serializer;
 use App\Entity\Campsite;
 
 class CampsiteSerializer {
+
+    private $elementAsArray = [];
+
+    private function setArray($element): object {
+        $this->elementAsArray[] = [
+            'name' => $element->getName(),
+            'street' => $element->getStreet(),
+            'postalCode' => $element->getPostalCode(),
+            'place' => $element->getPlace(),
+            'telephone' => $element->getTelephone(),
+            'email' => $element->getEmail(),
+            'coordinates' => $element->getCoordinates()
+        ];
+        return($this);
+    }
+
     public function serialize($elements){
-        $Json = [];
         if (is_array($elements)) {
             foreach($elements as $element) {
-                $Json[] = [
-                    'name' => $element->getName(),
-                    'street' => $element->getStreet(),
-                    'postalCode' => $element->getPostalCode(),
-                    'place' => $element->getPlace(),
-                    'telephone' => $element->getTelephone(),
-                    'email' => $element->getEmail(),
-                    'coordinates' => $element->getCoordinates()
-                ];
+                $this->setArray($element);
             }
         } else {
-            $Json[] = [
-                'name' => $elements->getName(),
-                'street' => $elements->getStreet(),
-                'postalCode' => $elements->getPostalCode(),
-                'place' => $elements->getPlace(),
-                'telephone' => $elements->getTelephone(),
-                'email' => $elements->getEmail(),
-                'coordinates' => $elements->getCoordinates()
-            ];
+            $this->setArray($elements);
         }
         
-        return \json_encode($Json);
+        return \json_encode($this->elementAsArray);
     }
 
     public function deserialize($content){

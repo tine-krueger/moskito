@@ -38,9 +38,6 @@ class CampsiteController extends AbstractController
         ): JsonResponse {
     
             $campsite = $serializer->deserialize($request->getContent());
-            
-            /*$campsite = $serializer->deserialize($request->getContent(), Campsite::class, 'json');*/
-            
             $campsiteRepository->save($campsite);
     
             return new JsonResponse(
