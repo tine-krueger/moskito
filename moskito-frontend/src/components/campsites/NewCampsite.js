@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import setCampsites from '../../services/setCampsites';
 
 
 export default function NewCampsite() {
@@ -87,30 +88,10 @@ export default function NewCampsite() {
                 [event.target.name]: event.target.value
             }
         )
-        console.log(event.target.value)
     }
 
     function handleSubmit(event) {
         event.preventDefault()
-
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        const copy = Object.assign({}, newCampsite)
-        copy.coordinates = copy.coordinates.split(',')
-        console.log(copy)
-
-        var raw = JSON.stringify(copy);
-
-        var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-        };
-
-        fetch("http://moskito.local/campsite", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        setCampsites({newCampsite})
     }
 }
