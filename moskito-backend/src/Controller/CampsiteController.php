@@ -39,8 +39,7 @@ class CampsiteController extends AbstractController
     
             $campsite = $serializer->deserialize($request->getContent());
             
-            /*$game = $serializer->deserialize($request->getContent(), BingoGame::class, 'json');
-            $game->setUser($user);*/
+            /*$campsite = $serializer->deserialize($request->getContent(), Campsite::class, 'json');*/
             
             $campsiteRepository->save($campsite);
     
