@@ -33,7 +33,7 @@ class CampsiteFeature
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Campsite::class, inversedBy="campsiteFeatures")
+     * @ORM\ManyToOne(targetEntity=Campsite::class, inversedBy="campsiteFeatures", cascade={"persist", "remove" })
      */
     private $campsite;
 

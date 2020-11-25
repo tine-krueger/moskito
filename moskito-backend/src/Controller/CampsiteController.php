@@ -40,12 +40,12 @@ class CampsiteController extends AbstractController
         ): JsonResponse {
     
             $campsite = $serializer->deserialize($request->getContent());
-            $campsiteRepository->save($campsite['campsite']);
-            $featureRepository->save($campsite['feature']);
+            $campsiteRepository->save($campsite);
+           // $featureRepository->save($campsite['feature']);
 
     
             return new JsonResponse(
-                $serializer->serialize($campsite['campsite']),
+                $serializer->serialize($campsite),
                 JsonResponse::HTTP_OK,
                 [],
                 true

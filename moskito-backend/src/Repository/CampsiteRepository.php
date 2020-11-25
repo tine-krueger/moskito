@@ -21,6 +21,7 @@ class CampsiteRepository extends ServiceEntityRepository
 
     public function save(Campsite $campsite): Campsite  {
         $this->_em->persist($campsite);
+        //$this->_em->persist($campsite->campsiteFeatures);
         $this->_em->flush();
         return $campsite;
     }

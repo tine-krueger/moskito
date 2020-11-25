@@ -11,6 +11,7 @@ class CampsiteSerializer {
 
     private function setArray($element): object {
         $this->elementAsArray[] = [
+            'id' => $element->getId(),
             'name' => $element->getName(),
             'street' => $element->getStreet(),
             'postalCode' => $element->getPostalCode(),
@@ -19,7 +20,9 @@ class CampsiteSerializer {
             'email' => $element->getEmail(),
             'latitude' => $element->getLatitude(),
             'longitude' => $element->getLongitude(),
+            'features' => $element->getCampsiteFeatures()->getValues('type')
         ];
+        
         return($this);
     }
 
@@ -50,11 +53,14 @@ class CampsiteSerializer {
 
             $campsiteFeature = new CampsiteFeature();
             $campsiteFeature->setType(CampsiteFeature::TYPE_WLAN);
-            $campsiteFeature->setValue($postData->value);
-            $campsiteFeature->setCampsite($classObject);
+            $campsiteFeature->setValue($postData->features->wlan);
 
-
-            return ['campsite' => $classObject, 'feature' => $campsiteFeature];
+            $classObject->addCampsiteFeature($campsiteFeature);
+            $features = $classObject->getCampsiteFeatures();
+            var_dump($features);
+           
+            return $classObject;
+           // return ['campsite' => $classObject, 'feature' => $campsiteFeature];
 
     }
 }

@@ -60,7 +60,7 @@ class Campsite
     private $latitude;
 
     /**
-     * @ORM\OneToMany(targetEntity=CampsiteFeature::class, mappedBy="campsite")
+     * @ORM\OneToMany(targetEntity=CampsiteFeature::class, mappedBy="campsite", cascade={"persist", "remove" })
      */
     private $campsiteFeatures;
 
