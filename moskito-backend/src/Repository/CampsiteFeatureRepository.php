@@ -19,6 +19,12 @@ class CampsiteFeatureRepository extends ServiceEntityRepository
         parent::__construct($registry, CampsiteFeature::class);
     }
 
+    public function save(CampsiteFeature $feature): CampsiteFeature  {
+        $this->_em->persist($feature);
+        $this->_em->flush();
+        return $feature;
+    }
 
-    
+
+
 }

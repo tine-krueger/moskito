@@ -10,6 +10,21 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CampsiteFeature
 {
+
+    const TYPE_WLAN = "kein WLAN";
+    const TYPE_MUSIC = "keine Bar oder Diskothek";
+    const TYPE_Animation = "keine Animation";
+    const TYPE_FIRE = "Lagerfeuerstelle";
+    const TYPE_PATH = "Sand- oder Kieswege";
+    const TYPE_BULLI = "Bulli-Wiese";
+    const TYPE_TENTS = "Zeltplätze";
+    const TYPE_SUBDEVISION = "keine Parzellierung";
+    const TYPE_PERMANENT = "keine/wenig Dauercamper";
+    const TYPE_SIZE = "Standplatzgröße mind. 80qm";
+    const TYPE_BIO = "Versorgung mit regionalen/Bio-Lebensmitteln auf dem Platz";
+    const TYPE_SNACK = "Imbiss";
+    const TYPE_ANIMALS = "Haustiere erlaubt";
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

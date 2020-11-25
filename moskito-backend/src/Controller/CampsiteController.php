@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\CampsiteRepository;
+use App\Repository\CampsiteFeatureRepository;
 use App\Entity\Campsite;
 use App\Serializer\CampsiteSerializer;
 
@@ -34,14 +35,17 @@ class CampsiteController extends AbstractController
     public function create(
         Request $request, 
         CampsiteRepository $campsiteRepository, 
+        CampsiteFeatureRepository $featureRepository,
         CampsiteSerializer $serializer
         ): JsonResponse {
     
             $campsite = $serializer->deserialize($request->getContent());
-            $campsiteRepository->save($campsite);
+            $campsiteRepository->save($campsite['campsite']);
+            $featureRepository->save($campsite['feature']);
+
     
             return new JsonResponse(
-                $serializer->serialize($campsite),
+                $serializer->serialize($campsite['campsite']),
                 JsonResponse::HTTP_OK,
                 [],
                 true

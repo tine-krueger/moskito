@@ -3,6 +3,7 @@
 namespace App\Serializer;
 
 use App\Entity\Campsite;
+use App\Entity\CampsiteFeature;
 
 class CampsiteSerializer {
 
@@ -45,9 +46,16 @@ class CampsiteSerializer {
             $classObject->setPlace($postData->place);
             $classObject->setTelephone($postData->telephone);
             $classObject->setEmail($postData->email);
-            $classObject->setCoordinates($postData->coordinates);
+            $classObject->setLongitude($postData->longitude);
+            $classObject->setLatitude($postData->latitude);
 
-            return $classObject;
+            $campsiteFeature = new CampsiteFeature();
+            $campsiteFeature->setType(CampsiteFeature::TYPE_WLAN);
+            $campsiteFeature->setValue($postData->value);
+            $campsiteFeature->setCampsite($classObject);
+
+
+            return ['campsite' => $classObject, 'feature' => $campsiteFeature];
 
     }
 }
