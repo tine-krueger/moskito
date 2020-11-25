@@ -16,7 +16,9 @@ class CampsiteSerializer {
             'place' => $element->getPlace(),
             'telephone' => $element->getTelephone(),
             'email' => $element->getEmail(),
-            'coordinates' => $element->getCoordinates()
+            'latitude' => $element->getLatitude(),
+            'longitude' => $element->getLongitude(),
+            'features' => $element->getCampsiteFeatures()
         ];
         return($this);
     }
