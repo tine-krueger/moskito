@@ -13,6 +13,17 @@ class CampsiteSerializer {
     private $elementAsArray = [];
 
     private function setArray($element): object {
+        $featuresArray = [];
+        $features = $element->getCampsiteFeatures();
+        
+        foreach($features as $feature) {
+            $featuresArray[] = [
+                'id' => $feature->getId(),
+                'type' => $feature->getType(),
+                'value' =>$feature->getValue()
+            ];
+        }
+       
         $this->elementAsArray[] = [
             'id' => $element->getId(),
             'name' => $element->getName(),
@@ -23,14 +34,8 @@ class CampsiteSerializer {
             'email' => $element->getEmail(),
             'latitude' => $element->getLatitude(),
             'longitude' => $element->getLongitude(),
-            'features' => $element->getCampsiteFeatures()->getValues('cascade')
-        ];
-        /*$features = $element->getCampsiteFeatures();
-        foreach($features as $feature) {
-        var_dump($feature);
-        }*/
-
-        var_dump($this->elementAsArray);
+            'features' => $featuresArray
+        ];       
         return($this);
     }
 
@@ -64,8 +69,6 @@ class CampsiteSerializer {
             $campsiteFeature->setValue($postData->features->wlan);
 
             $classObject->addCampsiteFeature($campsiteFeature);
-            $features = $classObject->getCampsiteFeatures();
-            var_dump($features);
            
             return $classObject;
            // return ['campsite' => $classObject, 'feature' => $campsiteFeature];

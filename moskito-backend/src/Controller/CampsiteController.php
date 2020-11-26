@@ -20,20 +20,14 @@ class CampsiteController extends AbstractController
     /**
      * @Route("/campsite", methods={"GET"})
      */
-    public function index(Request $request, CampsiteRepository $campsiteRepository, SerializerInterface $serializer): JsonResponse
+    public function index(Request $request, CampsiteRepository $campsiteRepository, CampsiteSerializer $serializer): JsonResponse
     {
         $campsites = $campsiteRepository->findAll();
         $campfeatures = [];
 
-       /* foreach($campsites as $campsite) {
-            $campfeatures[] = $campsite->getCampsiteFeatures();
-        };
-        
-        var_dump($campfeatures);
-        die;*/
 
         return new JsonResponse(
-            $serializer->serialize($campsites, 'json'),
+            $serializer->serialize($campsites),
             JsonResponse::HTTP_OK,
             [],
             true
