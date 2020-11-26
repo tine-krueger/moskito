@@ -13,45 +13,19 @@ class CampsiteSerializer {
     private $elementAsArray = [];
 
     private $featureNames = [
-        ['name' => CampsiteFeature::TYPE_WLAN,
-         'key' => 'wlan'   
-        ],
-        ['name' => CampsiteFeature::TYPE_MUSIC,
-         'key' => 'music'   
-        ],
-        ['name' => CampsiteFeature::TYPE_ANIMATION,
-         'key' => 'animation'   
-        ],
-        ['name' => CampsiteFeature::TYPE_FIRE,
-         'key' => 'fire'   
-        ],
-        ['name' => CampsiteFeature::TYPE_PATH,
-         'key' => 'path'   
-        ],
-        ['name' => CampsiteFeature::TYPE_BULLI,
-         'key' => 'bulli'   
-        ],
-        ['name' => CampsiteFeature::TYPE_TENTS,
-         'key' => 'tents'   
-        ],
-        ['name' => CampsiteFeature::TYPE_SUBDEVISION,
-         'key' => 'subdevision'   
-        ],
-        ['name' => CampsiteFeature::TYPE_PERMANENT,
-         'key' => 'permanent'   
-        ],
-        ['name' => CampsiteFeature::TYPE_SIZE,
-         'key' => 'size'   
-        ],
-        ['name' => CampsiteFeature::TYPE_BIO,
-         'key' => 'bio'   
-        ],
-        ['name' => CampsiteFeature::TYPE_SNACK,
-         'key' => 'snack'   
-        ],
-        ['name' => CampsiteFeature::TYPE_ANIMALS,
-         'key' => 'animals'   
-        ],
+        'wlan' => CampsiteFeature::TYPE_WLAN,  
+        'music' => CampsiteFeature::TYPE_MUSIC,
+        'animation' => CampsiteFeature::TYPE_ANIMATION,
+        'fire' => CampsiteFeature::TYPE_FIRE,
+        'path' => CampsiteFeature::TYPE_PATH,
+        'bulli' => CampsiteFeature::TYPE_BULLI,
+        'tents' => CampsiteFeature::TYPE_TENTS,
+        'subdevision' => CampsiteFeature::TYPE_SUBDEVISION,  
+        'permanent' => CampsiteFeature::TYPE_PERMANENT,
+        'size' => CampsiteFeature::TYPE_SIZE,
+        'bio' => CampsiteFeature::TYPE_BIO,
+        'snack' => CampsiteFeature::TYPE_SNACK,
+        'animals' => CampsiteFeature::TYPE_ANIMALS,  
     ];
 
     private function setArray($element): object {
@@ -93,9 +67,10 @@ class CampsiteSerializer {
         return \json_encode($this->elementAsArray);
     }
     
-    public function deserialize($content){
-
+    public function deserialize($content) {
+            
             $postData = \json_decode($content);
+            
             $classObject = new Campsite();
             $classObject->setName($postData->name);
             $classObject->setStreet($postData->street);
@@ -106,13 +81,16 @@ class CampsiteSerializer {
             $classObject->setLongitude($postData->longitude);
             $classObject->setLatitude($postData->latitude);
 
-            foreach($this->featureNames as $featureName) {
+            $features = $postData->features;
+
+            foreach($features as $feature) {
+                
                 $campsiteFeature = new CampsiteFeature();
-                $campsiteFeature->setType($featureName['name']);
-                $key = $featureName['key'];
-                $campsiteFeature->setValue($postData->features->$key);
+                $campsiteFeature->setType($this->featureNames[$feature->name]);
+                $campsiteFeature->setValue($feature->isfeature);
                 $classObject->addCampsiteFeature($campsiteFeature);
-            }           
+              
+            }          
             return $classObject;
     }
 }
