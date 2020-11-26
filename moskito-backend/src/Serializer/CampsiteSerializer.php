@@ -2,8 +2,11 @@
 
 namespace App\Serializer;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use App\Entity\Campsite;
 use App\Entity\CampsiteFeature;
+
 
 class CampsiteSerializer {
 
@@ -20,9 +23,14 @@ class CampsiteSerializer {
             'email' => $element->getEmail(),
             'latitude' => $element->getLatitude(),
             'longitude' => $element->getLongitude(),
-            'features' => $element->getCampsiteFeatures()->getValues('type')
+            'features' => $element->getCampsiteFeatures()->getValues('cascade')
         ];
-        
+        /*$features = $element->getCampsiteFeatures();
+        foreach($features as $feature) {
+        var_dump($feature);
+        }*/
+
+        var_dump($this->elementAsArray);
         return($this);
     }
 

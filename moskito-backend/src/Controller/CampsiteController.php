@@ -6,6 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
+
+//use Doctrine\Common\Collections\ArrayCollection;
+//use Doctrine\Common\Collections\Collection;
 use App\Repository\CampsiteRepository;
 use App\Repository\CampsiteFeatureRepository;
 use App\Entity\Campsite;
@@ -16,12 +20,20 @@ class CampsiteController extends AbstractController
     /**
      * @Route("/campsite", methods={"GET"})
      */
-    public function index(Request $request, CampsiteRepository $campsiteRepository, CampsiteSerializer $serializer): JsonResponse
+    public function index(Request $request, CampsiteRepository $campsiteRepository, SerializerInterface $serializer): JsonResponse
     {
         $campsites = $campsiteRepository->findAll();
+        $campfeatures = [];
+
+       /* foreach($campsites as $campsite) {
+            $campfeatures[] = $campsite->getCampsiteFeatures();
+        };
+        
+        var_dump($campfeatures);
+        die;*/
 
         return new JsonResponse(
-            $serializer->serialize($campsites),
+            $serializer->serialize($campsites, 'json'),
             JsonResponse::HTTP_OK,
             [],
             true

@@ -52,7 +52,7 @@ class CampsiteFeature
         return $this->id;
     }
 
-    public function getCampsite(): ?Campsite
+    /*public function getCampsite(): ?Campsite
     {
         return $this->campsite;
     }
@@ -62,7 +62,7 @@ class CampsiteFeature
         $this->campsite = $campsite;
 
         return $this;
-    }
+    }*/
 
     public function getType(): ?string
     {
