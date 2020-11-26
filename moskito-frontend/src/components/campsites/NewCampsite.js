@@ -180,7 +180,7 @@ export default function NewCampsite() {
 
     function handleSubmit(event) {
         event.preventDefault()
-        console.log(newCampsite)
+        setCampsites(newCampsite)
     }
 
     function handleCheckboxChange(event){
@@ -189,7 +189,7 @@ export default function NewCampsite() {
         setFeatures(
             [
                 ...newFeatures.slice(0, index), 
-                {...featureToChange, isfeature: !featureToChange.isfeature}, //ändert das EINE Objekt in todos und fügt davor und dahinter das alte hinzu
+                {...featureToChange, isfeature: !featureToChange.isfeature},
                 ...newFeatures.slice(index + 1)
             ]  
         )
