@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CampsiteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -48,9 +50,24 @@ class Campsite
     private $email;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="decimal", precision=11, scale=8)
      */
-    private $coordinates = [];
+    private $longitude;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=8)
+     */
+    private $latitude;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CampsiteFeature::class, mappedBy="campsite", cascade={"persist", "remove" })
+     */
+    private $campsiteFeatures;
+
+    public function __construct()
+    {
+        $this->campsiteFeatures = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -129,14 +146,56 @@ class Campsite
         return $this;
     }
 
-    public function getCoordinates(): ?array
+    public function getLongitude(): ?string
     {
-        return $this->coordinates;
+        return $this->longitude;
     }
 
-    public function setCoordinates(array $coordinates): self
+    public function setLongitude(string $longitude): self
     {
-        $this->coordinates = $coordinates;
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getLatitude(): ?string
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(string $latitude): self
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CampsiteFeature[]
+     */
+    public function getCampsiteFeatures(): Collection
+    {
+        return $this->campsiteFeatures;
+    }
+
+    public function addCampsiteFeature(CampsiteFeature $campsiteFeature): self
+    {
+        if (!$this->campsiteFeatures->contains($campsiteFeature)) {
+            $this->campsiteFeatures[] = $campsiteFeature;
+            $campsiteFeature->setCampsite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCampsiteFeature(CampsiteFeature $campsiteFeature): self
+    {
+        if ($this->campsiteFeatures->removeElement($campsiteFeature)) {
+            // set the owning side to null (unless already changed)
+            if ($campsiteFeature->getCampsite() === $this) {
+                $campsiteFeature->setCampsite(null);
+            }
+        }
 
         return $this;
     }

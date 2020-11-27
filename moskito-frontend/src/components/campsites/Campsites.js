@@ -6,24 +6,33 @@ export default function Campsites() {
 
     useEffect(() => {
         getCampsites()
-        .then(data => setCampsites(data))
+        .then(data => {
+            setCampsites(data)
+            console.log(data)
+        })
+        
         .catch(error => console.log(error))
     }, [])
 
 
     return (
         <div>
-            {campsites.map(({id, name, street, postalCode, place, telephone, email, coordinates}) => (
-                <div key={id}>
-                    <h2>{name}</h2>
-                    <p>{street}</p>
-                    <p>{postalCode} {place}</p>
-                    <p>Tel: {telephone}</p>
-                    <p>E-Mail: {email}</p>
-                    <p>Koordinaten: {coordinates}</p>
+            {campsites.map(campsite => ( 
+                <div key={campsite.id}>
+                    <h2>{campsite.name}</h2>
+                    <p>{campsite.street}</p>
+                    <p>{campsite.postalCode} {campsite.place}</p>
+                    <p>Tel: {campsite.telephone}</p>
+                    <p>E-Mail: {campsite.email}</p>
+                    {filterFeatures(campsite).map(feature => <li>{feature.type}</li>)}
                 </div>
                 )
             )}
         </div>
     )
+
+    function filterFeatures(campsite) {
+        const features =  campsite.features.filter(feature => feature.value)
+        return features
+    }
 }
