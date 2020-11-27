@@ -39,6 +39,16 @@ class UserController extends AbstractController
         ): JsonResponse {
     
             $user = $serializer->deserialize($request->getContent());
+            
+            $allUsers = $userRepository->findAll();
+            foreach($allUsers as $singleUser) {
+                if( $singleUser->getEmail() === $user->getEmail()){
+                    return $this->json(["userRegistration"=>false], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
+                }
+            };
+            
+            
+
             $userRepository->save($user);
 
             return new JsonResponse(
