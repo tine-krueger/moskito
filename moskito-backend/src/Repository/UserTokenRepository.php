@@ -19,32 +19,22 @@ class UserTokenRepository extends ServiceEntityRepository
         parent::__construct($registry, UserToken::class);
     }
 
-    // /**
-    //  * @return UserToken[] Returns an array of UserToken objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    public function create(Object $user): UserToken{
 
-    /*
-    public function findOneBySomeField($value): ?UserToken
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $validUntil = new \DateTime();
+        $validUntil->modify('+1 day');
+
+
+        $token = new UserToken();
+        $token->setValue(uniqid('', true));
+        $token->setValidUntil($validUntil);
+        $token->setUser($user);
+
+        $this->_em->persist($token);
+        $this->_em->flush();
+        
+        return $token;
+
+
     }
-    */
 }
