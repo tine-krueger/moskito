@@ -12,21 +12,7 @@ class CampsiteSerializer {
 
     private $elementAsArray = [];
 
-    private $featureNames = [
-        'wlan' => CampsiteFeature::TYPE_WLAN,  
-        'music' => CampsiteFeature::TYPE_MUSIC,
-        'animation' => CampsiteFeature::TYPE_ANIMATION,
-        'fire' => CampsiteFeature::TYPE_FIRE,
-        'path' => CampsiteFeature::TYPE_PATH,
-        'bulli' => CampsiteFeature::TYPE_BULLI,
-        'tents' => CampsiteFeature::TYPE_TENTS,
-        'subdevision' => CampsiteFeature::TYPE_SUBDEVISION,  
-        'permanent' => CampsiteFeature::TYPE_PERMANENT,
-        'size' => CampsiteFeature::TYPE_SIZE,
-        'bio' => CampsiteFeature::TYPE_BIO,
-        'snack' => CampsiteFeature::TYPE_SNACK,
-        'animals' => CampsiteFeature::TYPE_ANIMALS,  
-    ];
+
 
     private function setArray($element): object {
         $featuresArray = [];
@@ -86,7 +72,7 @@ class CampsiteSerializer {
             foreach($features as $feature) {
                 
                 $campsiteFeature = new CampsiteFeature();
-                $campsiteFeature->setType($this->featureNames[$feature->name]);
+                $campsiteFeature->setType($feature->name);
                 $campsiteFeature->setValue($feature->isfeature);
                 $classObject->addCampsiteFeature($campsiteFeature);
               

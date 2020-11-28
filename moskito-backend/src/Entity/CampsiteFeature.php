@@ -10,20 +10,23 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CampsiteFeature
 {
+    const TYPE_WLAN = "wlan";
+    const TYPE_MUSIC = "music";
+    const TYPE_ANIMATION = "animation";
+    const TYPE_FIRE = "fire";
+    const TYPE_PATH = "path";
+    const TYPE_BULLI = "bulli";
+    const TYPE_TENTS = "tents";
+    const TYPE_SUBDEVISION = "subdevision";
+    const TYPE_PERMANENT = "permanent";
+    const TYPE_SIZE = "size";
+    const TYPE_BIO = "bio";
+    const TYPE_SNACK = "snack";
+    const TYPE_ANIMALS = "animals";
+    const TYPE_SEASIDE = "seaside";
+    const TYPE_BATHING = "bathing";
+    const TYPE_FOREST = "forest"; 
 
-    const TYPE_WLAN = "kein WLAN";
-    const TYPE_MUSIC = "keine Bar oder Diskothek";
-    const TYPE_ANIMATION = "keine Animation";
-    const TYPE_FIRE = "Lagerfeuerstelle";
-    const TYPE_PATH = "Sand- oder Kieswege";
-    const TYPE_BULLI = "Bulli-Wiese";
-    const TYPE_TENTS = "Zeltplätze";
-    const TYPE_SUBDEVISION = "keine Parzellierung";
-    const TYPE_PERMANENT = "keine/wenig Dauercamper";
-    const TYPE_SIZE = "Standplatzgröße mind. 80qm";
-    const TYPE_BIO = "regionale/Bio-Lebensmittel";
-    const TYPE_SNACK = "Imbiss";
-    const TYPE_ANIMALS = "Haustiere erlaubt";
 
     /**
      * @ORM\Id
@@ -64,6 +67,8 @@ class CampsiteFeature
         return $this;
     }
 
+    
+
     public function getType(): ?string
     {
         return $this->type;
@@ -71,6 +76,26 @@ class CampsiteFeature
 
     public function setType(string $type): self
     {
+        if (!in_array($type, array(
+            self::TYPE_WLAN, 
+            self::TYPE_MUSIC, 
+            self::TYPE_ANIMATION, 
+            self::TYPE_FIRE,
+            self::TYPE_PATH,
+            self::TYPE_BULLI,
+            self::TYPE_TENTS,
+            self::TYPE_SUBDEVISION,
+            self::TYPE_PERMANENT,
+            self::TYPE_SIZE,
+            self::TYPE_BIO,
+            self::TYPE_SNACK,
+            self::TYPE_ANIMALS,
+            self::TYPE_SEASIDE,
+            self::TYPE_BATHING,
+            self::TYPE_FOREST))) {
+            throw new \InvalidArgumentException($type . " is not a valid Campsite-feature!");
+        }
+
         $this->type = $type;
 
         return $this;

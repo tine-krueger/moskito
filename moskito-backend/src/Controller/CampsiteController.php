@@ -33,7 +33,7 @@ class CampsiteController extends AbstractController
 
     public function create(
         Request $request, 
-        CampsiteRepository $campsiteRepository, 
+        CampsiteRepository $campsiteRepository,
         CampsiteSerializer $serializer
         ): JsonResponse {
     
