@@ -69,6 +69,18 @@ export default function NewCampsite() {
         {
             name: 'animals',
             isfeature: false
+        },
+        {
+            name: 'seaside',
+            isfeature: false
+        },
+        {
+            name: 'bathing',
+            isfeature: false
+        },
+        {
+            name: 'forest',
+            isfeature: false
         }
     ])
     return (
@@ -145,17 +157,18 @@ export default function NewCampsite() {
                     value={newCampsite.longitude}
                 />
             </label>
-                
-            {newFeatures.map((feature, index) => <label key={index}>
-                {feature.name}:
-                <input 
-                    type="checkbox"
-                    selected={newFeatures.wlan}
-                    onChange={handleCheckboxChange}
-                    name= {feature.name}
-                />
+            <div> 
+                {newFeatures.map((feature, index) => <label className="select" key={index}>
+                    {feature.name}:
+                    <input 
+                        type="checkbox"
+                        selected={newFeatures.wlan}
+                        onChange={handleCheckboxChange}
+                        name= {feature.name}
+                    />
 
-            </label> )}
+                </label> )}
+            </div> 
             <button onClick={handleClick}>Features bestätigen</button>
             <button>Campsite Anlegen</button>
         </NewCampsiteForm>
@@ -199,4 +212,9 @@ export default function NewCampsite() {
 const NewCampsiteForm = styled.form`
     display: grid;
     gap: 1em;
+
+    .select {
+        display: inline;
+        width: 100px;
+    }
 `

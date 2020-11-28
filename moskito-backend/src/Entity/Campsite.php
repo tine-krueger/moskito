@@ -64,9 +64,15 @@ class Campsite
      */
     private $campsiteFeatures;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="campsite")
+     */
+    private $users;
+
     public function __construct()
     {
         $this->campsiteFeatures = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -195,6 +201,33 @@ class Campsite
             if ($campsiteFeature->getCampsite() === $this) {
                 $campsiteFeature->setCampsite(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addCampsite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeCampsite($this);
         }
 
         return $this;

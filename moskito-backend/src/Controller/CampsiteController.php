@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\SerializerInterface;
 use App\Repository\CampsiteRepository;
 use App\Entity\Campsite;
 use App\Serializer\CampsiteSerializer;
@@ -19,9 +18,7 @@ class CampsiteController extends AbstractController
     public function index(Request $request, CampsiteRepository $campsiteRepository, CampsiteSerializer $serializer): JsonResponse
     {
         $campsites = $campsiteRepository->findAll();
-        $campfeatures = [];
-
-
+    
         return new JsonResponse(
             $serializer->serialize($campsites),
             JsonResponse::HTTP_OK,
@@ -41,6 +38,15 @@ class CampsiteController extends AbstractController
         ): JsonResponse {
     
             $campsite = $serializer->deserialize($request->getContent());
+            $allCampsites = $campsiteRepository->findAll();
+
+            foreach($allCampsites as $singleCampsites) {
+                if( $singleCampsites->getPostalCode() === $campsite->getPostalCode() 
+                    && $singleCampsites->getStreet() === $campsite->getStreet()) {
+                        return $this->json(["setting Campsite"=>false], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
+                }
+            }
+
             $campsiteRepository->save($campsite);
 
             return new JsonResponse(
