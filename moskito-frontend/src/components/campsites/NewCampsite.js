@@ -12,8 +12,9 @@ export default function NewCampsite() {
         place: '',
         telephone: '',
         email: '',
-        longitude: null,
-        latitude: null,
+        web: '',
+        longitude: 0,
+        latitude: 0,
         features: []
     })
 
@@ -137,6 +138,16 @@ export default function NewCampsite() {
                     name="email"
                     onChange={handleChange}
                     value={newCampsite.email}
+                />
+            </label>
+
+            <label>
+                Web:
+                <input 
+                    type="text"
+                    name="web"
+                    onChange={handleChange}
+                    value={newCampsite.web}
                 />
             </label>
             <label>

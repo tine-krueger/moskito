@@ -41,7 +41,7 @@ class UserController extends AbstractController
             $user = $serializer->deserialize($request->getContent());
             $emailExists = $userRepository->findBy(['email' => $user->getEmail()]);
 
-            if(sizeof($emailExists) >= 0) {
+            if(sizeof($emailExists) > 0) {
                 return $this->json(["userRegistration"=>false], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
             }
             
