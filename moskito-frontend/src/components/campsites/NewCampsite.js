@@ -12,8 +12,8 @@ export default function NewCampsite() {
         place: '',
         telephone: '',
         email: '',
-        longitude: null,
-        latitude: null,
+        longitude: 0,
+        latitude: 0,
         features: []
     })
 
