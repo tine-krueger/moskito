@@ -38,14 +38,24 @@ class CampsiteController extends AbstractController
         ): JsonResponse {
     
             $campsite = $serializer->deserialize($request->getContent());
-            $allCampsites = $campsiteRepository->findAll();
+            $campsiteExists = $campsiteRepository->findBy(
+                [
+                    'postalCode' => $campsite->getPostalCode(),
+                    'street' => $campsite->getStreet()
+                ]
+            );
+
+            if(sizeof($campsiteExists) > 0) {
+                return $this->json(["campsiteRegistration"=>false], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
+            }
+            /*$allCampsites = $campsiteRepository->findAll();
 
             foreach($allCampsites as $singleCampsites) {
                 if( $singleCampsites->getPostalCode() === $campsite->getPostalCode() 
                     && $singleCampsites->getStreet() === $campsite->getStreet()) {
                         return $this->json(["setting Campsite"=>false], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
                 }
-            }
+            }*/
 
             $campsiteRepository->save($campsite);
 

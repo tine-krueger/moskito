@@ -34,6 +34,7 @@ class CampsiteSerializer {
             'place' => $element->getPlace(),
             'telephone' => $element->getTelephone(),
             'email' => $element->getEmail(),
+            'web' => $element->getWeb(),
             'latitude' => $element->getLatitude(),
             'longitude' => $element->getLongitude(),
             'features' => $featuresArray
@@ -64,6 +65,7 @@ class CampsiteSerializer {
             $classObject->setPlace($postData->place);
             $classObject->setTelephone($postData->telephone);
             $classObject->setEmail($postData->email);
+            $classObject->setWeb($postData->web);
             $classObject->setLongitude($postData->longitude);
             $classObject->setLatitude($postData->latitude);
 

@@ -69,6 +69,11 @@ class Campsite
      */
     private $users;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $web;
+
     public function __construct()
     {
         $this->campsiteFeatures = new ArrayCollection();
@@ -229,6 +234,18 @@ class Campsite
         if ($this->users->removeElement($user)) {
             $user->removeCampsite($this);
         }
+
+        return $this;
+    }
+
+    public function getWeb(): ?string
+    {
+        return $this->web;
+    }
+
+    public function setWeb(?string $web): self
+    {
+        $this->web = $web;
 
         return $this;
     }
