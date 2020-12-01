@@ -7,8 +7,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\CampsiteRepository;
+use App\Repository\CampsiteFeatureRepository;
 use App\Entity\Campsite;
 use App\Serializer\CampsiteSerializer;
+use App\Serializer\CampsiteFeatureSerializer;
 
 class CampsiteController extends AbstractController
 {
@@ -48,14 +50,6 @@ class CampsiteController extends AbstractController
             if(sizeof($campsiteExists) > 0) {
                 return $this->json(["campsiteRegistration"=>false], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
             }
-            /*$allCampsites = $campsiteRepository->findAll();
-
-            foreach($allCampsites as $singleCampsites) {
-                if( $singleCampsites->getPostalCode() === $campsite->getPostalCode() 
-                    && $singleCampsites->getStreet() === $campsite->getStreet()) {
-                        return $this->json(["setting Campsite"=>false], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
-                }
-            }*/
 
             $campsiteRepository->save($campsite);
 
@@ -65,5 +59,39 @@ class CampsiteController extends AbstractController
                 [],
                 true
             );
+    }
+
+    /**
+     * @Route("/campsite-filter", methods={"POST"})
+     */
+
+    public function filter(
+        Request $request,
+        CampsiteRepository $campsiteRepository,
+        CampsiteFeatureRepository $featureRepository,
+        CampsiteFeatureSerializer $featureSerializer,
+        CampsiteSerializer $campsiteSerializer
+        ): JsonResponse {
+            $filteredFeatures = $featureSerializer->deserialize($request->getContent());
+            $filteredCampsites = [];
+
+            foreach($filteredFeatures as $filteredFeature) {
+                $features = $featureRepository->findBy(
+                        [
+                            'type' => $filteredFeature->getType(),
+                            'value' => $filteredFeature->getValue() 
+                        ]
+                    );
+                foreach($features as $feature) {
+                    $filteredCampsites[] = $feature->getCampsite();
+                }
+            }
+
+            return new JsonResponse(
+                $campsiteSerializer->serialize($filteredCampsites),
+                JsonResponse::HTTP_OK,
+                [],
+                true
+            );    
     }
 }
