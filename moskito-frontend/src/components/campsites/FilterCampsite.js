@@ -4,7 +4,6 @@ import styled from 'styled-components/macro'
 import getInitialCampsiteFilter from '../../services/getInitialCampsiteFilter'
 
 
-
 export default function FilterCampsite({getCampsites}) {
     const initialFilter = getInitialCampsiteFilter()
     const [filter, setFilter] = useState(initialFilter)
@@ -54,7 +53,7 @@ export default function FilterCampsite({getCampsites}) {
             ]
         })
     }
-    
+
     function handleSubmit(event){
         event.preventDefault()
         getCampsites(filter)

@@ -12,9 +12,6 @@ export default function useCampsites() {
             .then(result => setCampsites(result))
             .catch(error => console.log('error', error))
       }
-    
-
-    
 
     return  { campsites, getCampsites }
  
