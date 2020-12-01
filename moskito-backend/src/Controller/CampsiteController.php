@@ -87,8 +87,31 @@ class CampsiteController extends AbstractController
                 }
             }
 
+            $filteredCampsitesIds = [];
+            foreach ($filteredCampsites as $campsite) {
+                $filteredCampsitesIds[] = $campsite->getId();
+            }
+
+            $countElements = array_count_values($filteredCampsitesIds);
+            arsort($countElements);
+            $sortedIds = array_keys($countElements);
+
+            $sortedCampsites = [];
+            foreach($sortedIds as $Id) {
+                $sortedCampsites[] = $campsiteRepository->findBy(
+                        [
+                            'id' => $Id
+                        ]
+                    );
+            }
+
+            /*var_dump($filteredCampsites);
+            var_dump($sortedCampsites);
+            var_dump($sortedIds);
+            die;*/
+
             return new JsonResponse(
-                $campsiteSerializer->serialize($filteredCampsites),
+                $campsiteSerializer->serialize($sortedCampsites),
                 JsonResponse::HTTP_OK,
                 [],
                 true
