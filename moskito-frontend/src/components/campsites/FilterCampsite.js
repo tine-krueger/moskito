@@ -2,13 +2,18 @@ import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import getInitialCampsiteFilter from '../../services/getInitialCampsiteFilter'
+import PropTypes from 'prop-types'
 
+FilterCampsite.propTypes = {
+    getCampsites: PropTypes.func.isRequired
+}
 
 export default function FilterCampsite({getCampsites}) {
     const initialFilter = getInitialCampsiteFilter()
     const [filter, setFilter] = useState(initialFilter)
     const history = useHistory()
 
+    
 
     return (
         <>
