@@ -98,17 +98,13 @@ class CampsiteController extends AbstractController
 
             $sortedCampsites = [];
             foreach($sortedIds as $Id) {
-                $sortedCampsites[] = $campsiteRepository->findBy(
+                $campsiteObj = $campsiteRepository->findBy(
                         [
                             'id' => $Id
                         ]
                     );
+                $sortedCampsites[] = $campsiteObj[0];
             }
-
-            /*var_dump($filteredCampsites);
-            var_dump($sortedCampsites);
-            var_dump($sortedIds);
-            die;*/
 
             return new JsonResponse(
                 $campsiteSerializer->serialize($sortedCampsites),
