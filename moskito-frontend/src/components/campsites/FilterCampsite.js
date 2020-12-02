@@ -18,6 +18,7 @@ export default function FilterCampsite({getCampsites}) {
     return (
         <>
         <CampsiteFilter onSubmit={handleSubmit}>
+            <h2>Find your Place</h2>
             <PostalCodeInput>
                 {initialFilter.name}:
                 <input type="text" name='postalCode' value={filter.postalCode} onChange={handleChange} />
