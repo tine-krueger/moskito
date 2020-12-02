@@ -7,10 +7,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\CampsiteRepository;
-use App\Repository\CampsiteFeatureRepository;
 use App\Entity\Campsite;
 use App\Serializer\CampsiteSerializer;
 use App\Serializer\CampsiteFeatureSerializer;
+use App\Utils\MatchingCampsites;
+use App\Utils\CountAndSortIds;
+use App\Utils\SortCampsites;
 
 class CampsiteController extends AbstractController
 {
@@ -67,44 +69,16 @@ class CampsiteController extends AbstractController
 
     public function filter(
         Request $request,
-        CampsiteRepository $campsiteRepository,
-        CampsiteFeatureRepository $featureRepository,
         CampsiteFeatureSerializer $featureSerializer,
-        CampsiteSerializer $campsiteSerializer
+        CampsiteSerializer $campsiteSerializer,
+        MatchingCampsites $matchingCampsites,
+        CountAndSortIds $sortIds,
+        SortCampsites $sortCampsites
         ): JsonResponse {
             $filteredFeatures = $featureSerializer->deserialize($request->getContent());
-            $filteredCampsites = [];
-
-            foreach($filteredFeatures as $filteredFeature) {
-                $features = $featureRepository->findBy(
-                        [
-                            'type' => $filteredFeature->getType(),
-                            'value' => $filteredFeature->getValue() 
-                        ]
-                    );
-                foreach($features as $feature) {
-                    $filteredCampsites[] = $feature->getCampsite();
-                }
-            }
-
-            $filteredCampsitesIds = [];
-            foreach ($filteredCampsites as $campsite) {
-                $filteredCampsitesIds[] = $campsite->getId();
-            }
-
-            $countElements = array_count_values($filteredCampsitesIds);
-            arsort($countElements);
-            $sortedIds = array_keys($countElements);
-
-            $sortedCampsites = [];
-            foreach($sortedIds as $Id) {
-                $campsiteObj = $campsiteRepository->findBy(
-                        [
-                            'id' => $Id
-                        ]
-                    );
-                $sortedCampsites[] = $campsiteObj[0];
-            }
+            $filteredCampsites = $matchingCampsites->getMatchingCampsites($filteredFeatures);
+            $sortedIds = $sortIds->countAndSortCampsiteIds($filteredCampsites);
+            $sortedCampsites = $sortCampsites->sortCampsitesByIds($sortedIds);
 
             return new JsonResponse(
                 $campsiteSerializer->serialize($sortedCampsites),
