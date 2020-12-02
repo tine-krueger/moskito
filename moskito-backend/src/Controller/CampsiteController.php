@@ -9,6 +9,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\CampsiteRepository;
 use App\Entity\Campsite;
 use App\Serializer\CampsiteSerializer;
+use App\Serializer\CampsiteFeatureSerializer;
+use App\Utils\MatchingCampsites;
+use App\Utils\CountAndSortIds;
+use App\Utils\SortCampsites;
 
 class CampsiteController extends AbstractController
 {
@@ -48,14 +52,6 @@ class CampsiteController extends AbstractController
             if(sizeof($campsiteExists) > 0) {
                 return $this->json(["campsiteRegistration"=>false], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
             }
-            /*$allCampsites = $campsiteRepository->findAll();
-
-            foreach($allCampsites as $singleCampsites) {
-                if( $singleCampsites->getPostalCode() === $campsite->getPostalCode() 
-                    && $singleCampsites->getStreet() === $campsite->getStreet()) {
-                        return $this->json(["setting Campsite"=>false], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
-                }
-            }*/
 
             $campsiteRepository->save($campsite);
 
@@ -65,5 +61,30 @@ class CampsiteController extends AbstractController
                 [],
                 true
             );
+    }
+
+    /**
+     * @Route("/campsite-filter", methods={"POST"})
+     */
+
+    public function filter(
+        Request $request,
+        CampsiteFeatureSerializer $featureSerializer,
+        CampsiteSerializer $campsiteSerializer,
+        MatchingCampsites $matchingCampsites,
+        CountAndSortIds $sortIds,
+        SortCampsites $sortCampsites
+        ): JsonResponse {
+            $filteredFeatures = $featureSerializer->deserialize($request->getContent());
+            $filteredCampsites = $matchingCampsites->getMatchingCampsites($filteredFeatures);
+            $sortedIds = $sortIds->countAndSortCampsiteIds($filteredCampsites);
+            $sortedCampsites = $sortCampsites->sortCampsitesByIds($sortedIds);
+
+            return new JsonResponse(
+                $campsiteSerializer->serialize($sortedCampsites),
+                JsonResponse::HTTP_OK,
+                [],
+                true
+            );    
     }
 }

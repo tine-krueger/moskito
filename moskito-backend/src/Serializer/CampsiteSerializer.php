@@ -11,9 +11,6 @@ use App\Entity\CampsiteFeature;
 class CampsiteSerializer {
 
     private $elementAsArray = [];
-
-
-
     private function setArray($element): object {
         $featuresArray = [];
         $features = $element->getCampsiteFeatures();
@@ -50,7 +47,6 @@ class CampsiteSerializer {
         } else {
             $this->setArray($elements);
         }
-        
         return \json_encode($this->elementAsArray);
     }
     

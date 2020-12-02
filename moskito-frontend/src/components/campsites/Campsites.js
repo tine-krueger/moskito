@@ -1,19 +1,13 @@
-import getCampsites from '../../services/getCampsites';
-import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types'
 
-export default function Campsites() {
-    const [campsites, setCampsites] = useState([])
 
-    useEffect(() => {
-        getCampsites()
-        .then(data => {
-            setCampsites(data)
-            console.log(data)
-        })
-        
-        .catch(error => console.log(error))
-    }, [])
+Campsites.propTypes = {
+    campsites: PropTypes.arrayOf(PropTypes.array).isRequired
+}
 
+export default function Campsites({campsites}) {
+
+    
 
     return (
         <div>
@@ -24,7 +18,7 @@ export default function Campsites() {
                     <p>{campsite.postalCode} {campsite.place}</p>
                     <p>Tel: {campsite.telephone}</p>
                     <p>E-Mail: {campsite.email}</p>
-                    {filterFeatures(campsite).map(feature => <li>{feature.type}</li>)}
+                    {filterFeatures(campsite).map(feature => <li key={feature.id}>{feature.type}</li>)}
                 </div>
                 )
             )}
@@ -36,3 +30,5 @@ export default function Campsites() {
         return features
     }
 }
+
+
