@@ -1,0 +1,3 @@
+```js
+<HeaderStyled children="Headline"/>
+```

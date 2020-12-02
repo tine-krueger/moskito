@@ -25,24 +25,30 @@ export default createGlobalStyle`
         url(${hindMaduraiRegular}) format('woff');
         font-weight: 400;
         font-style: normal;
-    }
+    } 
 
     * {
         box-sizing: border-box;
-    }
+    }   
 
     body {
-        margin: 0;
+        margin: 0 auto;
         padding: 0;
         font-family: 'Hind Madurai';
         font-size: 16px;
         color: #6b717e;
-        background-color: #d8e6e4;
+        background-color: #c2d6d3;
+        max-width: 500px;
+        
     }
 
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Arvo';
         color: #476c85;
+    }
+
+    h1{
+        font-size: 1.7em;
     }
 `
 
