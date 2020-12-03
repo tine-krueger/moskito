@@ -9,7 +9,7 @@ export function nameReturn(feature) {
     return foundFeature.name
 }
 
-function getFeatureBase() {
+export function getFeatureBase() {
     const features = [
         {
             id: 1,
