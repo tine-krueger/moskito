@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import setCampsites from '../../services/setCampsites';
+import setCampsites from '../services/setCampsites';
 
 
 

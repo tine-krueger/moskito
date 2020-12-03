@@ -6,26 +6,12 @@ module.exports = {
   exampleMode: 'expand',
   usageMode: 'expand',
   components: ['src/Components/**/[A-Z]*.js'],
+  theme: {
+    color: {
+      baseBackground: '#c2d6d3',
+    },
+  },
   styleguideComponents: {
     Wrapper: path.join(__dirname, 'src/styles/StylesWrapper'),
-  },
-  styles: {
-    Pre: {
-      pre: {
-        backgroundColor: 'green',
-      },
-    },
-    StyleGuide: {
-      base: {
-        backgroundColor: '#000',
-        width: '300px',
-      },
-      '@global body': {
-        backgroundColor: '#000',
-
-      }
-    },
-  },
-
-  
+  }
 }

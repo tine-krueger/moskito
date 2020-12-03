@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types'
-
+import { filterFeatures, nameReturn }from '../services/featureService'
 
 Campsites.propTypes = {
     campsites: PropTypes.arrayOf(PropTypes.array).isRequired
 }
 
 export default function Campsites({campsites}) {
-
-    
 
     return (
         <div>
@@ -18,17 +16,12 @@ export default function Campsites({campsites}) {
                     <p>{campsite.postalCode} {campsite.place}</p>
                     <p>Tel: {campsite.telephone}</p>
                     <p>E-Mail: {campsite.email}</p>
-                    {filterFeatures(campsite).map(feature => <li key={feature.id}>{feature.type}</li>)}
+                    {filterFeatures(campsite).map(feature => <li key={feature.id}>{nameReturn(feature)}</li>)}
                 </div>
                 )
             )}
         </div>
-    )
-
-    function filterFeatures(campsite) {
-        const features =  campsite.features.filter(feature => feature.value)
-        return features
-    }
+    )   
 }
 
 

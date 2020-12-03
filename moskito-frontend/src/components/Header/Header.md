@@ -1,3 +1,3 @@
 ```js
-<HeaderStyled children="Headline"/>
+<Header children="Headline"/>
 ```

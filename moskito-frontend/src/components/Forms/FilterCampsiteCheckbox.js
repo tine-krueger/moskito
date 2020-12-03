@@ -36,10 +36,13 @@ export default function FilterCampsiteCheckbox({feature, filter, setFilter}) {
     }
 }
 
-const Feature = styled.label `
+const Feature = styled.div `
     position: relative;
-    input[type="checkbox" i] {
-        display: none;
+    height: 2.5em;
+    input[type="checkbox"] {
+        opacity: 0;
+        position: absolute;
+        visibility:hidden;
     }
 
     p {
@@ -61,5 +64,28 @@ const Feature = styled.label `
         background-color: #d8e6e4;
         box-shadow: inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2), 
                     inset -3px -4px 6px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    p::after {
+        content: " ";
+        width: 10px;
+        height: 10px;
+        top: 6px;
+        position: absolute;
+        opacity: 0;
+        background-color: #c97f63;
+        font-weight: 900;
+        border-radius: 2px;
+        display: inline-block;
+        left: 6px;
+    }
+
+    input[type="checkbox"]:checked+label>p::after {
+        opacity: 1;
+    } 
+
+    input[type="checkbox"]:checked+label>p::before {
+        box-shadow: inset 5px 5px 3px -3px rgba(0,0,0,0.2), 
+                    inset -3px -4px 6px 0 rgba(255,255,255,.9);
     }
 `

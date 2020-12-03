@@ -12,5 +12,5 @@ export default function StyleWrapper({ children }) {
 }
 
 const Wrapper = styled.div`
-  background-color: #e3e3e3;
+  //background-color: #e3e3e3;
 `

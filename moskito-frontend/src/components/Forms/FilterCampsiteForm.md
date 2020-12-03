@@ -1,5 +1,5 @@
-```js
-<FilterCampsiteForm>
+```js 
+<FilterCampsiteForm getCampsites={() => {}}>
     
 </FilterCampsiteForm>
 ```
