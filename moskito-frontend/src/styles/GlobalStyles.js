@@ -47,8 +47,12 @@ export default createGlobalStyle`
         color: #476c85;
     }
 
-    h1{
+    h1 {
         font-size: 1.7em;
+    }
+
+    h2 {
+        font-size: 1.4em;
     }
 
     a {

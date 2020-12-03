@@ -8,14 +8,15 @@ FeatureListItem.propTypes = {
 
 export default function FeatureListItem({feature}) {
 
-    return  <FeatureItem key={feature.id}>{nameReturn(feature)}</FeatureItem>
+    return <FeatureItem key={feature.id}>{nameReturn(feature)}</FeatureItem>
 
 }
 
 const FeatureItem = styled.li `
     border-radius: 10px;
     display: inline-block;
-    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.4), -2px -2px 2px 0px rgba(255,255,255,0.5);
+    box-shadow: inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2), 
+                inset -3px -4px 6px 0 rgba(255, 255, 255, 0.3);
     padding: .5em 1em;
     margin: .5em;
 `

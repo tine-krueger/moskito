@@ -11,7 +11,7 @@ export default function Campsites({campsites}) {
 
     return (
         <>
-            <Header children={'findest Du hier'}/>
+            <Header children={'Deine Suche'}/>
             <CampsiteList campsites={campsites}/>
         </>
     )   

@@ -17,7 +17,6 @@ export default function CampsiteListItem({campsite}) {
                 <p>{campsite.postalCode} {campsite.place}</p>
             </Address>
             <Contact>
-        
                 {campsite.telephone && <p><ImPhone/>{campsite.telephone}</p>}
                 {campsite.email && <p><ImEnvelop/> {campsite.email}</p>}
                 <a rel="noopener noreferrer" href={campsite.web} target='_blank'>{campsite.web}</a>
@@ -25,6 +24,7 @@ export default function CampsiteListItem({campsite}) {
             <FeatureList>
                 {filterFeatures(campsite).map(feature => <FeatureListItem feature={feature}/>)}
             </FeatureList>
+            <LikeButton>Love</LikeButton>
         </CampItem>
     )
 }
@@ -35,12 +35,14 @@ const CampItem = styled.div`
     box-shadow: 2px 4px 8px -4px rgba(0, 0, 0, 0.6), 
                 -2px -2px 2px 0px rgba(255, 255, 255, 0.5);
     border-radius: 20px;
-    margin: 1em auto 2em;
-    padding: 1em 2em;
+    margin: 2em 1em;
+    padding: .5em 1em;
+    position: relative;
 
 
     h2 {
         grid-column: 1/-1;
+        width: 75%;
     }
 
 `
@@ -61,6 +63,11 @@ const Contact = styled.div`
         position: absolute;
         top: 0;
         left: 0;
+    }
+
+    a {
+        display: block;
+        margin-top: 1em;
     }
 `
 const FeatureList = styled.ul`
@@ -83,4 +90,15 @@ const FeatureList = styled.ul`
     box-shadow: 0.5px 0.5px 2px 0px rgba(0,0,0,0.4), 
                 -1.25px -1.25px 2px 0px rgba(255,255,255,0.5);
    }
+`
+
+const LikeButton = styled.div`
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    height: 3.5em;
+    width: 3.5em;
+    border-radius: 10px;
+    box-shadow: 2px 4px 8px -4px rgba(0, 0, 0, 0.6), 
+                -2px -2px 2px 0px rgba(255, 255, 255, 0.5);
 `
