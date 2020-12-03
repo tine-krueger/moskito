@@ -1,0 +1,86 @@
+import PropTypes from 'prop-types'
+import styled from 'styled-components/macro'
+import { filterFeatures }from '../../services/featureService'
+import FeatureListItem from './FeatureListItem'
+import { ImPhone, ImEnvelop } from 'react-icons/im'
+
+
+CampsiteListItem.propTypes = {
+    campsite: PropTypes.object.isRequired
+}
+export default function CampsiteListItem({campsite}) {
+    return (
+        <CampItem key={campsite.id}>
+            <h2>{campsite.name}</h2>
+            <Address>
+                <p>{campsite.street}</p>
+                <p>{campsite.postalCode} {campsite.place}</p>
+            </Address>
+            <Contact>
+        
+                {campsite.telephone && <p><ImPhone/>{campsite.telephone}</p>}
+                {campsite.email && <p><ImEnvelop/> {campsite.email}</p>}
+                <a rel="noopener noreferrer" href={campsite.web} target='_blank'>{campsite.web}</a>
+            </Contact>
+            <FeatureList>
+                {filterFeatures(campsite).map(feature => <FeatureListItem feature={feature}/>)}
+            </FeatureList>
+        </CampItem>
+    )
+}
+
+const CampItem = styled.div`
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    box-shadow: 2px 4px 8px -4px rgba(0, 0, 0, 0.6), 
+                -2px -2px 2px 0px rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    margin: 1em auto 2em;
+    padding: 1em 2em;
+
+
+    h2 {
+        grid-column: 1/-1;
+    }
+
+`
+const Address = styled.div `
+    margin-left: .5em;
+`
+
+const Contact = styled.div`
+    p {
+        position: relative;
+        padding-left: 2em;
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+        color: #476c85;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+`
+const FeatureList = styled.ul`
+   grid-column: 1/-1 ; 
+   list-style: none;
+   padding-left: 0;
+   position: relative;
+   margin-top: 3em;
+
+   &::before{
+    content: " ";
+    display: inline-block;
+    position: absolute;
+    width: 90%;
+    height: 5px;
+    left: 5%;
+    top: -25px;
+    transition: all .2s ease;
+    border-radius: 5px;
+    box-shadow: 0.5px 0.5px 2px 0px rgba(0,0,0,0.4), 
+                -1.25px -1.25px 2px 0px rgba(255,255,255,0.5);
+   }
+`

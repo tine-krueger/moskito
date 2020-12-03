@@ -50,6 +50,15 @@ export default createGlobalStyle`
     h1{
         font-size: 1.7em;
     }
+
+    a {
+        color: #c97f63;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #d3a392;
+    }
 `
 
 
