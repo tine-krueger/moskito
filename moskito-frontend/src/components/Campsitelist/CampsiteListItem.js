@@ -2,7 +2,8 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import { filterFeatures }from '../../services/featureService'
 import FeatureListItem from './FeatureListItem'
-import { ImPhone, ImEnvelop } from 'react-icons/im'
+import { ImPhone, ImEnvelop} from 'react-icons/im'
+import LikeButton from '../Button/LikeButton'
 
 
 CampsiteListItem.propTypes = {
@@ -24,7 +25,7 @@ export default function CampsiteListItem({campsite}) {
             <FeatureList>
                 {filterFeatures(campsite).map(feature => <FeatureListItem feature={feature}/>)}
             </FeatureList>
-            <LikeButton>Love</LikeButton>
+            <LikeButton/>
         </CampItem>
     )
 }
@@ -90,15 +91,4 @@ const FeatureList = styled.ul`
     box-shadow: 0.5px 0.5px 2px 0px rgba(0,0,0,0.4), 
                 -1.25px -1.25px 2px 0px rgba(255,255,255,0.5);
    }
-`
-
-const LikeButton = styled.div`
-    position: absolute;
-    right: 1em;
-    top: 1em;
-    height: 3.5em;
-    width: 3.5em;
-    border-radius: 10px;
-    box-shadow: 2px 4px 8px -4px rgba(0, 0, 0, 0.6), 
-                -2px -2px 2px 0px rgba(255, 255, 255, 0.5);
 `

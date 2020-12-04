@@ -51,7 +51,6 @@ export default function FilterCampsiteForm({getCampsites}) {
 
 const FilterCampsite = styled.form `
     max-width: 500px;
-    padding: 1em 1.5em;
     display: grid;
     margin:2em;
 `
