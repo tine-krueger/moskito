@@ -1,6 +1,5 @@
 
 import PropTypes from 'prop-types'
-import styled from 'styled-components/macro'
 import CampsiteListeItem from './CampsiteListItem'
 
 CampsiteList.propTypes = {
@@ -9,10 +8,9 @@ CampsiteList.propTypes = {
 
 export default function CampsiteList({campsites}) {
     return (
-        <CampList>
+        <div>
             {campsites.map(campsite => <CampsiteListeItem campsite={campsite}/>)}
-        </CampList>
+        </div>
     )
 }
 
-const CampList = styled.div``

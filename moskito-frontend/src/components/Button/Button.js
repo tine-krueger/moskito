@@ -12,6 +12,7 @@ export default function Button({children}) {
 }
 
 const MoskitoButton = styled.button`
+    font-family: 'Arvo';
     padding: 1em 2em;
     border-radius: 10px;
     width: auto;

@@ -40,12 +40,7 @@ export default function FilterCampsiteForm({getCampsites}) {
     function handleSubmit(event){
         event.preventDefault()
         getCampsites(filter)
-        routeChange()
-    }
-
-    function routeChange() {
-        let path = '/campsites'
-        history.push(path)
+        history.push('/campsites')
     }
 }
 
