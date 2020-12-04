@@ -7,11 +7,11 @@ Button.propTypes = {
 
 export default function Button({children}) {
     return (
-        <MoskitoButton>{children}</MoskitoButton>
+        <ButtonStyled>{children}</ButtonStyled>
     )
 }
 
-const MoskitoButton = styled.button`
+const ButtonStyled = styled.button`
     padding: 1em 2em;
     border-radius: 10px;
     width: auto;
