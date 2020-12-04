@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders correctly 1`] = `
+.c0 {
+  padding: 1em 2em;
+  border-radius: 10px;
+  width: auto;
+  border: none;
+  background: #c2d6d3;
+  box-shadow: 2px 4px 8px -4px rgba(0,0,0,0.6),-2px -2px 2px 0px rgba(255,255,255,0.5);
+  color: #476c85;
+  text-transform: uppercase;
+  margin: 3em auto;
+}
+
+.c0:hover,
+.c0:focus {
+  background: linear-gradient(145deg,#A2B2B0,#E2FAF6);
+  box-shadow: 2px 4px 8px -4px rgba(0,0,0,0.6),-2px -2px 2px 0px rgba(255,255,255,0.5);
+  outline: none;
+}
+
+<button
+  class="c0"
+>
+  Click Me!
+</button>
+`;

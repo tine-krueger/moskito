@@ -1,8 +1,9 @@
 import { Route, Switch } from 'react-router-dom'
-import useCampsites from '../hooks/useCampsites'
-import Campsites from './campsites/Campsites'
-import FilterCampsite from './campsites/FilterCampsite'
-import NewCampsite from './campsites/NewCampsite'
+import useCampsites from './hooks/useCampsites'
+import Campsites from './Pages/Campsites'
+import FilterCampsite from './Pages/FindCampsitesPage'
+import NewCampsite from './Pages/NewCampsite'
+
 
 export default function App() {
   const { campsites, getCampsites } = useCampsites()
