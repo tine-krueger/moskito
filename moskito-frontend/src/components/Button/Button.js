@@ -7,13 +7,14 @@ Button.propTypes = {
 
 export default function Button({children}) {
     return (
-        <MoskitoButton>{children}</MoskitoButton>
+        <ButtonStyled>{children}</ButtonStyled>
     )
 }
 
-const MoskitoButton = styled.button`
-    font-family: 'Arvo';
+
+const ButtonStyled = styled.button`
     padding: 1em 2em;
+    font-family: 'Arvo';
     border-radius: 10px;
     width: auto;
     border: none;

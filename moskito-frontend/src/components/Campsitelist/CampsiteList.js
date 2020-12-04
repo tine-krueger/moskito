@@ -1,6 +1,7 @@
 
 import PropTypes from 'prop-types'
-import CampsiteListeItem from './CampsiteListItem'
+import styled from 'styled-components/macro'
+import CampsiteListItem from './CampsiteListItem'
 
 CampsiteList.propTypes = {
     campsites: PropTypes.arrayOf(PropTypes.array).isRequired
@@ -8,9 +9,9 @@ CampsiteList.propTypes = {
 
 export default function CampsiteList({campsites}) {
     return (
-        <div>
-            {campsites.map(campsite => <CampsiteListeItem campsite={campsite}/>)}
-        </div>
+        <CampList>
+            {campsites.map(campsite => <CampsiteListItem campsite={campsite}/>)}
+        </CampList>
     )
 }
-
+const CampList = styled.div``
