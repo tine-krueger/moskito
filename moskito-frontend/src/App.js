@@ -3,6 +3,7 @@ import useCampsites from './hooks/useCampsites'
 import Campsites from './Pages/Campsites'
 import FilterCampsite from './Pages/FindCampsitesPage'
 import Landing from './Pages/Landing'
+import Login from './Pages/Login'
 import NewCampsite from './Pages/NewCampsite'
 
 
@@ -14,6 +15,9 @@ export default function App() {
     <Switch>
       <Route exact path="/">
         <Landing/>
+      </Route>
+      <Route exact path="/login">
+        <Login/>
       </Route>
       <Route path="/find-campsite">
         <FilterCampsite getCampsites={getCampsites}/>
