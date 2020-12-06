@@ -6,12 +6,12 @@ use App\Entity\Token;
 
 class UserTokenSerializer {
 
-    public function serialize($token){
-        $elementsAsArray[] = [
+    public function serialize($token) {
+
+        return \json_encode([
             'value' => $token->getValue(),
-            'validUntil' => $token->getValiduntil(),
+            'validUntil' => $token->getValidUntil(),
             'user' => $token->getUser()->getId()
-        ] ; 
-        return \json_encode($elementsAsArray);
+        ]);
     }
 }

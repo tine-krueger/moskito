@@ -45,8 +45,8 @@ class UserController extends AbstractController
                 return $this->json(["userRegistration"=>false], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
             }
             
-            
             $userRepository->save($user);
+            
 
             return new JsonResponse(
                 $serializer->serialize($user),

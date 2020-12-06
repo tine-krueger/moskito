@@ -19,7 +19,7 @@ class UserTokenRepository extends ServiceEntityRepository
         parent::__construct($registry, UserToken::class);
     }
 
-    public function create(Object $user): UserToken{
+    public function create($user): UserToken{
 
         $validUntil = new \DateTime();
         $validUntil->modify('+1 day');
@@ -38,3 +38,4 @@ class UserTokenRepository extends ServiceEntityRepository
 
     }
 }
+

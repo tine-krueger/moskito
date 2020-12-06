@@ -34,12 +34,13 @@ class AuthenticationController extends AbstractController
         };
 
         $token = $tokenRepository->create($user);
+        
 
-        return new JsonResponse([
+        return new JsonResponse(
             $tokenSerializer->serialize($token),
             JsonResponse::HTTP_OK,
             [],
             true
-        ]);
+        );
     }
 }
