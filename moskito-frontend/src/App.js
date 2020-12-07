@@ -12,10 +12,10 @@ import useToken from './hooks/useToken'
 
 export default function App() {
   const { campsites, getCampsites } = useCampsites()
-  const { authTokens, setTokens, deleteTokens } = useToken()
+  const { authTokens, setTokens, deleteTokens, getToken } = useToken()
 
   return (
-    <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens, deleteTokens}}>
+    <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens, deleteTokens, getToken}}>
       <Router>
         <Switch>
           <Route exact path="/">

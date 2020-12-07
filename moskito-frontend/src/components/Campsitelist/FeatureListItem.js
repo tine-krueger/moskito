@@ -6,9 +6,9 @@ FeatureListItem.propTypes = {
     feature: PropTypes.object.isRequired
 }
 
-export default function FeatureListItem({feature, index}) {
+export default function FeatureListItem({feature}) {
 
-    return <FeatureItem id={feature.id} key={index}>{nameReturn(feature)}</FeatureItem>
+    return <FeatureItem>{nameReturn(feature)}</FeatureItem>
 
 }
 

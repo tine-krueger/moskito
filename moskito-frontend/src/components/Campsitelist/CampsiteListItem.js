@@ -23,7 +23,7 @@ export default function CampsiteListItem({campsite}) {
                 <a rel="noopener noreferrer" href={campsite.web} target='_blank'>{campsite.web}</a>
             </Contact>
             <FeatureList>
-                {filterFeatures(campsite).map(feature => <FeatureListItem feature={feature}/>)}
+                {filterFeatures(campsite).map(feature => <FeatureListItem key={feature.id} feature={feature}/>)}
             </FeatureList>
             <LikeButton/>
         </CampItem>

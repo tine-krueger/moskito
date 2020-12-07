@@ -11,7 +11,7 @@ export default function useToken() {
     }
     const deleteTokens = async (token) => {
         localStorage.removeItem('tokens')
-        
+
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
@@ -32,6 +32,8 @@ export default function useToken() {
             return console.log('error', error)
         }
     }
+
+    
 
     return { authTokens, setAuthTokens,  setTokens, deleteTokens }
 }

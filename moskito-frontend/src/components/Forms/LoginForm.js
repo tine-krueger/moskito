@@ -27,6 +27,7 @@ export default function LoginForm() {
             <ButtonBackGroup text1={'Login'} text2={'Zurück'} onClick={handleClick}/>
         </LoginFormStyled>
     )
+
     function handleClick(event) {
         event.preventDefault()
         history.goBack()
@@ -45,7 +46,7 @@ export default function LoginForm() {
         myHeaders.append("Content-Type", "application/json");
 
         const raw = JSON.stringify(user);
-
+        console.log(raw)
         var requestOptions = {
         method: 'POST',
         headers: myHeaders,
