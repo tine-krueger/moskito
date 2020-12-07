@@ -27,7 +27,8 @@ export default function LoginForm() {
             <ButtonBackGroup text1={'Login'} text2={'Zurück'} onClick={handleClick}/>
         </LoginFormStyled>
     )
-    function handleClick() {
+    function handleClick(event) {
+        event.preventDefault()
         history.goBack()
     }
 

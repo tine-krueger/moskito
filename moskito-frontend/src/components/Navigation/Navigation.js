@@ -6,7 +6,7 @@ import { FiLogOut } from 'react-icons/fi'
 
 
 export default function Navigation() {
-    const { deleteTokens, setAuthTokens } = useAuth()
+    const { deleteTokens, setAuthTokens, authTokens } = useAuth()
     return (
         <Navbar>
             <nav>
@@ -24,8 +24,9 @@ export default function Navigation() {
 
     function logOut(event){
         event.preventDefault()
+        const token = authTokens
         setAuthTokens()
-        deleteTokens()
+        deleteTokens(token)
     }
 }
 
