@@ -2,6 +2,7 @@ import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../context/auth'
 import { FiLogOut } from 'react-icons/fi'
+import { AiOutlineSearch, AiFillPushpin } from 'react-icons/ai'
 
 
 
@@ -9,16 +10,17 @@ export default function Navigation() {
     const { deleteTokens, setAuthTokens, authTokens } = useAuth()
     return (
         <Navbar>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/find-campsite"/>
-                    </li>
-                    <li>
-                        <button onClick={logOut}><FiLogOut/></button>
-                    </li>
-                </ul>
-            </nav>
+            <NavList>
+                <NavListItem>
+                    <Link to="/find-campsite"><AiOutlineSearch /></Link>
+                </NavListItem>
+                <NavListItem>
+                    <Link to="/find-campsite"><AiFillPushpin /></Link>
+                </NavListItem>
+                <NavListItem>
+                    <button onClick={logOut}><FiLogOut /></button>
+                </NavListItem>
+            </NavList>
         </Navbar>
     )
 
@@ -30,7 +32,7 @@ export default function Navigation() {
     }
 }
 
-const Navbar = styled.div`
+const Navbar = styled.nav`
     width: 100vw;
     background-color: #c2d6d3;
     border-top: 1px solid grey;
@@ -38,8 +40,25 @@ const Navbar = styled.div`
     bottom: 0;
     left: 0;
 
-    button {
-        width: 50px;
-        height: 50px;
-    }
 `
+
+const NavList = styled.ul`
+    padding-left:0;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+`    
+const NavListItem = styled.li`
+    width: 20%;
+    text-align: center;
+
+    button{
+        background-color: #c2d6d3;
+        border: none;
+    }
+    a svg, button svg {
+        width: 2em;
+        height: 2em;
+        stroke: #c97f63;
+    }
+`  

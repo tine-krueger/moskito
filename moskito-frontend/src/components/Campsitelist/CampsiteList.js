@@ -14,4 +14,6 @@ export default function CampsiteList({campsites}) {
         </CampList>
     )
 }
-const CampList = styled.div``
+const CampList = styled.div`
+    margin-bottom: 5em;
+`

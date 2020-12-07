@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import CampsiteList from '../Components/Campsitelist/CampsiteList'
 import Header from '../Components/Header/Header'
+import Navigation from '../Components/Navigation/Navigation'
 
 
 Campsites.propTypes = {
@@ -13,6 +14,7 @@ export default function Campsites({campsites}) {
         <>
             <Header children={'Deine Suche'}/>
             <CampsiteList campsites={campsites}/>
+            <Navigation/>
         </>
     )   
 }

@@ -46,7 +46,7 @@ export default function FilterCampsiteForm({getCampsites}) {
 const FilterCampsite = styled.form `
     max-width: 500px;
     display: grid;
-    margin:2em;
+    margin:2em 2em 5em 2em;
 `
 const Checkboxes = styled.div`
     padding: 0 1em;
