@@ -3,7 +3,6 @@ import FrontHeadline from '../Components/FrontHeadline/FrontHeadline'
 import LoginForm from '../Components/Forms/LoginForm'
 
 export default function Login() {
-    
 
     return (
         <div>
@@ -11,11 +10,7 @@ export default function Login() {
             <FrontHeadline>Login</FrontHeadline>
             <LoginForm />
         </div>
-    )
-
-
-
-   
+    )   
 }
 
 
