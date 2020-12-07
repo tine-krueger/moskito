@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
- 
 import useCampsites from './hooks/useCampsites'
 import Campsites from './Pages/Campsites'
 import FilterCampsite from './Pages/FindCampsitesPage'

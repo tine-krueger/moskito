@@ -33,7 +33,21 @@ export default function useToken() {
         }
     }
 
-    
+    const getToken =  (user) => {
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
 
-    return { authTokens, setAuthTokens,  setTokens, deleteTokens }
+        const raw = JSON.stringify(user)
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+        };
+
+        return fetch("http://moskito.local/login", requestOptions)
+            .then(response => response.json())     
+    }
+
+    return { authTokens, setAuthTokens, setTokens, deleteTokens, getToken }
 }

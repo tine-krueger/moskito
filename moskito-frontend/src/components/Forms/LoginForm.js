@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro'
 import ButtonBackGroup from "../Button/ButtonBackGroup"
-import {Redirect, useHistory} from 'react-router-dom'
+import { Redirect, useHistory } from 'react-router-dom'
 import InputField from './InputField'
-import {useState} from 'react'
+import { useState } from 'react'
 import { useAuth } from "../../context/auth"
 
 export default function LoginForm() {
@@ -12,7 +12,7 @@ export default function LoginForm() {
     })
     const [ isLoggedIn, setLoggedIn ] = useState(false)
     const [ isError, setIsError ] = useState(false)
-    const { setAuthTokens } = useAuth()
+    const { setAuthTokens, getToken } = useAuth()
     let history = useHistory()
 
     if (isLoggedIn) {
@@ -42,20 +42,7 @@ export default function LoginForm() {
     
     function handleSubmit(event) {
         event.preventDefault()
-        const myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        const raw = JSON.stringify(user);
-        console.log(raw)
-        var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-        };
-
-        fetch("http://moskito.local/login", requestOptions)
-        .then(response => response.json())
+        getToken(user)
         .then(result => {
             if ( result.validUntil ) {
                 setAuthTokens(result)
