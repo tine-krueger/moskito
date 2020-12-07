@@ -13,7 +13,6 @@ export default function LoginForm() {
     const [ isLoggedIn, setLoggedIn ] = useState(false)
     const [ isError, setIsError ] = useState(false)
     const { setAuthTokens } = useAuth()
-
     let history = useHistory()
 
     if (isLoggedIn) {
