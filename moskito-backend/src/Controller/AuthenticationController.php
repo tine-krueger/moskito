@@ -43,4 +43,34 @@ class AuthenticationController extends AbstractController
             true
         );
     }
+
+    /**
+     * @Route("/logout", methods={"DELETE"})
+     */
+
+    public function deleteToken(
+        Request $request,
+        UserTokenRepository $tokenRepository,
+        UserTokenSerializer $tokenSerializer
+    ): JsonResponse {
+        $token = $tokenSerializer->deserialize($request->getContent());
+        $tokenExists = $tokenRepository->findOneBy(
+            [
+                'value' => $token->getValue()
+            ]
+        );
+
+        if($tokenExists === null) {
+            return $this->json(["tokenDelete"=>false], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
+        }
+        
+        $tokenRepository->delete($tokenExists);
+
+        return new JsonResponse(
+            json_encode(["tokenDeleted"=>true]),
+            JsonResponse::HTTP_OK,
+            [],
+            true
+        );
+    }
 }

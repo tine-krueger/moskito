@@ -34,8 +34,12 @@ class UserTokenRepository extends ServiceEntityRepository
         $this->_em->flush();
         
         return $token;
+    }
 
+    public function delete($token): void {
 
+        $this->_em->remove($token);
+        $this->_em->flush();
     }
 }
 
