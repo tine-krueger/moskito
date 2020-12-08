@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import { filterFeatures }from '../../services/featureService'
+import { ImPhone, ImEnvelop } from 'react-icons/im'
 import FeatureListItem from './FeatureListItem'
-import { ImPhone, ImEnvelop} from 'react-icons/im'
 import LikeButton from '../Button/LikeButton'
-
+import { filterFeatures }from '../../services/featureService'
 
 CampsiteListItem.propTypes = {
     campsite: PropTypes.object.isRequired
@@ -23,7 +22,7 @@ export default function CampsiteListItem({campsite}) {
                 <a rel="noopener noreferrer" href={campsite.web} target='_blank'>{campsite.web}</a>
             </Contact>
             <FeatureList>
-                {filterFeatures(campsite).map(feature => <FeatureListItem feature={feature}/>)}
+                {filterFeatures(campsite).map(feature => <FeatureListItem key={feature.id} feature={feature}/>)}
             </FeatureList>
             <LikeButton/>
         </CampItem>

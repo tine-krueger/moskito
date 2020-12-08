@@ -2,16 +2,27 @@
 
 namespace App\Serializer;
 
-use App\Entity\Token;
+use App\Entity\UserToken;
 
 class UserTokenSerializer {
 
-    public function serialize($token){
-        $elementsAsArray[] = [
+    public function serialize($token) {
+
+        return \json_encode([
             'value' => $token->getValue(),
-            'validUntil' => $token->getValiduntil(),
+            'validUntil' => $token->getValidUntil(),
             'user' => $token->getUser()->getId()
-        ] ; 
-        return \json_encode($elementsAsArray);
+        ]);
+    }
+
+    public function deserialize($content) {
+        $postDate = $postData = \json_decode($content);
+            
+        $classObject = new UserToken();
+        $classObject->setValue($postData->value);
+        //$classObject->setValidUntil($postData->validUntil);
+        //$classObject->setUser($postData->user);
+     
+        return $classObject;
     }
 }

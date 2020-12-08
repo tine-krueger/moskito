@@ -1,4 +1,3 @@
-
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import CampsiteListItem from './CampsiteListItem'
@@ -14,5 +13,6 @@ export default function CampsiteList({campsites}) {
         </CampList>
     )
 }
-
-const CampList = styled.div``
+const CampList = styled.div`
+    margin-bottom: 5em;
+`

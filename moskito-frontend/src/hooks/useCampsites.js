@@ -13,8 +13,6 @@ export default function useCampsites() {
             .catch(error => console.log('error', error))
       }
     
-
-
     return  { campsites, getCampsites }
  
 }

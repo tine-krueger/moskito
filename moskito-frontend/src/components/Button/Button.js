@@ -2,17 +2,20 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 
 Button.propTypes = {
-    children: PropTypes.string.isRequired
+    children: PropTypes.string.isRequired,
+    onClick: PropTypes.func
 }
 
-export default function Button({children}) {
+export default function Button({children, onClick}) {
     return (
-        <ButtonStyled>{children}</ButtonStyled>
+        <ButtonStyled onClick={onClick}>{children}</ButtonStyled>
     )
 }
 
+
 const ButtonStyled = styled.button`
     padding: 1em 2em;
+    font-family: 'Arvo';
     border-radius: 10px;
     width: auto;
     border: none;

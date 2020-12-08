@@ -1,6 +1,6 @@
-import { nameReturn }from '../../services/featureService'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
+import { nameReturn }from '../../services/featureService'
 
 FeatureListItem.propTypes = {
     feature: PropTypes.object.isRequired
@@ -8,7 +8,7 @@ FeatureListItem.propTypes = {
 
 export default function FeatureListItem({feature}) {
 
-    return <FeatureItem key={feature.id}>{nameReturn(feature)}</FeatureItem>
+    return <FeatureItem>{nameReturn(feature)}</FeatureItem>
 
 }
 
