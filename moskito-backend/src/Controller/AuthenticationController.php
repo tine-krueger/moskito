@@ -61,7 +61,7 @@ class AuthenticationController extends AbstractController
         );
 
         if($tokenExists === null) {
-            return $this->json(["tokenDelete"=>false], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
+            return $this->json(["tokenDeleted"=>false], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
         }
         
         $tokenRepository->delete($tokenExists);
