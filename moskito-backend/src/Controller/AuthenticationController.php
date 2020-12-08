@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Serializer\UserTokenSerializer;
 use App\Repository\UserRepository;
 use App\Repository\UserTokenRepository;
@@ -23,13 +24,14 @@ class AuthenticationController extends AbstractController
         Request $request, 
         UserTokenSerializer $tokenSerializer,
         UserRepository $userRepository,
-        UserTokenRepository $tokenRepository
-         ): JsonResponse {
+        UserTokenRepository $tokenRepository,
+        UserPasswordEncoderInterface $passwordEncoder
+        ): JsonResponse {
         $post = json_decode($request->getContent(), true);
-        $user = $userRepository->login($post['email'], $post['password']);
-        
-
-        if(is_null($user)) {
+        $user = $userRepository->login($post['email']);
+        $isValid = $passwordEncoder->isPasswordValid($user, $post['password']);
+    
+        if(!$isValid) {
             return $this->json(["success"=>false], JsonResponse::HTTP_UNAUTHORIZED);
         };
 
