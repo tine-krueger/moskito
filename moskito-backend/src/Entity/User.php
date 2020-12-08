@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -21,6 +23,7 @@ class User
 
     /**
      * @ORM\Column(type="string", length=60)
+     *
      */
     private $firstName;
 
@@ -31,11 +34,20 @@ class User
 
     /**
      * @ORM\Column(type="string", length=60)
+     * @Assert\NotBlank
+     * @Assert\Email(
+     *      message = "The email '{{ value }}' is not a valid email"
+     * )
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Regex( pattern="/\d/", message = "Your password must contain at least one number.")
+     * @Assert\Regex( pattern="/[a-zA-Z]/", message = "Your password must contain at least one letter.")
+     * @Assert\Regex( pattern="/\W/", message = "Your password must contain at least one special character.")
+     * @Assert\Length( min=8, max=255, minMessage = "Your password must be at least {{ limit }} characters long.", maxMessage = "Your password can not be longer than {{ limit }} characters.")
      */
     private $password;
 

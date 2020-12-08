@@ -46,6 +46,9 @@ class Campsite
 
     /**
      * @ORM\Column(type="string", length=40, nullable=true)
+     * @Assert\Email(
+     *      message = "The email '{{ value }}' is not a valid email"
+     * )
      */
     private $email;
 
