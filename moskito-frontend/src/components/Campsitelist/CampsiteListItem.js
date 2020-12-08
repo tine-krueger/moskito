@@ -10,7 +10,7 @@ CampsiteListItem.propTypes = {
 }
 export default function CampsiteListItem({campsite}) {
     return (
-        <CampItem key={campsite.id}>
+        <CampItem>
             <h2>{campsite.name}</h2>
             <Address>
                 <p>{campsite.street}</p>

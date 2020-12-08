@@ -3,13 +3,13 @@ import styled from 'styled-components/macro'
 import CampsiteListItem from './CampsiteListItem'
 
 CampsiteList.propTypes = {
-    campsites: PropTypes.arrayOf(PropTypes.array).isRequired
+    campsites: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export default function CampsiteList({campsites}) {
     return (
         <CampList>
-            {campsites.map(campsite => <CampsiteListItem campsite={campsite}/>)}
+            {campsites.map(campsite => <CampsiteListItem key={campsite.id} campsite={campsite}/>)}
         </CampList>
     )
 }

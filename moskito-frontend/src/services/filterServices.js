@@ -1,5 +1,10 @@
+import loadToken from './loadToken'
+
 export function setFeatureFilter(features) {
+    const tokenValue = loadToken()
     const myHeaders = new Headers()
+
+    myHeaders.append("Authorization", `Bearer ${tokenValue}`)
     myHeaders.append("Content-Type", "application/json")
 
     const raw = JSON.stringify(features)
@@ -12,7 +17,13 @@ export function setFeatureFilter(features) {
     }
 
     return fetch("http://moskito.local/campsite-filter", requestOptions)
-        .then(response => response.json())
+        .then(response => {
+            if (response.ok) {
+                return response.json()
+            } else {
+                throw new Error(response.statusText)
+            }
+        })
 }
 
 export function getTrueFilter(filter) {
