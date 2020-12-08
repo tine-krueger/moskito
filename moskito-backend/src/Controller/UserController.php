@@ -10,14 +10,20 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Repository\UserRepository;
 use App\Entity\User;
 use App\Serializer\UserSerializer;
+use App\Utils\AuthenticationService;
 
 class UserController extends AbstractController
 {
     /**
      * @Route("/user", methods={"GET"})
      */
-    public function index( UserRepository $userRepository, UserSerializer $serializer ): JsonResponse
+    public function index( UserRepository $userRepository, UserSerializer $serializer, AuthenticationService $authentication ): JsonResponse
     {
+
+        if (!$authentication->isValid($request)) {
+            return $this->json(["authorization" => false], JsonResponse::HTTP_UNAUTHORIZED);
+        }
+
         $users = $userRepository->findAll();
 
 
