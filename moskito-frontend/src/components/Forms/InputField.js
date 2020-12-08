@@ -11,13 +11,13 @@ InputField.propTypes = {
 
 export default function InputField({type, name, value, onChange, placeholder}) {
     return (
-        <Input>
+        <Label>
             <input type={type} name={name} value={value} onChange={onChange} placeholder={placeholder} />
-        </Input>
+        </Label>
     )
 }
 
-const Input = styled.label `
+const Label = styled.label `
     grid-column: 1 / -1;
     width: 100%;
     text-align: center;

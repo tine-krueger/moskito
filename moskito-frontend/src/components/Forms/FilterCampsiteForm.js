@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import getInitialCampsiteFilter from '../../services/getInitialCampsiteFilter'
 import PropTypes from 'prop-types'
 import Feature from './FilterCampsiteCheckbox'
 import Button from '../Button/Button'
 import InputField from './InputField'
+import getInitialCampsiteFilter from '../../services/getInitialCampsiteFilter'
 
 FilterCampsiteForm.propTypes = {
     getCampsites: PropTypes.func.isRequired

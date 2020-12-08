@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import { filterFeatures }from '../../services/featureService'
-import FeatureListItem from './FeatureListItem'
 import { ImPhone, ImEnvelop } from 'react-icons/im'
+import FeatureListItem from './FeatureListItem'
 import LikeButton from '../Button/LikeButton'
-
+import { filterFeatures }from '../../services/featureService'
 
 CampsiteListItem.propTypes = {
     campsite: PropTypes.object.isRequired

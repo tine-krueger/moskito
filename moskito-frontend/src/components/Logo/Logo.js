@@ -1,6 +1,6 @@
 import React from 'react'
-import moskitoLogo from '../../images/moskitoLogo.svg'
 import styled from 'styled-components/macro'
+import moskitoLogo from '../../images/moskitoLogo.svg'
 
 export default function Logo() {
     return (

@@ -1,15 +1,14 @@
-
 import { Link } from 'react-router-dom'
-import Logo from "../Components/Logo/Logo";
 import styled from 'styled-components/macro'
 import FrontHeadline from '../Components/FrontHeadline/FrontHeadline'
 import Button from '../Components/Button/Button';
+import Logo from "../Components/Logo/Logo";
 
 
 export default function Landing() {
 
     return (
-        <div>
+        <>
             <Logo/>
             <FrontHeadline>Camping back to the roots</FrontHeadline>
             <UserButtons>
@@ -18,7 +17,7 @@ export default function Landing() {
                 <Link to={'/signin'}>
                     <Button>SignIn </Button></Link>    
             </UserButtons>
-        </div>
+        </>
     )
 }
 

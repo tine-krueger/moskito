@@ -1,5 +1,5 @@
-import Button from "./Button";
 import styled from 'styled-components/macro'
+import Button from "./Button";
 
 export default function ButtonBackGroup({text1, text2, onClick}) {
     return (

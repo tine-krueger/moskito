@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
-import { useAuth } from '../../context/auth'
 import { FiLogOut } from 'react-icons/fi'
 import { AiOutlineSearch, AiFillPushpin } from 'react-icons/ai'
+import { useAuth } from '../../context/auth'
 
 
 

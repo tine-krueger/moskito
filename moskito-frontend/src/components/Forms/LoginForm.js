@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro'
-import ButtonBackGroup from "../Button/ButtonBackGroup"
-import { Redirect, useHistory } from 'react-router-dom'
-import InputField from './InputField'
 import { useState } from 'react'
+import { Redirect, useHistory } from 'react-router-dom'
+import ButtonBackGroup from "../Button/ButtonBackGroup"
+import InputField from './InputField'
 import { useAuth } from "../../context/auth"
 
 export default function LoginForm() {
@@ -30,7 +30,7 @@ export default function LoginForm() {
 
     function handleClick(event) {
         event.preventDefault()
-        history.goBack()
+        history.push('/')
     }
 
     function handleChange(event) {

@@ -1,13 +1,12 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import useCampsites from './hooks/useCampsites'
 import Campsites from './Pages/Campsites'
 import FilterCampsite from './Pages/FindCampsitesPage'
 import Landing from './Pages/Landing'
 import Login from './Pages/Login'
+import useToken from './hooks/useToken'
+import useCampsites from './hooks/useCampsites'
 import PrivateRoute from './PrivateRoute'
 import { AuthContext } from './context/auth'
-import useToken from './hooks/useToken'
-
 
 export default function App() {
   const { campsites, getCampsites } = useCampsites()
@@ -20,7 +19,7 @@ export default function App() {
           <Route exact path="/">
             <Landing/>
           </Route>
-          <Route exact path="/login">
+          <Route path="/login">
             <Login/>
           </Route>
           <PrivateRoute path="/find-campsite" component={() => <FilterCampsite getCampsites={getCampsites} />}/>
