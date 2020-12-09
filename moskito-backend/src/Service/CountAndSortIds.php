@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Utils;
+namespace App\Service;
 
 class CountAndSortIds {
 
 
     public function countAndSortCampsiteIds(array $filteredCampsites):array {
 
-        //count all campsites Id's
         $filteredCampsitesIds = [];
         foreach ($filteredCampsites as $campsite) {
             $filteredCampsitesIds[] = $campsite->getId();
