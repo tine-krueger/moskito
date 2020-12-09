@@ -10,10 +10,10 @@ use App\Repository\CampsiteRepository;
 use App\Entity\Campsite;
 use App\Serializer\CampsiteSerializer;
 use App\Serializer\CampsiteFeatureSerializer;
-use App\Utils\MatchingCampsites;
-use App\Utils\CountAndSortIds;
-use App\Utils\SortCampsites;
-use App\Utils\AuthenticationService;
+use App\Service\MatchingCampsites;
+use App\Service\CountAndSortIds;
+use App\Service\SortCampsites;
+use App\Service\AuthenticationService;
 
 class CampsiteController extends AbstractController
 {

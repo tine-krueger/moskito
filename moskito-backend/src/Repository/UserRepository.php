@@ -24,8 +24,4 @@ class UserRepository extends ServiceEntityRepository
         $this->_em->flush();
         return $user;
     }  
-
-    public function login(string $email, string $password): ?User {
-        return $this->findOneBy(['email' => $email, 'password' => $password]);
-    }
 }
