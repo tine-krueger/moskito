@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CampsiteRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -46,6 +47,9 @@ class Campsite
 
     /**
      * @ORM\Column(type="string", length=40, nullable=true)
+     * @Assert\Email(
+     *      message = "The email '{{ value }}' is not a valid email"
+     * )
      */
     private $email;
 

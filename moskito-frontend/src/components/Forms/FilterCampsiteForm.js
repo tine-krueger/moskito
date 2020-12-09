@@ -15,6 +15,7 @@ export default function FilterCampsiteForm({getCampsites}) {
     const initialFilter = getInitialCampsiteFilter()
     const [filter, setFilter] = useState(initialFilter)
     const history = useHistory()
+    
 
     return (
         <FilterCampsite onSubmit={handleSubmit}>

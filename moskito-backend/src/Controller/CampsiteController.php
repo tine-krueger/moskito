@@ -13,6 +13,7 @@ use App\Serializer\CampsiteFeatureSerializer;
 use App\Utils\MatchingCampsites;
 use App\Utils\CountAndSortIds;
 use App\Utils\SortCampsites;
+use App\Utils\AuthenticationService;
 
 class CampsiteController extends AbstractController
 {
@@ -73,8 +74,14 @@ class CampsiteController extends AbstractController
         CampsiteSerializer $campsiteSerializer,
         MatchingCampsites $matchingCampsites,
         CountAndSortIds $sortIds,
-        SortCampsites $sortCampsites
+        SortCampsites $sortCampsites,
+        AuthenticationService $authentication
         ): JsonResponse {
+
+            if (!$authentication->isValid($request)) {
+                return $this->json(["authorization" => false], JsonResponse::HTTP_UNAUTHORIZED);
+            }
+
             $filteredFeatures = $featureSerializer->deserialize($request->getContent());
             $filteredCampsites = $matchingCampsites->getMatchingCampsites($filteredFeatures);
             $sortedIds = $sortIds->countAndSortCampsiteIds($filteredCampsites);
