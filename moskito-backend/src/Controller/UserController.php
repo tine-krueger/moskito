@@ -9,8 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Repository\UserRepository;
 use App\Serializer\UserSerializer;
-use App\Utils\AuthenticationService;
-use App\Utils\PasswordEncoder;
+use App\Service\AuthenticationService;
+use App\Service\PasswordEncoder;
 
 class UserController extends AbstractController
 {
