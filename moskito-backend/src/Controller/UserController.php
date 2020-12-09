@@ -8,9 +8,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Repository\UserRepository;
-use App\Entity\User;
 use App\Serializer\UserSerializer;
 use App\Utils\AuthenticationService;
+use App\Utils\PasswordEncoder;
 
 class UserController extends AbstractController
 {
@@ -25,7 +25,6 @@ class UserController extends AbstractController
         }
 
         $users = $userRepository->findAll();
-
 
         return new JsonResponse(
             $serializer->serialize($users),
@@ -43,26 +42,28 @@ class UserController extends AbstractController
         Request $request, 
         UserRepository $userRepository, 
         UserSerializer $serializer,
-        ValidatorInterface $validator
+        ValidatorInterface $validator, 
+        PasswordEncoder $passwordEncoder
         ): JsonResponse {
     
-            $user = $serializer->deserialize($request->getContent());
-            $emailExists = $userRepository->findBy(['email' => $user->getEmail()]);
+            $newUser = $serializer->deserialize($request->getContent());
+            $emailExists = $userRepository->findBy(['email' => $newUser->getEmail()]);
 
             if(sizeof($emailExists) > 0) {
                 return $this->json(["userRegistration"=>false], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
             }
 
-            $errors = $validator->validate($user);
+            $errors = $validator->validate($newUser);
             if (count($errors) > 0) {
                 $errorsString = (string) $errors;
                 return $this->json(['errors' => $errors], JsonResponse::HTTP_BAD_REQUEST);
-            }
+            } 
             
-            $userRepository->save($user);
+            $passwordEncoder->encode($newUser->getPassword(), $newUser);
+            $userRepository->save($newUser);
             
             return new JsonResponse(
-                $serializer->serialize($user),
+                $serializer->serialize($newUser),
                 JsonResponse::HTTP_OK,
                 [],
                 true

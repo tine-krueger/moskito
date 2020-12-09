@@ -2,19 +2,12 @@
 
 namespace App\Serializer;
 
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use App\Entity\User;
 
 
 class UserSerializer {
-
-    private $passwordEncoder;
-    
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder) {
-        $this->passwordEncoder = $passwordEncoder;
-    }
 
     private function setArray($element): object {
        
@@ -48,10 +41,7 @@ class UserSerializer {
             $classObject->setFirstName($postData->firstName);
             $classObject->setLastName($postData->lastName);
             $classObject->setEmail($postData->email);
-            $classObject->setPassword($this->passwordEncoder->encodePassword(
-                $classObject,
-                $postData->password
-            ));
+            $classObject->setPassword($postData->password);
          
             return $classObject;
     }
