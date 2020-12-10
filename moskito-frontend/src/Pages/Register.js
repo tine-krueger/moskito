@@ -1,6 +1,6 @@
-import Logo from "../Components/Logo/Logo"
-import FrontHeadline from '../Components/FrontHeadline/FrontHeadline'
-import SignInForm from "../Components/Forms/SignInForm"
+import Logo from "../components/Logo/Logo"
+import FrontHeadline from '../components/FrontHeadline/FrontHeadline'
+import SignInForm from "../components/Forms/SignInForm"
 
 export default function Register() {
     return (
