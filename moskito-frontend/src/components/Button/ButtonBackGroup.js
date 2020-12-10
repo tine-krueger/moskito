@@ -1,10 +1,10 @@
 import styled from 'styled-components/macro'
 import Button from "./Button";
 
-export default function ButtonBackGroup({text1, text2, onClick}) {
+export default function ButtonBackGroup({text1, text2, onClick, disabled}) {
     return (
         <Buttons>
-            <Button>{text1}</Button>
+            <Button >{text1}</Button>
             <Button onClick={onClick}>{text2}</Button>
         </Buttons>
     )
