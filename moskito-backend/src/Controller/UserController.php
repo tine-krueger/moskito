@@ -56,7 +56,7 @@ class UserController extends AbstractController
             $errors = $validator->validate($newUser);
             if (count($errors) > 0) {
                 $errorsString = (string) $errors;
-                return $this->json(['errors' => $errors], JsonResponse::HTTP_BAD_REQUEST);
+                return $this->json(['errors' => $errorsString], JsonResponse::HTTP_BAD_REQUEST);
             } 
             
             $passwordEncoder->encode($newUser->getPassword(), $newUser);
