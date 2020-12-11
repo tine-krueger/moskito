@@ -7,6 +7,7 @@ Button.propTypes = {
 }
 
 export default function Button({children, onClick}) {
+    
     return (
         <ButtonStyled onClick={onClick}>{children}</ButtonStyled>
     )
@@ -26,12 +27,10 @@ const ButtonStyled = styled.button`
     text-transform: uppercase;
     margin: 3em auto;
 
-    &:hover,
-    &:focus{
+    &:hover{
         background: linear-gradient(145deg, #A2B2B0, #E2FAF6);
         box-shadow: 2px 4px 8px -4px rgba(0,0,0,0.6), 
                 -2px -2px 2px 0px rgba(255,255,255,0.5);
         outline: none;
-
     }
 `

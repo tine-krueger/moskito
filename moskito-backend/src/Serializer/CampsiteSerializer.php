@@ -10,7 +10,8 @@ use App\Entity\CampsiteFeature;
 
 class CampsiteSerializer {
 
-    private $elementAsArray = [];
+    private array $elementAsArray = [];
+
     private function setArray($element): object {
         $featuresArray = [];
         $features = $element->getCampsiteFeatures();

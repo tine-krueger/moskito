@@ -37,7 +37,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=60)
      * @Assert\NotBlank
      * @Assert\Email(
-     *      message = "The email '{{ value }}' is not a valid email"
+     *      message = "The email '{{ value }}' is not a valid email."
      * )
      */
     private $email;
@@ -175,19 +175,6 @@ class User implements UserInterface
     }
 
     /**
-     * Returns the roles granted to the user.
-     *
-     * <code>
-     * public function getRoles()
-     * {
-     * return array('ROLE_USER');
-     * }
-     * </code>
-     *
-     * Alternatively, the roles might be stored on a ``roles`` property,
-     * and populated in any number of different ways when the user object
-     * is created.
-     *
      * @return (Role|string)[] The user roles
      */
     public function getRoles()
@@ -196,9 +183,6 @@ class User implements UserInterface
     }
 
     /**
-     * Returns the salt that was originally used to encode the password.
-     *
-     * This can return null if the password was not encoded using a salt.
      *
      * @return string|null The salt
      */

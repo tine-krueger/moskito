@@ -1,17 +1,20 @@
-import React from 'react'
+
 import styled from 'styled-components/macro'
+import PropTypes from 'prop-types'
 import moskitoLogo from '../../images/moskitoLogo.svg'
 
-export default function Logo() {
+Logo.protoTypes = { inputMargin: PropTypes.string }
+
+export default function Logo({inputMargin}) {
     return (
-        <LogoStyled>
+        <LogoStyled inputMargin={inputMargin}>
                 <LogoImage src={moskitoLogo} alt="Moskito Logo"/>
         </LogoStyled>
     )
 }
 
 const LogoStyled = styled.div`
-    margin-top: 9em;
+    margin-top: ${props => props.inputMargin || '9em'};
     text-align: center;
 `
 
