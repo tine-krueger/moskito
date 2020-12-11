@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Repository\UserRepository;
 use App\Serializer\UserSerializer;
+use App\Serializer\ViolationsSerializer;
 use App\Service\AuthenticationService;
 use App\Service\PasswordEncoder;
 
@@ -17,11 +18,11 @@ class UserController extends AbstractController
     /**
      * @Route("/user", methods={"GET"})
      */
-    public function index( UserRepository $userRepository, UserSerializer $serializer, AuthenticationService $authentication ): JsonResponse
+    public function index( Request $request, UserRepository $userRepository, UserSerializer $serializer, AuthenticationService $authentication ): JsonResponse
     {
 
         if (!$authentication->isValid($request)) {
-            return $this->json(["authorization" => false], JsonResponse::HTTP_UNAUTHORIZED);
+            return $this->json(['error' => 'Not authorized'], JsonResponse::HTTP_UNAUTHORIZED);
         }
 
         $users = $userRepository->findAll();
@@ -42,6 +43,7 @@ class UserController extends AbstractController
         Request $request, 
         UserRepository $userRepository, 
         UserSerializer $serializer,
+        ViolationsSerializer $violationsSerializer,
         ValidatorInterface $validator, 
         PasswordEncoder $passwordEncoder
         ): JsonResponse {
@@ -50,15 +52,14 @@ class UserController extends AbstractController
             $emailExists = $userRepository->findBy(['email' => $newUser->getEmail()]);
 
             if(sizeof($emailExists) > 0) {
-                return $this->json(["userRegistration"=>false], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
+                return $this->json(['errors'=>'This E-Mail is already registered.'], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
             }
 
             $errors = $validator->validate($newUser);
             if (count($errors) > 0) {
-                $errorsString = (string) $errors;
-                return $this->json(['errors' => $errorsString], JsonResponse::HTTP_BAD_REQUEST);
+                return new JsonResponse($violationsSerializer->serialize($errors), JsonResponse::HTTP_BAD_REQUEST, [], true );
             } 
-            
+
             $passwordEncoder->encode($newUser->getPassword(), $newUser);
             $userRepository->save($newUser);
             
