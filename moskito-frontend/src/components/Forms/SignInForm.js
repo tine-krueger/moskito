@@ -29,16 +29,20 @@ export default function SignInForm() {
     return (
         <SigninFormStyled onSubmit={handleSubmit}>
             {isRegistered && <RedParagraph>Registrierung ergolgreich, Du wirst zum Login weitergeleitet.
-                    <Delayed waitBeforeShow={3000}>
+                    <Delayed waitBeforeShow={2500}>
                         <Redirect to="/login"/>
                     </Delayed>
                 </RedParagraph>
             }
-            { errors && <RedParagraph>{errors}</RedParagraph>}
+
+            { errors && errors.map((error, index) => <RedParagraph key={index}>{error}</RedParagraph>)}
+
             <InputField type={'text'} name='firstName' value={fields.firstName} onChange={handleChange} placeholder={'Vorname'}/>
             <InputField type={'text'} name='lastName' value={fields.lastName} onChange={handleChange} placeholder={'Nachname'}/>
             <InputField type={'text'} name='email' value={fields.email} onChange={handleChange} placeholder={'E-Mail'}/>
+
             {!isPasswordEqual && <RedParagraph>Die Passwörter stimmen nicht überein!</RedParagraph>}
+            
             <InputField type={'password'} name='password' value={fields.password} onChange={handleChange} placeholder={'Password'}/>
             <InputField type={'password'} name='passwordControl' value={fields.passwordControl} onChange={handleChange} placeholder={'Password'}/>
             <ButtonBackGroup text1={'SignIn'} text2={'Zurück'} onClick={handleClick}/>
@@ -50,11 +54,10 @@ export default function SignInForm() {
         isPasswordEqual && signUserIn(fields)
         .then(result => {
                 if (result.errors) {
-                    setErrors(result.errors.detail)
-                    console.log(result)
+                    setErrors(result.errors)
                 } else { 
                     setIsRegistered(true)
-                    console.log(result)}
+                }
             })
         .catch(error => console.log('error', error)); 
     }

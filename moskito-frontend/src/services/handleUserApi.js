@@ -1,7 +1,7 @@
 import { makeFetch } from '../lib/fetch'
 
 export function signUserIn(data) {
-    const baseUrl = "http://moskito.local/register"
+    const baseUrl = 'http://moskito.local/register' //process.env.REACT_APP_REGISTER_FETCH
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
