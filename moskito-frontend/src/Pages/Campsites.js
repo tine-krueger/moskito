@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
-import CampsiteList from '../Components/Campsitelist/CampsiteList'
-import Header from '../Components/Header/Header'
-import Navigation from '../Components/Navigation/Navigation'
+import CampsiteList from '../components/Campsitelist/CampsiteList'
+import Header from '../components/Header/Header'
+import Navigation from '../components/Navigation/Navigation'
 
 
 Campsites.propTypes = {
