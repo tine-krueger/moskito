@@ -27,5 +27,6 @@ export default function useToken() {
         return makeFetch(user,'POST', myHeaders, baseUrl)    
     }
 
-    return { authTokens, setAuthTokens, setTokens, deleteTokens, getToken }
+    return { authTokens, setAuthTokens, setTokens, deleteTokens, getToken}
 }
+

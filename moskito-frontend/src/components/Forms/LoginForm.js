@@ -28,7 +28,6 @@ export default function LoginForm() {
         </LoginFormStyled>
     )
 
-    
     function handleSubmit(event) {
         event.preventDefault()
         getToken(fields)
@@ -42,7 +41,6 @@ export default function LoginForm() {
         })
         .catch(error => setIsError(true));
     }
-
 }
 
 const LoginFormStyled = styled.form`

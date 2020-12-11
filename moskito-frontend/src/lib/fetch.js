@@ -7,13 +7,11 @@ export function makeFetch(data, method, myHeaders, url) {
         body: raw,
         redirect: 'follow'
         }
-    
-    return fetch(url, requestOptions)
-        .then(response => {
-            if (response.ok) {
-                return response.json()
-            } else {
-                throw new Error(response.statusText)
-            }
-        })
+        
+    try {    
+        return fetch(url, requestOptions)
+        .then(response => response.json())
+    } catch (error) {
+        return { error: 'Server does not answer!'}
+    } 
 }

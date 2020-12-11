@@ -18,6 +18,7 @@ export default function SignInForm() {
 
     const [ isPasswordEqual, setIsPasswordEqual ] = useState(true)
     const [ isRegistered, setIsRegistered ] = useState(false)
+    const [ errors, setErrors ] = useState()
 
     useEffect(() => {
         setIsPasswordEqual(fields.password === fields.passwordControl)
@@ -33,6 +34,7 @@ export default function SignInForm() {
                     </Delayed>
                 </RedParagraph>
             }
+            { errors && <RedParagraph>{errors}</RedParagraph>}
             <InputField type={'text'} name='firstName' value={fields.firstName} onChange={handleChange} placeholder={'Vorname'}/>
             <InputField type={'text'} name='lastName' value={fields.lastName} onChange={handleChange} placeholder={'Nachname'}/>
             <InputField type={'text'} name='email' value={fields.email} onChange={handleChange} placeholder={'E-Mail'}/>
@@ -47,10 +49,15 @@ export default function SignInForm() {
         event.preventDefault()
         isPasswordEqual && signUserIn(fields)
         .then(result => {
-            result[0].email && setIsRegistered(true)
+                if (result.errors) {
+                    setErrors(result.errors.detail)
+                    console.log(result.errors)
+                } else { 
+                    setIsRegistered(true)}
             })
         .catch(error => console.log('error', error)); 
     }
+
 
 }
 
