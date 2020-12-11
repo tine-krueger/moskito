@@ -12,7 +12,6 @@ export default function useForm(initialState) {
             ...fields,
             [event.target.name]: event.target.value
         })
-        console.log(fields)
     }
 
 

@@ -51,9 +51,10 @@ export default function SignInForm() {
         .then(result => {
                 if (result.errors) {
                     setErrors(result.errors.detail)
-                    console.log(result.errors)
+                    console.log(result)
                 } else { 
-                    setIsRegistered(true)}
+                    setIsRegistered(true)
+                    console.log(result)}
             })
         .catch(error => console.log('error', error)); 
     }
