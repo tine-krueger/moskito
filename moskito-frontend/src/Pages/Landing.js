@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import FrontHeadline from '../components/FrontHeadline/FrontHeadline'
-import Button from '../components/Button/Button';
-import Logo from "../components/Logo/Logo";
+import FrontHeadline from '../Components/FrontHeadline/FrontHeadline'
+import Button from '../Components/Button/Button';
+import Logo from "../Components/Logo/Logo";
 
 
 export default function Landing() {

@@ -79,7 +79,7 @@ class CampsiteController extends AbstractController
         ): JsonResponse {
 
             if (!$authentication->isValid($request)) {
-                return $this->json(['errors' => 'No access to this service!'], JsonResponse::HTTP_UNAUTHORIZED);
+                return $this->json(["authorization" => false], JsonResponse::HTTP_UNAUTHORIZED);
             }
 
             $filteredFeatures = $featureSerializer->deserialize($request->getContent());

@@ -1,19 +1,19 @@
 import styled from 'styled-components/macro'
 import { useState } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, useHistory } from 'react-router-dom'
 import ButtonBackGroup from "../Button/ButtonBackGroup"
 import InputField from './InputField'
 import { useAuth } from "../../context/auth"
-import useForm from "../../hooks/useForm"
 
 export default function LoginForm() {
-    const { fields, handleChange, handleClick } = useForm({
+    const [ user, setUser ] = useState({
         email: '',
         password: ''
     })
     const [ isLoggedIn, setLoggedIn ] = useState(false)
     const [ isError, setIsError ] = useState(false)
     const { setAuthTokens, getToken } = useAuth()
+    let history = useHistory()
 
     if (isLoggedIn) {
         return <Redirect to="/find-campsite"/>
@@ -21,16 +21,28 @@ export default function LoginForm() {
 
     return (
         <LoginFormStyled onSubmit={handleSubmit}>
-            {isError && <p>E-Mail oder Password-Eingabe nicht korrekt!</p> }
-            <InputField type={'text'} name='email' value={fields.email} onChange={handleChange} placeholder={'E-Mail'}/>
-            <InputField type={'password'} name='password' value={fields.password} onChange={handleChange} placeholder={'Password'}/>
+            {isError && <p>E-Mail oder Password-Eingabe nicht korrekt!</p>}
+            <InputField type={'text'} name='email' value={user.email} onChange={handleChange} placeholder={'E-Mail'}/>
+            <InputField type={'password'} name='password' value={user.password} onChange={handleChange} placeholder={'Password'}/>
             <ButtonBackGroup text1={'Login'} text2={'Zurück'} onClick={handleClick}/>
         </LoginFormStyled>
     )
 
+    function handleClick(event) {
+        event.preventDefault()
+        history.push('/')
+    }
+
+    function handleChange(event) {
+        setUser({
+            ...user,
+            [event.target.name]: event.target.value
+        })
+    }
+    
     function handleSubmit(event) {
         event.preventDefault()
-        getToken(fields)
+        getToken(user)
         .then(result => {
             if ( result.validUntil ) {
                 setAuthTokens(result)
@@ -41,6 +53,7 @@ export default function LoginForm() {
         })
         .catch(error => setIsError(true));
     }
+
 }
 
 const LoginFormStyled = styled.form`

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
-import FilterCampsite from '../components/Forms/FilterCampsiteForm'
-import Header from '../components/Header/Header'
-import Navigation from '../components/Navigation/Navigation'
+import FilterCampsite from '../Components/Forms/FilterCampsiteForm'
+import Header from '../Components/Header/Header'
+import Navigation from '../Components/Navigation/Navigation'
 
 FindCampsitesPages.propTypes = {
     getCampsites: PropTypes.func.isRequired

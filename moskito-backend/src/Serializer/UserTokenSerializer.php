@@ -20,6 +20,8 @@ class UserTokenSerializer {
             
         $classObject = new UserToken();
         $classObject->setValue($postData->value);
+        //$classObject->setValidUntil($postData->validUntil);
+        //$classObject->setUser($postData->user);
      
         return $classObject;
     }
