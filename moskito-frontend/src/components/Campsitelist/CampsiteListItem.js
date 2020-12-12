@@ -10,7 +10,7 @@ CampsiteListItem.propTypes = {
     campsite: PropTypes.object.isRequired
 }
 
-export default function CampsiteListItem({campsite, token}) {
+export default function CampsiteListItem({campsite}) {
     
     return (
         <CampItem>
@@ -27,7 +27,7 @@ export default function CampsiteListItem({campsite, token}) {
             <FeatureList>
                 {filterFeatures(campsite).map(feature => <FeatureListItem key={feature.id} feature={feature}/>)}
             </FeatureList>
-            <LikeButton token={token} id={campsite.id}/>
+            <LikeButton id={campsite.id}/>
         </CampItem>
     )
 

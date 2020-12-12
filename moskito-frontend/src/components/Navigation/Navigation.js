@@ -15,7 +15,7 @@ export default function Navigation() {
                     <Link to="/find-campsite"><AiOutlineSearch /></Link>
                 </NavListItem>
                 <NavListItem>
-                    <Link to="/find-campsite"><AiFillPushpin /></Link>
+                    <Link to="/bookmarks"><AiFillPushpin /></Link>
                 </NavListItem>
                 <NavListItem>
                     <button onClick={logOut}><FiLogOut /></button>

@@ -1,15 +1,19 @@
 import styled from 'styled-components/macro'
 import { AiFillPushpin } from 'react-icons/ai'
 import { bookmark } from '../../services/handleBookmarkApi'
+import { useState } from 'react'
 
 
-export default function LikeButton({token, id}) {
+export default function LikeButton({id}) {
+    const [ pinned, setPinned] = useState(false)
     
 
-    return <CampsiteLikeButton onClick={handleClick}><AiFillPushpin/></CampsiteLikeButton>
+    return <CampsiteLikeButton pinned={pinned} onClick={handleClick}><AiFillPushpin/></CampsiteLikeButton>
 
     function handleClick() {
-        bookmark(token, id)
+        setPinned(!pinned)
+        bookmark(id)
+        
     }
 }
 
@@ -29,7 +33,7 @@ const CampsiteLikeButton = styled.div`
         height: 2.1em;
         stroke: #c97f63;
         stroke-width: 3em;
-        fill: ${pinned => (pinned === true ? '#c97f63' : '#c2d6d3')};
+        fill: ${pops => pops.pinned ? '#c97f63' : '#c2d6d3'};
         align-self: center;
         margin-bottom: 3px;
     }
