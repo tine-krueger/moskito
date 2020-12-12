@@ -17,6 +17,10 @@ class LoginService {
 
     public function login(string $email, string $password): array {
         $user = $this->userRepository->findOneBy(['email' => $email]);
+        if (!$user) 
+        {
+            return $userData = [ 'isValid' => false ];
+        }
         $isValid = $this->passwordEncoder->isPasswordValid($user, $password);
         $userData = [ 'isValid' => $isValid, 'user' => $user ];
     

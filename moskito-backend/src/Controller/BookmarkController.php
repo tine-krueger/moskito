@@ -33,9 +33,10 @@ class BookmarkController extends AbstractController
 
 
     /**
-     * @Route("/bookmark", methods={"POST"})
+     * @Route("/bookmark/{id}", methods={"POST"})
      */
     public function toggle(
+        int $id,
         Request $request, 
         AuthenticationService $authentication,
         BookmarkSerializer $bookmarkSerializer,
@@ -48,10 +49,10 @@ class BookmarkController extends AbstractController
             }*/
             $bookmark = $bookmarkSerializer->deserialize($request->getContent());
             $user = $userRepository->findOneBy(['id' => $bookmark['userId']]);
-            $campsite = $campsiteRepository->findOneBy(['id' => $bookmark['campsiteId']]);
+            $campsite = $campsiteRepository->findOneBy(['id' => $id]);
             $user->addCampsite($campsite);
 
-            var_dump($user);
+            var_dump($campsite);
             die;
 
             

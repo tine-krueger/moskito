@@ -10,7 +10,6 @@ class BookmarkSerializer {
 
         $this->bookmark= [
             'userId' => $postData->userId,
-            'campsiteId' => $postData->campsiteId,
         ];
     
         return $this->bookmark;
