@@ -1,14 +1,15 @@
 import styled from 'styled-components/macro'
 import { AiFillPushpin } from 'react-icons/ai'
+import { bookmark } from '../../services/handleBookmarkApi'
 
 
-export default function LikeButton() {
+export default function LikeButton({token, id}) {
     
 
     return <CampsiteLikeButton onClick={handleClick}><AiFillPushpin/></CampsiteLikeButton>
 
     function handleClick() {
-
+        bookmark(token, id)
     }
 }
 

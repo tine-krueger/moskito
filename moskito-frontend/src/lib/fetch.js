@@ -15,3 +15,8 @@ export function makeFetch(data, method, myHeaders, url) {
         return { error: 'Server does not answer!'}
     } 
 }
+
+export function datalessFetch(method, myHeaders, url) {
+
+
+}

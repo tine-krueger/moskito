@@ -5,10 +5,13 @@ import FeatureListItem from './FeatureListItem'
 import LikeButton from '../Button/LikeButton'
 import { filterFeatures }from '../../services/featureService'
 
+
 CampsiteListItem.propTypes = {
     campsite: PropTypes.object.isRequired
 }
-export default function CampsiteListItem({campsite}) {
+
+export default function CampsiteListItem({campsite, token}) {
+    
     return (
         <CampItem>
             <h2>{campsite.name}</h2>
@@ -24,9 +27,10 @@ export default function CampsiteListItem({campsite}) {
             <FeatureList>
                 {filterFeatures(campsite).map(feature => <FeatureListItem key={feature.id} feature={feature}/>)}
             </FeatureList>
-            <LikeButton/>
+            <LikeButton token={token} id={campsite.id}/>
         </CampItem>
     )
+
 }
 
 const CampItem = styled.div`
