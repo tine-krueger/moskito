@@ -8,23 +8,32 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UserRepository;
 use App\Repository\CampsiteRepository;
-use App\Serializer\BookmarkSerializer;
+use App\Serializer\UserSerializer;
+use App\Serializer\CampsiteSerializer;
 use App\Service\AuthenticationService;
+use App\Service\BookmarkService;
 
 class BookmarkController extends AbstractController
 {
     /**
      * @Route("/bookmark", methods={"GET"})
      */
-    public function index( Request $request, AuthenticationService $authentication ): JsonResponse
-    {
-        if (!$authentication->isValid($request)) {
+    public function index( Request $request, AuthenticationService $authentication, CampsiteSerializer $serializer): JsonResponse
+    {   
+
+        $user = $authentication->isValid($request);
+        if (!$user) {
             return $this->json(['error' => 'Not authorized'], JsonResponse::HTTP_UNAUTHORIZED);
         }
 
+        $campsites = $user->getCampsite();
+        $campsitesAsArray = [];
+        foreach($campsites as $campsite) {
+            $campsitesAsArray[] = $campsite;
+        }
 
         return new JsonResponse(
-            $serializer->serialize(),
+            $serializer->serialize($campsitesAsArray),
             JsonResponse::HTTP_OK,
             [],
             true
@@ -39,27 +48,24 @@ class BookmarkController extends AbstractController
         int $id,
         Request $request, 
         AuthenticationService $authentication,
-        BookmarkSerializer $bookmarkSerializer,
         UserRepository $userRepository,
-        CampsiteRepository $campsiteRepository
+        UserSerializer $serializer,
+        BookmarkService $bookmarkService
         ): JsonResponse {
 
-            /*if (!$authentication->isValid($request)) {
+            $user = $authentication->isValid($request);
+            
+            if (!$user) {
                 return $this->json(['error' => 'Not authorized'], JsonResponse::HTTP_UNAUTHORIZED);
-            }*/
-            $bookmark = $bookmarkSerializer->deserialize($request->getContent());
-            $user = $userRepository->findOneBy(['id' => $bookmark['userId']]);
-            $campsite = $campsiteRepository->findOneBy(['id' => $id]);
-            $user->addCampsite($campsite);
+            }
 
-            var_dump($campsite);
-            die;
+            $isBookmarked = $bookmarkService->isBookmarked( $user, $id);
+            $bookmarkService->toggleBookmark( $id, $isBookmarked, $user);
+            
+            $userRepository->save($user);
 
-            
-            
-            
             return new JsonResponse(
-                $serializer->serialize(),
+                $serializer->serialize($user),
                 JsonResponse::HTTP_OK,
                 [],
                 true
