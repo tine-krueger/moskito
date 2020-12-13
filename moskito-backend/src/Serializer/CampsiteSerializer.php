@@ -14,6 +14,11 @@ use App\Service\BookmarkService;
 class CampsiteSerializer {
 
     private array $elementAsArray = [];
+    private object $bookmarkService;
+
+    public function __construct(BookmarkService $bookmarkService) {
+        $this->bookmarkService = $bookmarkService;
+    }
 
     private function setArray($element, User $user): object {
         $featuresArray = [];
@@ -27,19 +32,8 @@ class CampsiteSerializer {
             ];
         }
 
-        $users = $element->getUsers();
-        $criteria = Criteria::create()
-        ->where(Criteria::expr()->eq("id", $user->getId()))
-        ->orderBy(array("id" => Criteria::ASC))
-        ->setFirstResult(0)
-        ->setMaxResults(1);
 
-        $matchingUser = $users->matching($criteria);
-
-        $pinned = false;
-        if (count($matchingUser) > 0 ) {
-            $pinned = true;
-        }
+        $pinned = $this->bookmarkService->findBookmark($element, $user);
        
         $this->elementAsArray[] = [
             'id' => $element->getId(),

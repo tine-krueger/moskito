@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Service;
+
+
+use Doctrine\Common\Collections\Criteria;
 use App\Entity\User;
 use App\Repository\CampsiteRepository;
 
@@ -37,5 +40,23 @@ class BookmarkService {
             $user->addCampsite($campsite);
         }
 
+    }
+
+    public function findBookmark($element, User $user): bool {
+        $users = $element->getUsers();
+        $criteria = Criteria::create()
+        ->where(Criteria::expr()->eq("id", $user->getId()))
+        ->orderBy(array("id" => Criteria::ASC))
+        ->setFirstResult(0)
+        ->setMaxResults(1);
+
+        $matchingUser = $users->matching($criteria);
+
+        $pinned = false;
+        if (count($matchingUser) > 0 ) {
+            $pinned = true;
+        }
+
+        return $pinned;
     }
 }
