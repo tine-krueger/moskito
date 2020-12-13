@@ -33,7 +33,7 @@ class BookmarkController extends AbstractController
         }
 
         return new JsonResponse(
-            $serializer->serialize($campsitesAsArray),
+            $serializer->serialize($campsitesAsArray, $user),
             JsonResponse::HTTP_OK,
             [],
             true

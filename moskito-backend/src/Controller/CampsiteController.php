@@ -77,8 +77,10 @@ class CampsiteController extends AbstractController
         SortCampsites $sortCampsites,
         AuthenticationService $authentication
         ): JsonResponse {
+            
 
-            if (!$authentication->isValid($request)) {
+            $user = $authentication->isValid($request);
+            if (!$user) {
                 return $this->json(['errors' => 'No access to this service!'], JsonResponse::HTTP_UNAUTHORIZED);
             }
 
@@ -88,7 +90,7 @@ class CampsiteController extends AbstractController
             $sortedCampsites = $sortCampsites->sortCampsitesByIds($sortedIds);
 
             return new JsonResponse(
-                $campsiteSerializer->serialize($sortedCampsites),
+                $campsiteSerializer->serialize($sortedCampsites, $user),
                 JsonResponse::HTTP_OK,
                 [],
                 true
