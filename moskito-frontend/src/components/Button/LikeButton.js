@@ -4,8 +4,8 @@ import { bookmark } from '../../services/handleBookmarkApi'
 import { useState } from 'react'
 
 
-export default function LikeButton({id}) {
-    const [ pinned, setPinned] = useState(false)
+export default function LikeButton({id, isPinned}) {
+    const [ pinned, setPinned] = useState(isPinned)
     
 
     return <CampsiteLikeButton pinned={pinned} onClick={handleClick}><AiFillPushpin/></CampsiteLikeButton>

@@ -27,7 +27,7 @@ export default function CampsiteListItem({campsite}) {
             <FeatureList>
                 {filterFeatures(campsite).map(feature => <FeatureListItem key={feature.id} feature={feature}/>)}
             </FeatureList>
-            <LikeButton id={campsite.id}/>
+            <LikeButton isPinned={campsite.pinned} id={campsite.id}/>
         </CampItem>
     )
 
