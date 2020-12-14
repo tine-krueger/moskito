@@ -6,6 +6,8 @@ export default function getInitialCampsiteFilter() {
             name: 'Postleitzahl/Ort',
             dbName: 'postalCode',
             postalCode: '',
+            latitude: -1,
+            longitude: -1,
             features: getFeatureBase()
         }
     return initialFilter

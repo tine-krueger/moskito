@@ -1,3 +1,6 @@
+## Geocoding Api-Key
+You will need an api key from https://developer.here.com/ to geocode postalcode and location in campsite finder. 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,7 +1,7 @@
 import loadToken from './loadToken'
 import { makeFetch } from '../lib/fetch'
 
-export function setFeatureFilter(features) {
+export function setFilter(features) {
     const baseUrl = "http://moskito.local/campsite-filter"
     const tokenValue = loadToken()
     const myHeaders = new Headers()

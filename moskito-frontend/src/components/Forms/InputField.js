@@ -9,10 +9,10 @@ InputField.propTypes = {
     placeholder: PropTypes.string
 }
 
-export default function InputField({type, name, value, onChange, placeholder}) {
+export default function InputField({type, name, value, onChange, placeholder, onBlur}) {
     return (
         <Label>
-            <input type={type} name={name} value={value} onChange={onChange} placeholder={placeholder} />
+            <input type={type} name={name} value={value} onChange={onChange} onBlur={onBlur} placeholder={placeholder} />
         </Label>
     )
 }

@@ -6,6 +6,7 @@ import Button from '../Button/Button'
 import InputField from './InputField'
 import useForm from '../../hooks/useForm'
 import getInitialCampsiteFilter from '../../services/getInitialCampsiteFilter'
+import getGeocode from '../../services/getGeocode'
 
 FilterCampsiteForm.propTypes = {
     getCampsites: PropTypes.func.isRequired
@@ -18,7 +19,7 @@ export default function FilterCampsiteForm({getCampsites}) {
 
     return (
         <FilterCampsite onSubmit={handleSubmit}>
-            <InputField type={'text'} name={'postalCode'} value={fields.postalCode} onChange={handleChange} placeholder={initialFilter.name}/>
+            <InputField type={'text'} name={'postalCode'} value={fields.postalCode} onChange={handleChange} onBlur={handleBlur} placeholder={initialFilter.name}/>
             <Checkboxes>
                 {initialFilter.features.map(feature => 
                         <Feature key={feature.id} feature={feature} filter={fields} setFilter={setValues} />
@@ -32,6 +33,21 @@ export default function FilterCampsiteForm({getCampsites}) {
         event.preventDefault()
         getCampsites(fields)
         history.push('/campsites')
+    }
+
+    function handleBlur() {
+        getGeocode(fields.postalCode)
+        .then(result => {
+            const geocodes = result.Response.View[0].Result[0].Location.DisplayPosition
+            setValues(
+                {
+                    ...fields,
+                    latitude: geocodes.Latitude,
+                    longitude: geocodes.Longitude
+                }
+            )
+        })
+        .catch(error => console.log('error', error));
     }
 }
 

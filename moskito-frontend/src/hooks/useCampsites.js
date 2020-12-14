@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import { setFeatureFilter, getTrueFilter }from '../services/filterServices'
+import { setFilter, getTrueFilter }from '../services/filterServices'
 import {  getFetch } from '../lib/fetch'
 import { loadFromLocal } from '../lib/localStorage'
 
@@ -14,7 +14,12 @@ export default function useCampsites() {
 
     function getCampsites(filter) {
         const trueFilter = getTrueFilter(filter)
-        setFeatureFilter(trueFilter)
+        const filterData = {
+            latitude: filter.latitude, 
+            longitude: filter.longitude, 
+            trueFeatures: trueFilter}
+        console.log(filterData)
+        setFilter(filterData)
         .then(result => setCampsites(result))
         .catch(error => {
             console.log('error', error)
