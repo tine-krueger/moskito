@@ -6,7 +6,7 @@ InputField.propTypes = {
     name: PropTypes.string,
     value: PropTypes.node,
     onChange: PropTypes.func,
-    placeholder: PropTypes.string
+    placeholder: PropTypes.node
 }
 
 export default function InputField({type, name, value, onChange, placeholder, onBlur}) {

@@ -3,9 +3,6 @@ import { setFilter, getTrueFilter }from '../services/filterServices'
 import {  getFetch } from '../lib/fetch'
 import { loadFromLocal } from '../lib/localStorage'
 
-const token = loadFromLocal('tokens')
-
-
 export default function useCampsites() {
 
     const [ campsites, setCampsites ] = useState([])
@@ -17,6 +14,7 @@ export default function useCampsites() {
         const filterData = {
             latitude: filter.latitude, 
             longitude: filter.longitude, 
+            distance: filter.distance,
             trueFeatures: trueFilter}
         console.log(filterData)
         setFilter(filterData)
@@ -27,12 +25,12 @@ export default function useCampsites() {
       }
       
     function getBookmarks(){
+        const token = loadFromLocal('tokens')
         const baseUrl = "http://moskito.local/bookmark"
         const myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${token.value}`);
         getFetch( myHeaders, baseUrl)
-        .then(result => {setBookmarks(result)
-        console.log(result)})
+        .then(result => setBookmarks(result))
         .catch(error => console.log('error', error));
     }
     

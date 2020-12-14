@@ -15,6 +15,7 @@ export default function Campsites({headline}) {
 
     useEffect(() => {
         getBookmarks()        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
     return (
