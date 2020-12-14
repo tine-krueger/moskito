@@ -14,9 +14,10 @@ class MatchingCampsites {
         $this->featureRepository = $featureRepository;
     }
 
-    public function getMatchingCampsites(array $filteredFeatures):array {
+    public function getMatchingCampsites(array $filter): array {
+        
         $filteredCampsites = [];
-        foreach($filteredFeatures as $filteredFeature) {
+        foreach($filter['trueFeatures'] as $filteredFeature) {
             $features = $this->featureRepository->findBy(
                     [
                         'type' => $filteredFeature->getType(),
@@ -25,6 +26,7 @@ class MatchingCampsites {
                 );
                 $filteredCampsites = $this->getCampsitesFromFeatures($filteredCampsites, $features);
         }
+
         return $filteredCampsites;
     }
 

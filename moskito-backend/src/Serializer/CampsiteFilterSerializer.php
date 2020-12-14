@@ -7,21 +7,28 @@ use Doctrine\Common\Collections\Collection;
 use App\Entity\CampsiteFeature;
 
 
-class CampsiteFeatureSerializer {
+class CampsiteFilterSerializer {
     
-    public function deserialize($content) {
-            $featureArray = [];
+    public function deserialize(string $content): array {
             
-            $filteredFeatures = \json_decode($content);
-            foreach($filteredFeatures as $feature) {
+            $featureArray = [];
+            $filterData = \json_decode($content);
+            
+            foreach($filterData->trueFeatures as $feature) {
 
                     $campsiteFeature = new CampsiteFeature();
                     $campsiteFeature->setType($feature->dbName);
                     $campsiteFeature->setValue($feature->isFeature);
                     
                     $featureArray[] = $campsiteFeature;
-            }  
+            } 
+            
+            $filter = [
+                    'latitude' => $filterData->latitude,
+                    'longitude' => $filterData->longitude,
+                    'trueFeatures' => $featureArray
+            ];
 
-            return $featureArray;
+            return $filter;
     }
 }

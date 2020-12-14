@@ -9,11 +9,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\CampsiteRepository;
 use App\Entity\Campsite;
 use App\Serializer\CampsiteSerializer;
-use App\Serializer\CampsiteFeatureSerializer;
+use App\Serializer\CampsiteFilterSerializer;
 use App\Service\MatchingCampsites;
 use App\Service\CountAndSortIds;
 use App\Service\SortCampsites;
 use App\Service\AuthenticationService;
+use App\Service\ClosestCampsitesService;
 
 class CampsiteController extends AbstractController
 {
@@ -70,12 +71,13 @@ class CampsiteController extends AbstractController
 
     public function filter(
         Request $request,
-        CampsiteFeatureSerializer $featureSerializer,
+        CampsiteFilterSerializer $filterSerializer,
         CampsiteSerializer $campsiteSerializer,
         MatchingCampsites $matchingCampsites,
         CountAndSortIds $sortIds,
         SortCampsites $sortCampsites,
-        AuthenticationService $authentication
+        AuthenticationService $authentication,
+        ClosestCampsitesService $closestCampsites
         ): JsonResponse {
             
 
@@ -84,13 +86,14 @@ class CampsiteController extends AbstractController
                 return $this->json(['errors' => 'No access to this service!'], JsonResponse::HTTP_UNAUTHORIZED);
             }
 
-            $filteredFeatures = $featureSerializer->deserialize($request->getContent());
-            $filteredCampsites = $matchingCampsites->getMatchingCampsites($filteredFeatures);
+            $filter = $filterSerializer->deserialize($request->getContent());
+            $filteredCampsites = $matchingCampsites->getMatchingCampsites($filter);
             $sortedIds = $sortIds->countAndSortCampsiteIds($filteredCampsites);
             $sortedCampsites = $sortCampsites->sortCampsitesByIds($sortedIds);
+            $sortedClosestCampsites = $closestCampsites->getClosestCampsites($filter, $sortedCampsites);
 
             return new JsonResponse(
-                $campsiteSerializer->serialize($sortedCampsites, $user),
+                $campsiteSerializer->serialize($sortedClosestCampsites, $user),
                 JsonResponse::HTTP_OK,
                 [],
                 true
