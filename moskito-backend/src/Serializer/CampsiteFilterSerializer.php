@@ -26,6 +26,7 @@ class CampsiteFilterSerializer {
             $filter = [
                     'latitude' => $filterData->latitude,
                     'longitude' => $filterData->longitude,
+                    'distance' => $filterData->distance,
                     'trueFeatures' => $featureArray
             ];
 

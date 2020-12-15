@@ -6,9 +6,8 @@ namespace App\Service;
 class ClosestCampsitesService {
 
     const EARTH_RADIUS = 6371;
-    const DISTANCE = 100;
 
-    private array $closestCampsites;
+    private array $closestCampsites = [];
     
     public function getClosestCampsites( array $filter, array $sortedCampsites): array {
 
@@ -25,7 +24,7 @@ class ClosestCampsitesService {
             $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) + cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
             $distance = $angle * self::EARTH_RADIUS;
 
-            if ( $distance < self::DISTANCE ) {
+            if ( $distance < $filter['distance'] ) {
                 $this->closestCampsites[] = $campsite;
             }
         }
