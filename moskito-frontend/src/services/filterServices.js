@@ -4,10 +4,10 @@ import { makeFetch } from '../lib/fetch'
 export function setFeatureFilter(features) {
     const baseUrl = process.env.REACT_APP_BASE_URL
     const tokenValue = loadToken()
-    const myHeaders = new Headers()
-
-    myHeaders.append("Authorization", `Bearer ${tokenValue}`)
-    myHeaders.append("Content-Type", "application/json")
+    const myHeaders = {
+        "Authorization": `Bearer ${tokenValue}`,
+        "Content-Type": "application/json"
+    }
 
     return makeFetch(features, 'POST', myHeaders, `${baseUrl}/campsite-filter`)
    

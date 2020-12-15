@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import CampsiteList from '../components/Campsitelist/CampsiteList'
 import Header from '../components/Header/Header'
 import Navigation from '../components/Navigation/Navigation'
-import { useEffect } from 'react'
 
 Campsites.propTypes = {
     headline: PropTypes.string.isRequired,
@@ -19,5 +18,3 @@ export default function Campsites({headline, campsites}) {
         </>
     )   
 }
-
-

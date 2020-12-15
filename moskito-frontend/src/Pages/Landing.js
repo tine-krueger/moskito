@@ -4,7 +4,6 @@ import FrontHeadline from '../components/FrontHeadline/FrontHeadline'
 import Button from '../components/Button/Button';
 import Logo from "../components/Logo/Logo";
 
-
 export default function Landing() {
 
     return (
@@ -20,7 +19,6 @@ export default function Landing() {
         </>
     )
 }
-
 
 const UserButtons = styled.div`
     display: grid;

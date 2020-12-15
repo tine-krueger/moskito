@@ -5,7 +5,6 @@ import Navigation from '../components/Navigation/Navigation'
 import { useEffect } from 'react'
 import useCampsites from '../hooks/useCampsites'
 
-
 Campsites.propTypes = {
     headline: PropTypes.string.isRequired
 }
