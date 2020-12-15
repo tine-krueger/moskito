@@ -18,7 +18,7 @@ class BookmarkService {
     }
 
     public function isBookmarked(User $user, int $id): bool {
-        $userCampsites = $user->getCampsite();
+        $userCampsites = $user->getCampsites();
 
         foreach( $userCampsites as $userCampsite) {
             if( $id === $userCampsite->getId()) {
@@ -42,7 +42,7 @@ class BookmarkService {
 
     }
 
-    public function findBookmark($element, User $user): bool {
+    public function filterBookmark($element, User $user): bool {
         $users = $element->getUsers();
         $criteria = Criteria::create()
         ->where(Criteria::expr()->eq("id", $user->getId()))

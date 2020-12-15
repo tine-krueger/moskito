@@ -5,16 +5,15 @@ import Navigation from '../components/Navigation/Navigation'
 import { useEffect } from 'react'
 import useCampsites from '../hooks/useCampsites'
 
-
 Campsites.propTypes = {
     headline: PropTypes.string.isRequired
 }
 
 export default function Campsites({headline}) {
-    const { bookmarks, getBookmarks } = useCampsites()
+    const { bookmarks, setBookmarks } = useCampsites()
 
     useEffect(() => {
-        getBookmarks()        
+        setBookmarks()        
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     

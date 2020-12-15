@@ -1,12 +1,11 @@
 import {useState} from 'react'
 import { setFilter, getTrueFilter }from '../services/filterServices'
-import {  getFetch } from '../lib/fetch'
-import { loadFromLocal } from '../lib/localStorage'
+import { getBookmarks } from '../services/handleBookmarkApi'
 
 export default function useCampsites() {
 
     const [ campsites, setCampsites ] = useState([])
-    const [ bookmarks, setBookmarks ] = useState([])
+    const [ bookmarks, setResponseBookmarks ] = useState([])
    
 
     function getCampsites(filter) {
@@ -24,16 +23,13 @@ export default function useCampsites() {
         })
       }
       
-    function getBookmarks(){
-        const token = loadFromLocal('tokens')
-        const baseUrl = "http://moskito.local/bookmark"
-        const myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${token.value}`);
-        getFetch( myHeaders, baseUrl)
-        .then(result => setBookmarks(result))
+    function setBookmarks(){
+        getBookmarks()
+        .then(result => {setResponseBookmarks(result)
+        console.log(result)})
         .catch(error => console.log('error', error));
     }
     
-    return  { campsites, bookmarks, getCampsites, getBookmarks}
+    return  { campsites, bookmarks, getCampsites, setBookmarks}
  
 }

@@ -2,8 +2,6 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import setCampsites from '../services/setCampsites';
 
-
-
 export default function NewCampsite() {
     const [newCampsite, setNewCampsite] = useState({
         name:'',
