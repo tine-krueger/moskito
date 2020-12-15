@@ -7,7 +7,7 @@ import Button from '../Button/Button'
 import InputField from './InputField'
 import useForm from '../../hooks/useForm'
 import getInitialCampsiteFilter from '../../services/getInitialCampsiteFilter'
-import {getGeocode, autocomplete} from '../../services/getGeocode'
+import { getGeocode, autocomplete } from '../../services/getGeocode'
 
 FilterCampsiteForm.propTypes = {
     getCampsites: PropTypes.func.isRequired
@@ -56,7 +56,6 @@ export default function FilterCampsiteForm({getCampsites}) {
         })
         .catch(error => console.log('error', error));
         setSuggestions([])
-        console.log(fields)
     }
 
     function handleLocationChange(event) {
@@ -66,15 +65,12 @@ export default function FilterCampsiteForm({getCampsites}) {
             [event.target.name]: event.target.value
         })
         fields.postalCode.length > 2 && autocomplete(fields.postalCode)
-        .then(results => {
-            setSuggestions(results.suggestions)
-            console.log(results)}) 
+        .then(results => setSuggestions(results.suggestions)) 
         .catch(() =>
           setSuggestions([
             { description: 'Service nicht verfügbar', googlePlaceId: 'error' },
           ])
         )
-        console.log(suggestions)
     }
 }
 

@@ -5,11 +5,11 @@ import Navigation from '../components/Navigation/Navigation'
 import { useEffect } from 'react'
 import useCampsites from '../hooks/useCampsites'
 
-Campsites.propTypes = {
+Bookmarks.propTypes = {
     headline: PropTypes.string.isRequired
 }
 
-export default function Campsites({headline}) {
+export default function Bookmarks({headline}) {
     const { bookmarks, setBookmarks } = useCampsites()
 
     useEffect(() => {

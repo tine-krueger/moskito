@@ -4,7 +4,8 @@ export function getGeocode(location) {
     const lowerCaseLocation = location.toLowerCase()
     const urlLocation = lowerCaseLocation.replace(/\s+/g, "+" )
     const apiKey = process.env.REACT_APP_HERE_API_KEY
-    const url = `https://geocoder.ls.hereapi.com/6.2/geocode.json?apiKey=${apiKey}&searchtext=${urlLocation}&country=DEU`
+    const baseUrl = process.env.REACT_APP_HERE_URL
+    const url = `${baseUrl}/6.2/geocode.json?apiKey=${apiKey}&searchtext=${urlLocation}&country=DEU`
 
     const requestOptions = {
         method: 'GET',
@@ -22,7 +23,8 @@ export function getGeocode(location) {
 
 export function autocomplete(location) {
     const apiKey = process.env.REACT_APP_HERE_API_KEY
-    const url = `https://autocomplete.geocoder.ls.hereapi.com/6.2/suggest.json?apiKey=${apiKey}&query=${location}&country=DEU`
+    const baseUrl = process.env.REACT_APP_HERE_AUTOCOMPLETE_URL
+    const url = `${baseUrl}/6.2/suggest.json?apiKey=${apiKey}&query=${location}&country=DEU`
 
     const requestOptions = {
     method: 'GET',

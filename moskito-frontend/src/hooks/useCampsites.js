@@ -15,7 +15,6 @@ export default function useCampsites() {
             longitude: filter.longitude, 
             distance: filter.distance,
             trueFeatures: trueFilter}
-        console.log(filterData)
         setFilter(filterData)
         .then(result => setCampsites(result))
         .catch(error => {
