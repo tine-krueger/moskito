@@ -18,7 +18,4 @@ class ViolationsSerializer {
 
         return \json_encode(['errors' => $this->serializedViolations]);
     }
-
-
-    
 }

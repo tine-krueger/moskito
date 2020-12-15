@@ -4,7 +4,6 @@ namespace App\Serializer;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\Criteria;
 use App\Entity\User;
 use App\Entity\Campsite;
 use App\Entity\CampsiteFeature;
@@ -31,9 +30,9 @@ class CampsiteSerializer {
                 'value' =>$feature->getValue()
             ];
         }
+       
 
-
-        $pinned = $this->bookmarkService->findBookmark($element, $user);
+        $pinned = $this->bookmarkService->filterBookmark($element, $user);
        
         $this->elementAsArray[] = [
             'id' => $element->getId(),

@@ -26,14 +26,10 @@ class BookmarkController extends AbstractController
             return $this->json(['error' => 'Not authorized'], JsonResponse::HTTP_UNAUTHORIZED);
         }
 
-        $campsites = $user->getCampsite();
-        $campsitesAsArray = [];
-        foreach($campsites as $campsite) {
-            $campsitesAsArray[] = $campsite;
-        }
-
+        $campsites = ($user->getCampsites())->toArray();
+        
         return new JsonResponse(
-            $serializer->serialize($campsitesAsArray, $user),
+            $serializer->serialize($campsites, $user),
             JsonResponse::HTTP_OK,
             [],
             true
