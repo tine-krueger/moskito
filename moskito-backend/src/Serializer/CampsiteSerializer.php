@@ -4,15 +4,22 @@ namespace App\Serializer;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use App\Entity\User;
 use App\Entity\Campsite;
 use App\Entity\CampsiteFeature;
+use App\Service\BookmarkService;
 
 
 class CampsiteSerializer {
 
     private array $elementAsArray = [];
+    private object $bookmarkService;
 
-    private function setArray($element): object {
+    public function __construct(BookmarkService $bookmarkService) {
+        $this->bookmarkService = $bookmarkService;
+    }
+
+    private function setArray($element, User $user): object {
         $featuresArray = [];
         $features = $element->getCampsiteFeatures();
         
@@ -23,6 +30,9 @@ class CampsiteSerializer {
                 'value' =>$feature->getValue()
             ];
         }
+       
+
+        $pinned = $this->bookmarkService->filterBookmark($element, $user);
        
         $this->elementAsArray[] = [
             'id' => $element->getId(),
@@ -35,18 +45,19 @@ class CampsiteSerializer {
             'web' => $element->getWeb(),
             'latitude' => $element->getLatitude(),
             'longitude' => $element->getLongitude(),
+            'pinned' => $pinned,
             'features' => $featuresArray
         ];       
         return($this);
     }
 
-    public function serialize($elements){
+    public function serialize($elements, User $user): string{
         if (is_array($elements)) {
             foreach($elements as $element) {
-                $this->setArray($element);
+                $this->setArray($element, $user);
             }
         } else {
-            $this->setArray($elements);
+            $this->setArray($elements, $user);
         }
         return \json_encode($this->elementAsArray);
     }

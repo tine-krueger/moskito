@@ -124,7 +124,7 @@ class User implements UserInterface
     /**
      * @return Collection|Campsite[]
      */
-    public function getCampsite(): Collection
+    public function getCampsites(): Collection
     {
         return $this->campsite;
     }
