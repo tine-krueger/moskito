@@ -11,10 +11,11 @@ Campsites.propTypes = {
 }
 
 export default function Campsites({headline}) {
-    const { bookmarks, getBookmarks } = useCampsites()
+    const { bookmarks, setBookmarks } = useCampsites()
 
     useEffect(() => {
-        getBookmarks()        
+        setBookmarks()        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
     return (

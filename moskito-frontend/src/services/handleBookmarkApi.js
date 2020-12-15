@@ -1,15 +1,23 @@
-import { makeFetch } from '../lib/fetch'
+import { makeFetch, getFetch } from '../lib/fetch'
 import { loadFromLocal } from '../lib/localStorage'
 
-const token = loadFromLocal('tokens')
-
 export function bookmark(id) {
-    const baseUrl = `http://moskito.local/bookmark/${id}`
-    const myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token.value}`);
-    makeFetch('', 'POST', myHeaders, baseUrl)   
+    const baseUrl = process.env.REACT_APP_BASE_URL
+    const token = loadFromLocal('tokens')
+
+    const myHeaders = new Headers()
+    myHeaders.append("Authorization", `Bearer ${token.value}`)
+    makeFetch('', 'POST', myHeaders, `${baseUrl}/bookmark/${id}`)   
     .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+    .catch(error => console.log('error', error))
+}
+
+export function getBookmarks() {
+    const baseUrl = process.env.REACT_APP_BASE_URL
+    const token = loadFromLocal('tokens')
+    const myHeaders = new Headers()
+    myHeaders.append("Authorization", `Bearer ${token.value}`)
+    return getFetch( myHeaders, `${baseUrl}/bookmark`)
 }
 
 

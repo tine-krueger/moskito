@@ -1,9 +1,10 @@
 export default function setCampsites(newCampsite) {
+        
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         const copy = Object.assign({}, newCampsite)
 
-        const raw = JSON.stringify(copy);
+        const raw = JSON.stringify(newCampsite);
        
 
         const requestOptions = {
