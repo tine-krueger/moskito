@@ -12,7 +12,7 @@ export default function FrontHeadline({children}) {
 
 const HeadlineStyled = styled.h1`
     font-family: 'Hind Madurai';
-    font-size: 1.5em;
+    font-size: 1.3em;
     text-align: center;
     margin-top: 1em;
 

@@ -22,7 +22,7 @@ export default function LoginForm() {
     return (
         <LoginFormStyled onSubmit={handleSubmit}>
             {isError && <p>E-Mail oder Password-Eingabe nicht korrekt!</p> }
-            <InputField type={'text'} name='email' value={fields.email} onChange={handleChange} placeholder={'E-Mail'}/>
+            <InputField type={'text'} name='email' value={fields.email} onChange={handleChange} placeholder={'E-Mail'} margin={'sm'}/>
             <InputField type={'password'} name='password' value={fields.password} onChange={handleChange} placeholder={'Password'}/>
             <ButtonBackGroup text1={'Login'} text2={'Zurück'} onClick={handleClick}/>
         </LoginFormStyled>

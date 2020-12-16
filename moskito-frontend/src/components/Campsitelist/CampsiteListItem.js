@@ -16,14 +16,13 @@ export default function CampsiteListItem({campsite}) {
         <CampItem>
             <h2>{campsite.name}</h2>
             <Address>
-                <p>{campsite.street}</p>
-                <p>{campsite.postalCode} {campsite.place}</p>
+                <p>{campsite.street}, {campsite.postalCode} {campsite.place}</p>
+                <Contact>
+                    {campsite.telephone && <p><ImPhone/>{campsite.telephone}</p>}
+                    {campsite.email && <p><ImEnvelop/> {campsite.email}</p>}
+                    <a rel="noopener noreferrer" href={campsite.web} target='_blank'>{campsite.web}</a>
+                </Contact>
             </Address>
-            <Contact>
-                {campsite.telephone && <p><ImPhone/>{campsite.telephone}</p>}
-                {campsite.email && <p><ImEnvelop/> {campsite.email}</p>}
-                <a rel="noopener noreferrer" href={campsite.web} target='_blank'>{campsite.web}</a>
-            </Contact>
             <FeatureList>
                 {filterFeatures(campsite).map(feature => <FeatureListItem key={feature.id} feature={feature}/>)}
             </FeatureList>
@@ -34,8 +33,6 @@ export default function CampsiteListItem({campsite}) {
 }
 
 const CampItem = styled.div`
-    display: grid;
-    grid-template-columns: 2fr 3fr;
     box-shadow: 2px 4px 8px -4px rgba(0, 0, 0, 0.6), 
                 -2px -2px 2px 0px rgba(255, 255, 255, 0.5);
     border-radius: 20px;
@@ -45,13 +42,14 @@ const CampItem = styled.div`
 
 
     h2 {
-        grid-column: 1/-1;
         width: 75%;
+        margin-left: .3em;
     }
 
 `
 const Address = styled.div `
     margin-left: .5em;
+    margin-top: 2.5em;
 `
 
 const Contact = styled.div`
@@ -74,8 +72,7 @@ const Contact = styled.div`
         margin-top: 1em;
     }
 `
-const FeatureList = styled.ul`
-   grid-column: 1/-1 ; 
+const FeatureList = styled.ul` 
    list-style: none;
    padding-left: 0;
    position: relative;

@@ -35,10 +35,11 @@ export default function Navigation() {
 const Navbar = styled.nav`
     width: 100vw;
     background-color: #c2d6d3;
-    border-top: 1px solid grey;
     position: fixed;
     bottom: 0;
     left: 0;
+    box-shadow: 2px 4px 8px -4px rgba(0, 0, 0, 0.6), 
+    -2px -2px 2px 0px rgba(255, 255, 255, 0.5);
 
 `
 
@@ -49,8 +50,15 @@ const NavList = styled.ul`
     justify-content: space-around;
 `    
 const NavListItem = styled.li`
-    width: 20%;
     text-align: center;
+    border-radius: 10px;
+    box-shadow: 2px 4px 8px -4px rgba(0, 0, 0, 0.6), 
+                -2px -2px 2px 0px rgba(255, 255, 255, 0.5);
+    width: 3em;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     button{
         background-color: #c2d6d3;
@@ -61,4 +69,17 @@ const NavListItem = styled.li`
         height: 2em;
         stroke: #c97f63;
     }
-`  
+    button svg{
+        width: 2.3em;
+        height: 2.3em;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        background: linear-gradient(145deg, #A2B2B0, #E2FAF6);
+        box-shadow: 2px 4px 8px -4px rgba(0,0,0,0.6), 
+                -2px -2px 2px 0px rgba(255,255,255,0.5);
+        outline: none;
+    }
+` 

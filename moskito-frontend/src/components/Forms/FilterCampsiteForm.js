@@ -88,9 +88,6 @@ const FilterCampsite = styled.form `
     }
 `
 const Checkboxes = styled.div`
-    padding: 0 1em;
     margin-top: 1em;
-    /*display: grid;
-    gap: 1em 1em;
-    grid-template-columns: 1fr 1fr;*/
+    padding-left: .5em;
 `

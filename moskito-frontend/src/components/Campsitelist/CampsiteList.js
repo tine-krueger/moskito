@@ -18,5 +18,5 @@ export default function CampsiteList({campsites}) {
     )
 }
 const CampList = styled.div`
-    margin-bottom: 5em;
+    margin-bottom: 6em;
 `

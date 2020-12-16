@@ -38,12 +38,12 @@ export default function SignUpForm() {
             { errors && errors.map((error, index) => <RedParagraph key={index}>{error}</RedParagraph>)}
 
             <InputField type='text' name='firstName' value={fields.firstName} onChange={handleChange} placeholder={'Vorname'} margin={'sm'}/>
-            <InputField type='text' name='lastName' value={fields.lastName} onChange={handleChange} placeholder={'Nachname'}/>
-            <InputField type='text' name='email' value={fields.email} onChange={handleChange} placeholder={'E-Mail'}/>
+            <InputField type='text' name='lastName' value={fields.lastName} onChange={handleChange} placeholder={'Nachname'} margin={'sm'}/>
+            <InputField type='text' name='email' value={fields.email} onChange={handleChange} placeholder={'E-Mail'} margin={'sm'}/>
 
             {!isPasswordEqual && <RedParagraph>Die Passwörter stimmen nicht überein!</RedParagraph>}
             
-            <InputField type={'password'} name='password' value={fields.password} onChange={handleChange} placeholder={'Password'}/>
+            <InputField type={'password'} name='password' value={fields.password} onChange={handleChange} placeholder={'Password'} margin={'sm'}/>
             <InputField type={'password'} name='passwordControl' value={fields.passwordControl} onChange={handleChange} placeholder={'Password'}/>
             <ButtonBackGroup text1={'SignIn'} text2={'Zurück'} onClick={handleClick}/>
         </SigninFormStyled>

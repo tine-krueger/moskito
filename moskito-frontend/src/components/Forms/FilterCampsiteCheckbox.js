@@ -39,6 +39,7 @@ export default function FilterCampsiteCheckbox({feature, filter, setFilter}) {
 const Feature = styled.div `
     position: relative;
     height: 2.5em;
+    margin-bottom: .75em;
     input[type="checkbox"] {
         opacity: 0;
         position: absolute;
@@ -48,15 +49,14 @@ const Feature = styled.div `
     p {
         margin: 0;
         padding-left: 2.5em;
-        font-size: 1.2em;
     }
 
     p::before {
         content: " ";
         display: inline-block;
         position: absolute;
-        width: 23px;
-        height: 23px;
+        width: 25px;
+        height: 25px;
         left: 0;
         top: 0;
         -webkit-transition: all .2s ease;
@@ -69,8 +69,8 @@ const Feature = styled.div `
 
     p::after {
         content: " ";
-        width: 12px;
-        height: 12px;
+        width: 14px;
+        height: 14px;
         top: 6px;
         position: absolute;
         opacity: 0;
