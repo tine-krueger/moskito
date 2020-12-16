@@ -14,7 +14,7 @@ export default function Logo({inputMargin}) {
 }
 
 const LogoStyled = styled.div`
-    margin-top: ${props => props.inputMargin || '9em'};
+    margin-top: ${props => props.inputMargin || '8em'};
     text-align: center;
 `
 
