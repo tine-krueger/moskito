@@ -48,11 +48,19 @@ export default createGlobalStyle`
     }
 
     h1 {
-        font-size: 1.7em;
+        font-size: 1.7rem;
     }
 
     h2 {
-        font-size: 1.4em;
+        font-size: 1.4rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    h4 {
+        font-size: 1.1rem;
     }
 
     a {

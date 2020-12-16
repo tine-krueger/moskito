@@ -7,7 +7,7 @@ import Delayed from '../../hooks/useDelay'
 import useForm from "../../hooks/useForm"
 import { signUserIn } from "../../services/handleUserApi"
 
-export default function SignInForm() {
+export default function SignUpForm() {
     const { fields, handleChange, handleClick } = useForm({
         firstName: '',
         lastName:'',
@@ -37,9 +37,9 @@ export default function SignInForm() {
 
             { errors && errors.map((error, index) => <RedParagraph key={index}>{error}</RedParagraph>)}
 
-            <InputField type={'text'} name='firstName' value={fields.firstName} onChange={handleChange} placeholder={'Vorname'}/>
-            <InputField type={'text'} name='lastName' value={fields.lastName} onChange={handleChange} placeholder={'Nachname'}/>
-            <InputField type={'text'} name='email' value={fields.email} onChange={handleChange} placeholder={'E-Mail'}/>
+            <InputField type='text' name='firstName' value={fields.firstName} onChange={handleChange} placeholder={'Vorname'} margin={'sm'}/>
+            <InputField type='text' name='lastName' value={fields.lastName} onChange={handleChange} placeholder={'Nachname'}/>
+            <InputField type='text' name='email' value={fields.email} onChange={handleChange} placeholder={'E-Mail'}/>
 
             {!isPasswordEqual && <RedParagraph>Die Passwörter stimmen nicht überein!</RedParagraph>}
             

@@ -27,9 +27,9 @@ export default function App() {
           <Route path="/signin">
             <Register/>
           </Route>
-          <PrivateRoute path="/find-campsite" component={() => <FilterCampsite getCampsites={getCampsites} />}/>
-          <PrivateRoute path="/campsites" component={() => <Campsites headline={'DeineSuche'} campsites={campsites}  />}/>
-          <PrivateRoute path="/bookmarks" component={() => <Bookmarks headline={'Bookmarks'}/>}/>
+          <PrivateRoute path="/find-campsite" component={() => <FilterCampsite headline={'Deine Suche'} getCampsites={getCampsites} />}/>
+          <PrivateRoute path="/campsites" component={() => <Campsites headline={'Die Vorschläge'} campsites={campsites}  />}/>
+          <PrivateRoute path="/bookmarks" component={() => <Bookmarks headline={'Deine Lieblinge'}/>}/>
         </Switch>
       </Router>
     </AuthContext.Provider>

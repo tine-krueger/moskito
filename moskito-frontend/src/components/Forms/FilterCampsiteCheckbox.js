@@ -47,15 +47,16 @@ const Feature = styled.div `
 
     p {
         margin: 0;
-        padding-left: 2em;
+        padding-left: 2.5em;
+        font-size: 1.2em;
     }
 
     p::before {
         content: " ";
         display: inline-block;
         position: absolute;
-        width: 20px;
-        height: 20px;
+        width: 23px;
+        height: 23px;
         left: 0;
         top: 0;
         -webkit-transition: all .2s ease;
@@ -68,8 +69,8 @@ const Feature = styled.div `
 
     p::after {
         content: " ";
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
         top: 6px;
         position: absolute;
         opacity: 0;

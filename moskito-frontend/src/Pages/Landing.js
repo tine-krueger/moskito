@@ -12,9 +12,11 @@ export default function Landing() {
             <FrontHeadline>Camping back to the roots</FrontHeadline>
             <UserButtons>
                 <Link to={'/login'}>
-                    <Button>Login </Button> </Link>
+                    <Button>Login </Button> 
+                </Link>
                 <Link to={'/signin'}>
-                    <Button>SignIn </Button></Link>    
+                    <Button>SignUp </Button>
+                </Link>    
             </UserButtons>
         </>
     )
