@@ -9,8 +9,4 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 517134bc54247ffe68506c31bb6d2301de55fd59
 /.env
