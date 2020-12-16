@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Campsites from './pages/Campsites'
 import FilterCampsite from './pages/FindCampsitesPage'
+import Bookmarks from './pages/Bookmarks'
 import Landing from './pages/Landing'
 import Login from './pages/Login'
 import useToken from './hooks/useToken'
@@ -10,7 +11,7 @@ import { AuthContext } from './context/auth'
 import Register from './pages/Register'
 
 export default function App() {
-  const { campsites, getCampsites } = useCampsites()
+  const { campsites, getCampsites} = useCampsites()
   const { authTokens, setTokens, deleteTokens, getToken } = useToken()
 
   return (
@@ -27,7 +28,8 @@ export default function App() {
             <Register/>
           </Route>
           <PrivateRoute path="/find-campsite" component={() => <FilterCampsite getCampsites={getCampsites} />}/>
-          <PrivateRoute path="/campsites" component={() => <Campsites campsites={campsites} />}/>
+          <PrivateRoute path="/campsites" component={() => <Campsites headline={'DeineSuche'} campsites={campsites}  />}/>
+          <PrivateRoute path="/bookmarks" component={() => <Bookmarks headline={'Bookmarks'}/>}/>
         </Switch>
       </Router>
     </AuthContext.Provider>

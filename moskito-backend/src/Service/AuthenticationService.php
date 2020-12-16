@@ -4,27 +4,41 @@ namespace App\Service;
 
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\UserTokenRepository;
-use App\Repository\UserRepository;
 use App\Entity\User;
 
 class AuthenticationService {
     private $tokenRepository;
-    private $userRepository;
 
-    public function __construct(UserTokenRepository $tokenRepository, UserRepository $userRepository) {
+    public function __construct(UserTokenRepository $tokenRepository) {
         $this->tokenRepository = $tokenRepository;
-        $this->userRepository = $userRepository;
     }
 
-    public function isValid(Request $request): bool {
+    public function isValid(Request $request): ?User {
         $authHeader = $request->headers->get('Authorization');
-        $tokenValue = substr($authHeader, strpos($authHeader, ' ')+1);
+        $requestedToken = substr($authHeader, strpos($authHeader, ' ')+1);
 
-        $token = $this->tokenRepository->findOneBy([
-            'value' => $tokenValue
+        if (!$requestedToken)
+            {
+                return null;
+            }
+
+        $foundToken = $this->tokenRepository->findOneBy([
+            'value' => $requestedToken
         ]);
 
+        if (!$foundToken)
+            {
+                return null;
+            }
+        
+        $user = $foundToken->getUser();
         $now = new \DateTime();
-        return !is_null($token) && $now < $token->getValidUntil();
+        
+        if ($foundToken->getValidUntil() < $now)
+            {
+                return null;
+            }
+
+        return $user;
     }
 }

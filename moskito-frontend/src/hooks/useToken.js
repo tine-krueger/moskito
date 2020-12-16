@@ -3,8 +3,13 @@ import { saveToLocal, loadFromLocal } from '../lib/localStorage'
 import { makeFetch } from '../lib/fetch'
 
 export default function useToken() {
+    
     const existingTokens = loadFromLocal('tokens')
     const [ authTokens, setAuthTokens] = useState(existingTokens)
+    const baseUrl = process.env.REACT_APP_BASE_URL
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
     const setTokens = ( data ) => {
         saveToLocal("tokens", data)
         setAuthTokens(data)
@@ -12,19 +17,11 @@ export default function useToken() {
 
     const deleteTokens = async (token) => {
         localStorage.removeItem('tokens')
-        const baseUrl = "http://moskito.local/logout"
-        const myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        return makeFetch(token, 'DELETE', myHeaders, baseUrl)
+        return makeFetch(token, 'DELETE', myHeaders, `${baseUrl}/logout`)
     }
 
     const getToken =  async (user) => {
-        const baseUrl = "http://moskito.local/login"
-        const myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        
-        return makeFetch(user,'POST', myHeaders, baseUrl)    
+        return makeFetch(user,'POST', myHeaders, `${baseUrl}/login`)    
     }
 
     return { authTokens, setAuthTokens, setTokens, deleteTokens, getToken}

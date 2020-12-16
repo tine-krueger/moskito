@@ -14,7 +14,6 @@ export default function useForm(initialState) {
         })
     }
 
-
     function handleClick(event) {
         event.preventDefault()
         history.push('/')
