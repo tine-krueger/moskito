@@ -87,6 +87,10 @@ class CampsiteController extends AbstractController
             }
 
             $filter = $filterSerializer->deserialize($request->getContent());
+            
+            if ($filter['latitude'] === null) {
+                return $this->json(['errors'=> 'Place was not set!'], JsonResponse::HTTP_BAD_REQUEST);
+            }
             $filteredCampsites = $matchingCampsites->getMatchingCampsites($filter);
             $sortedIds = $sortIds->countAndSortCampsiteIds($filteredCampsites);
             $sortedCampsites = $sortCampsites->sortCampsitesByIds($sortedIds);
