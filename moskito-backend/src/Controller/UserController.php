@@ -55,7 +55,9 @@ class UserController extends AbstractController
                 return $this->json(['errors'=>'This E-Mail is already registered.'], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
             }
 
-            $errors = $validator->validate($newUser);
+            $errors = (array)  $validator->validate($newUser);
+            
+            var_dump($errors); die;
             if (count($errors) > 0) {
                 return new JsonResponse($violationsSerializer->serialize($errors), JsonResponse::HTTP_BAD_REQUEST, [], true );
             } 
