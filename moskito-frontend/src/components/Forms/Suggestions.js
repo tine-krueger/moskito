@@ -2,7 +2,9 @@ import styled from 'styled-components/macro'
 
 export default function Suggestions({suggestions, onClick}) {
     return (
-        <ListStyled>{suggestions.map((suggestion, index) =>  <ListElement key={index} onClick={() => onClick(suggestion)}>{suggestion.label}</ListElement>)}</ListStyled>
+        <ListStyled>{suggestions.map((suggestion, index) =>  
+            <ListElement key={index} onClick={() => onClick(suggestion)}>{suggestion.label}</ListElement>)}
+        </ListStyled>
     )
 }
 const ListStyled = styled.ul`

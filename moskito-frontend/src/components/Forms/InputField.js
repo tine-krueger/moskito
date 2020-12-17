@@ -10,9 +10,9 @@ InputField.propTypes = {
     children: PropTypes.string
 }
 
-export default function InputField({type, name, value, onChange, placeholder, children, margin}) {
+export default function InputField({type, name, value, onChange, placeholder, children, marginBottom}) {
     return (
-        <Label margin={margin}>
+        <Label lessMargin={marginBottom}>
             <h3>{children}</h3>
             <input type={type} name={name} value={value} onChange={onChange} placeholder={placeholder} />
         </Label>
@@ -24,7 +24,7 @@ const Label = styled.label `
     width: 100%;
     text-align: center;
     margin: 0 auto 2em;
-    margin-bottom: ${(props) => props.margin === 'sm' ? '.5em' : '2em'};
+    margin-bottom: ${(props) => props.lessMargin === 'sm' ? '.5em' : '2em'};
     h3 {
         text-align: left;
         padding-left: .5em;

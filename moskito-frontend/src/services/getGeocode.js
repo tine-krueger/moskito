@@ -3,8 +3,8 @@ export function getGeocode(location) {
 
     const lowerCaseLocation = location.toLowerCase()
     const urlLocation = lowerCaseLocation.replace(/\s+/g, "+" )
-    const apiKey = process.env.REACT_APP_HERE_API_KEY
-    const baseUrl = process.env.REACT_APP_HERE_URL
+    const apiKey = process.env.REACT_APP_GEOLOC_API_KEY
+    const baseUrl = process.env.REACT_APP_GEOLOC_URL
     const url = `${baseUrl}/6.2/geocode.json?apiKey=${apiKey}&searchtext=${urlLocation}&country=DEU`
 
     const requestOptions = {
@@ -22,8 +22,8 @@ export function getGeocode(location) {
 }
 
 export function autocomplete(location) {
-    const apiKey = process.env.REACT_APP_HERE_API_KEY
-    const baseUrl = process.env.REACT_APP_HERE_AUTOCOMPLETE_URL
+    const apiKey = process.env.REACT_APP_GEOLOC_API_KEY
+    const baseUrl = process.env.REACT_APP_AUTOCOMPLETE_URL
     const url = `${baseUrl}/6.2/suggest.json?apiKey=${apiKey}&query=${location}&country=DEU`
 
     const requestOptions = {

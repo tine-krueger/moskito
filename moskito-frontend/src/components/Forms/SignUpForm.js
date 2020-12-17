@@ -37,7 +37,7 @@ export default function SignUpForm() {
 
             { errors && errors.map((error, index) => <RedParagraph key={index}>{error}</RedParagraph>)}
 
-            <InputField type='text' name='firstName' value={fields.firstName} onChange={handleChange} placeholder={'Vorname'} margin={'sm'}/>
+            <InputField type='text' name='firstName' value={fields.firstName} onChange={handleChange} placeholder={'Vorname'} marginBottom={'sm'}/>
             <InputField type='text' name='lastName' value={fields.lastName} onChange={handleChange} placeholder={'Nachname'} margin={'sm'}/>
             <InputField type='text' name='email' value={fields.email} onChange={handleChange} placeholder={'E-Mail'} margin={'sm'}/>
 

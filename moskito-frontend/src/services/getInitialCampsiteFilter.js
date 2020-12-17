@@ -3,12 +3,12 @@ import { getFeatureBase } from './featureService'
 export default function getInitialCampsiteFilter() {
     const initialFilter = 
         {
-            name: 'Postleitzahl/Ort',
+            name: 'PLZ/Ort',
             dbName: 'postalCode',
             postalCode: '',
             distance: 100,
-            latitude: -1,
-            longitude: -1,
+            latitude: null,
+            longitude: null,
             features: getFeatureBase()
         }
     return initialFilter

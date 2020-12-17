@@ -6,6 +6,7 @@ export default function useCampsites() {
 
     const [ campsites, setCampsites ] = useState([])
     const [ bookmarks, setResponseBookmarks ] = useState([])
+    const [ errors, setErrors ] = useState()
    
 
     function getCampsites(filter) {
@@ -16,7 +17,15 @@ export default function useCampsites() {
             distance: filter.distance,
             trueFeatures: trueFilter}
         setFilter(filterData)
-        .then(result => setCampsites(result))
+        .then(result => {
+            if (result.errors) {
+                setErrors(result)
+                setCampsites([])
+            } else {
+                setCampsites(result)
+                setErrors()
+            } 
+        })
         .catch(error => {
             console.log('error', error)
         })
@@ -29,6 +38,5 @@ export default function useCampsites() {
         .catch(error => console.log('error', error));
     }
     
-    return  { campsites, bookmarks, getCampsites, setBookmarks}
- 
+    return  { errors, campsites, bookmarks, getCampsites, setBookmarks}
 }

@@ -17,13 +17,15 @@ FilterCampsiteForm.propTypes = {
 
 export default function FilterCampsiteForm({getCampsites}) {
     const initialFilter = getInitialCampsiteFilter()
-    const { fields, setValues, handleChange } = useForm(initialFilter)
+    const { fields, setValues, handleChange } = useForm(initialFilter) 
     const history = useHistory()
     const [ suggestions, setSuggestions ] = useState([])
+    const [ errors, setErrors ] = useState()
 
 
     return (
         <FilterCampsite onSubmit={handleSubmit}>
+            {errors && <p>{errors}</p>}
             <InputField type={'text'} name={'postalCode'} value={fields.postalCode} onChange={handleLocationChange} placeholder={fields.name}>Dein Ziel:</InputField>
             {suggestions.length !== 0 && <Suggestions suggestions={suggestions} onClick={handleClick}/> }
             <InputField type={'number'} name={'distance'} value={fields.distance} onChange={handleChange} placeholder={fields.distance}>Umkreis in km:</InputField>
@@ -39,7 +41,7 @@ export default function FilterCampsiteForm({getCampsites}) {
 
     function handleSubmit(event){
         event.preventDefault()
-        getCampsites(fields)
+        getCampsites(fields, setErrors)
         history.push('/campsites')
     }
 
@@ -57,7 +59,10 @@ export default function FilterCampsiteForm({getCampsites}) {
                 }
             )
         })
-        .catch(error => console.log('error', error));
+        .catch(() => 
+            setSuggestions([
+                { label: 'Ortsuche momentan nicht verfügbar! Bitte versuche es später noch einmal.'}
+            ]));
         setSuggestions([])
     }
 
@@ -71,7 +76,7 @@ export default function FilterCampsiteForm({getCampsites}) {
         .then(results => setSuggestions(results.suggestions)) 
         .catch(() =>
           setSuggestions([
-            { description: 'Service nicht verfügbar', googlePlaceId: 'error' },
+            { label: 'Service nicht verfügbar' },
           ])
         ) : setSuggestions([])
     }

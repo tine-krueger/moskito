@@ -11,7 +11,7 @@ import { AuthContext } from './context/auth'
 import Register from './pages/Register'
 
 export default function App() {
-  const { campsites, getCampsites} = useCampsites()
+  const { errors, campsites, getCampsites} = useCampsites()
   const { authTokens, setTokens, deleteTokens, getToken } = useToken()
 
   return (
@@ -28,7 +28,7 @@ export default function App() {
             <Register/>
           </Route>
           <PrivateRoute path="/find-campsite" component={() => <FilterCampsite headline={'Deine Suche'} getCampsites={getCampsites} />}/>
-          <PrivateRoute path="/campsites" component={() => <Campsites headline={'Die Vorschläge'} campsites={campsites}  />}/>
+          <PrivateRoute path="/campsites" component={() => <Campsites headline={'Die Vorschläge'} campsites={campsites} errors={errors} />}/>
           <PrivateRoute path="/bookmarks" component={() => <Bookmarks headline={'Deine Lieblinge'}/>}/>
         </Switch>
       </Router>
