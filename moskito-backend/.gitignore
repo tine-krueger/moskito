@@ -3,10 +3,13 @@
 /.env.local
 /.env.local.php
 /.env.*.local
+/.env.production
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
 /var/
 /vendor/
+
+public/.htaccess
 ###< symfony/framework-bundle ###
 
 <<<<<<< HEAD
