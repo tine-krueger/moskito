@@ -7,11 +7,11 @@ FindCampsitesPages.propTypes = {
     getCampsites: PropTypes.func.isRequired
 }
 
-export default function FindCampsitesPages({getCampsites}) {
+export default function FindCampsitesPages({getCampsites, headline}) {
 
     return (
         <>
-            <Header children={'Was Du willst'}/>
+            <Header children={headline}/>
             <FilterCampsite getCampsites={getCampsites}/>
             <Navigation/>
         </>

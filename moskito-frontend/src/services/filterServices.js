@@ -1,7 +1,7 @@
 import loadToken from './loadToken'
 import { makeFetch } from '../lib/fetch'
 
-export function setFeatureFilter(features) {
+export function setFilter(features) {
     const baseUrl = process.env.REACT_APP_BASE_URL
     const tokenValue = loadToken()
     const myHeaders = {

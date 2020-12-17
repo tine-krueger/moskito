@@ -8,12 +8,12 @@ Campsites.propTypes = {
     campsites: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
-export default function Campsites({headline, campsites}) {
+export default function Campsites({headline, campsites, errors}) {
     
     return (
         <>
             <Header children={headline}/>
-            <CampsiteList campsites={campsites}/>
+            <CampsiteList campsites={campsites} errors={errors}/>
             <Navigation/>
         </>
     )   

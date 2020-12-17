@@ -35,7 +35,7 @@ export default createGlobalStyle`
         margin: 0 auto;
         padding: 0;
         font-family: 'Hind Madurai';
-        font-size: 16px;
+        font-size: 19px;
         color: #6b717e;
         background-color: #c2d6d3;
         max-width: 500px;
@@ -48,11 +48,19 @@ export default createGlobalStyle`
     }
 
     h1 {
-        font-size: 1.7em;
+        font-size: 1.7rem;
     }
 
     h2 {
-        font-size: 1.4em;
+        font-size: 1.4rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    h4 {
+        font-size: 1.1rem;
     }
 
     a {

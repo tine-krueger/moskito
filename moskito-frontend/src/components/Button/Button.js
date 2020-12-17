@@ -17,6 +17,7 @@ export default function Button({children, onClick}) {
 const ButtonStyled = styled.button`
     padding: 1em 2em;
     font-family: 'Arvo';
+    font-size: 1.1rem;
     border-radius: 10px;
     width: auto;
     border: none;

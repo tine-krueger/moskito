@@ -10,7 +10,7 @@ export default function Header({children}) {
 
 const HeaderStyled = styled.div`
     width: 80%;
-    margin: 1em auto 2em;
+    margin: 2em auto 3em;
     padding: .25em .5em;
     border-radius: 20px;
     text-align: center;
