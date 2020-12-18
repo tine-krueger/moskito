@@ -1,6 +1,6 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace App\Tests;
+namespace App\Tests\Serializer;
 
 use PHPUnit\Framework\TestCase;
 use App\Serializer\ViolationsSerializer;

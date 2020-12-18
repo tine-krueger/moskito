@@ -1,4 +1,6 @@
 {
+    "name": "Moskito-Project-1.0",
+    "description": "",
     "type": "project",
     "license": "proprietary",
     "require": {
@@ -24,6 +26,7 @@
         "symfony/yaml": "5.1.*"
     },
     "require-dev": {
+        "phpspec/prophecy-phpunit": "^2.0",
         "phpstan/phpstan": "^0.12.59",
         "phpunit/phpunit": "^9.5",
         "symfony/maker-bundle": "^1.23"
