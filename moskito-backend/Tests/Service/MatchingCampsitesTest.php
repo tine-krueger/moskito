@@ -15,22 +15,22 @@ class MatchingCampsitesTest
     private $prophet;
 
     /**
-     * @dataProvider filter
+     * @dataProvider
      */
     public function testMatchingCampites( ) : void {
 
         $filter = ['trueFeatures' => [(new CampsiteFeature())->setType('wlan')->setValue(true)]];
         
-        $campsite1 = (new Campsite())->setId(2);
-        $feature1 = (new CampsiteFeature())->setType('wlan')->setValue(true)->setCampsite($campsite1)->setId(1);
+        $campsiteMock = new Campsite();
+        $featureMock = (new CampsiteFeature())->setType('wlan')->setValue(true)->setCampsite($campsiteMock);
         
 
         
         
         $mockFeatureRepo = $this->prophet->prophesize(CampsiteFeatureRepository::class);
         $mockCampsiteRepo = $this->prophet->prophesize(CampsiteRepository::class);
-        $mockFeatureRepo->findBy(Argument::any())->willReturn([$campsite1]);
-        $mockCampsiteRepo->findAll()->willReturn([$campsite1]);
+        $mockFeatureRepo->findBy(Argument::any())->willReturn([$campsiteMock]);
+        $mockCampsiteRepo->findAll()->willReturn([$campsiteMock]);
 
         $service = new MatchingCampsites($mockFeatureRepo->reveal(), $mockCampsiteRepo->reveal());
         $actual = $service->getMatchingCampsites($filter);   
@@ -39,13 +39,7 @@ class MatchingCampsitesTest
         $this->assertEquals([], $actual);
     } 
 
-    public function filter() 
-    {
-        return [
-            'empty filter' => ["features" => []],
-            'wlan true' => ["features" => ['type' => 'wlan', 'value' => true]]
-        ];
-    }
+   
 
 
     protected function setUp(): void {
