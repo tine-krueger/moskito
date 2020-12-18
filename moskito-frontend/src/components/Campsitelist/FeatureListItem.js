@@ -18,5 +18,5 @@ const FeatureItem = styled.li `
     box-shadow: inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2), 
                 inset -3px -4px 6px 0 rgba(255, 255, 255, 0.3);
     padding: .5em 1em;
-    margin: .5em;
+    margin: .3em;
 `
