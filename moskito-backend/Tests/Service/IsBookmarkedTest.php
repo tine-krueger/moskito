@@ -36,9 +36,9 @@ class IsBookmarkedTest extends TestCase
     public function expectationsWithIds() 
     {
         return [
-            [[1, 2, 3], 2, true],
-            [[], 1, false],
-            [[1, 2, 3, 4], 5, false]
+            'camp-id is found in user campsite collection' => [[1, 2, 3], 2, true],
+            'user has noch camp-collection, id not found' => [[], 1, false],
+            'user has camp-collection, bis camp-id is not found' => [[1, 2, 3, 4], 5, false]
         ];
     }
 
