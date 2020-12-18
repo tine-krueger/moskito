@@ -32,12 +32,10 @@ class MatchingCampsites {
                         ]
                     );
 
-        
                 $filteredCampsites = $this->getCampsitesFromFeatures($filteredCampsites, $features);
-                
+ 
             }
         }
-
         return $filteredCampsites;
     }
 
