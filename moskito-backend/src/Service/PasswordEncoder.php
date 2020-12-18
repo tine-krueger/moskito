@@ -17,7 +17,7 @@ class PasswordEncoder {
     public function encode(string $password, User $user): void {
         $user->setPassword($this->passwordEncoder->encodePassword(
             $user,
-            $user->getPassword()
+            $password
         ));
     }
 }
