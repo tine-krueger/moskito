@@ -48,6 +48,18 @@ class SortCampsitesTest extends TestCase
         $this->prophet = new \Prophecy\Prophet;
     }
 
+    protected function innerFunctionSetUp(array $idsArray, array $idsForExpected): array {
+        $expected = $this->getArrayFromId($idsForExpected);
+        $mockReturn = $this->getArrayFromOfObjectsId($idsArray);
+    
+        $mockRepository = $this->prophet->prophesize(CampsiteRepository::class);
+        $mockRepository->findBy(Argument::any())->willReturn(...$mockReturn);
+
+        $service = new SortCampsites($mockRepository->reveal());
+        $actual = $service->sortCampsitesByIds($idsArray);
+        return [ 'actual' => $actual, 'expected' => $expected];
+    } 
+
     protected function getArrayFromId(array $ids): array {
         $campsites = [];
         foreach ($ids as $id) {
@@ -68,15 +80,4 @@ class SortCampsitesTest extends TestCase
         return $campsites;
     }
 
-    protected function innerFunctionSetUp(array $idsArray, array $idsForExpected): array {
-        $expected = $this->getArrayFromId($idsForExpected);
-        $mockReturn = $this->getArrayFromOfObjectsId($idsArray);
-    
-        $mockRepository = $this->prophet->prophesize(CampsiteRepository::class);
-        $mockRepository->findBy(Argument::any())->willReturn(...$mockReturn);
-
-        $service = new SortCampsites($mockRepository->reveal());
-        $actual = $service->sortCampsitesByIds($idsArray);
-        return [ 'actual' => $actual, 'expected' => $expected];
-    } 
 }
