@@ -5,7 +5,7 @@ namespace App\Service;
 class CountAndSortIds {
 
 
-    public function countAndSortCampsiteIds(array $filteredCampsites):array {
+    public function countAndSortCampsiteIds(array $filteredCampsites): array {
 
         $filteredCampsitesIds = [];
         foreach ($filteredCampsites as $campsite) {
