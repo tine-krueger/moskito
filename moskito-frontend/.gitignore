@@ -9,8 +9,8 @@
 /coverage
 
 # production
-/build
-/build/.htaccess
+# /build
+# /build/.htaccess
 
 
 # misc
