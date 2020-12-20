@@ -9,15 +9,14 @@ CampsiteList.propTypes = {
 
 export default function CampsiteList({campsites, errors}) {
 
-    
-    
     return (
         <CampList>
-            {errors &&<p>{errors.errors}</p>}
+            {errors &&<p data-testid='error'>{errors.errors}</p>}
             {campsites.map(campsite => <CampsiteListItem key={campsite.id} campsite={campsite}/>)}
         </CampList>
     )
 }
+
 const CampList = styled.div`
     margin-bottom: 6em;
 `

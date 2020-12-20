@@ -18,8 +18,8 @@ export default function CampsiteListItem({campsite}) {
             <Address>
                 <p>{campsite.street}, {campsite.postalCode} {campsite.place}</p>
                 <Contact>
-                    {campsite.telephone && <p><ImPhone/>{campsite.telephone}</p>}
-                    {campsite.email && <p><ImEnvelop/> {campsite.email}</p>}
+                    {campsite.telephone && <p><ImPhone data-testid='phone'/>{campsite.telephone}</p>}
+                    {campsite.email && <p><ImEnvelop data-testid='mail'/> {campsite.email}</p>}
                     <a rel="noopener noreferrer" href={campsite.web} target='_blank'>{campsite.web}</a>
                 </Contact>
             </Address>
