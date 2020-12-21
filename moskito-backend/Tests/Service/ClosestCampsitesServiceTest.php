@@ -15,8 +15,8 @@ class ClosestCampsitesServiceTest extends TestCase
      * @dataProvider geocodesFilter
      */
     public function  testGetClosestCampsites(array $campsiteCodes, array $filter, array $expectedCodes): void {
-        $campsiteArray = $this->toCampsitesArray($campsiteCodes);
-        $expected = $this->toCampsitesArray($expectedCodes);
+        $campsiteArray = $this->mockCampsites($campsiteCodes);
+        $expected = $this->mockCampsites($expectedCodes);
         
         
         $service = new ClosestCampsitesService();
@@ -52,8 +52,8 @@ class ClosestCampsitesServiceTest extends TestCase
      * @dataProvider geocodesFilterFail
      */
     public function  testGetClosestCampsitesFails(array $campsiteCodes, array $filter, array $expectedCodes): void {
-        $campsiteArray = $this->toCampsitesArray($campsiteCodes);
-        $expected = $this->toCampsitesArray($expectedCodes);
+        $campsiteArray = $this->mockCampsites($campsiteCodes);
+        $expected = $this->mockCampsites($expectedCodes);
         
         
         $service = new ClosestCampsitesService();
@@ -85,7 +85,7 @@ class ClosestCampsitesServiceTest extends TestCase
             ];
     }
 
-    protected function toCampsitesArray(array $codes ): array {
+    protected function mockCampsites(array $codes ): array {
         $campsites = [];
         foreach ($codes as $code) {
             $campsites [] = (new Campsite())->setLatitude($code[0])->setLongitude($code[1]);

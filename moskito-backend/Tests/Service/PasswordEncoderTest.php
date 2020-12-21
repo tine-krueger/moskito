@@ -7,18 +7,18 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Service\PasswordEncoder;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class PasswordEncoderTest extends TestCase 
 {   
-    private $prophet;
-
+    use ProphecyTrait;
 
     /**
      * @dataProvider passwords
      */
     public function testPasswordEncoder(string $password, string $excepted) {
        
-        $mockEncoder = $this->prophet->prophesize(UserPasswordEncoderInterface::class);
+        $mockEncoder = $this->prophesize(UserPasswordEncoderInterface::class);
         $user = new User();
 
         $mockEncoder->encodePassword($user, $password)->willReturn($excepted);
@@ -34,11 +34,4 @@ class PasswordEncoderTest extends TestCase
             ['qwertz', 'symbolscode'],
         ];
     }
-
-    protected function setUp(): void {
-        $this->prophet = new \Prophecy\Prophet;
-    }
-
-    
-
 }

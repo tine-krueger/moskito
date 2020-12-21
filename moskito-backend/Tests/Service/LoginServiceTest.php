@@ -8,10 +8,11 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Repository\UserRepository;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class LoginServiceTest extends TestCase 
 {   
-    private $prophet;
+    use ProphecyTrait;
 
     /**
      * @dataProvider loginData
@@ -84,34 +85,47 @@ class LoginServiceTest extends TestCase
         ];
     }
 
-    
-    protected function setUp(): void {
-        $this->prophet = new \Prophecy\Prophet;
+    private function innerFunctionSetUp(array $loginData, array $userData): array {
+        $databaseMock = $this->usersDatabaseMock($userData);
+        $userMock = $this->mockUser($databaseMock, $loginData);
+        $isUserMockValid = $this->validateMock($userMock, $loginData);
+
+        $mockRepo = $this->prophesize(UserRepository::class);
+        $mockRepo->findOneBy(Argument::any())->willReturn($userMock);
+
+        $mockEncoder = $this->prophesize(UserPasswordEncoderInterface::class);
+        $mockEncoder->isPasswordValid(Argument::cetera())->willReturn($isUserMockValid);
+
+        $service = new LoginService($mockEncoder->reveal(), $mockRepo->reveal());
+        
+        return $service->login($loginData[0], $loginData[1]);
     }
 
-    private function innerFunctionSetUp(array $loginData, array $userData) {
+    protected function usersDatabaseMock(array $userData): array 
+    {
         $users = [];
         foreach ( $userData as $user ) {
             $users[] = (new User())->setEmail($user[0])->setPassword($user[1]);
         }
-        $mockUser = null;
-        foreach ($users as $user) {
-            $user->getEmail() === $loginData[0] && $mockUser = $user;
+        return $users;
+    }
+
+    protected function mockUser(array $databaseMock, array $loginData): ?User 
+    {
+        $userMock = null;
+        foreach ($databaseMock as $user) {
+            $user->getEmail() === $loginData[0] && $userMock = $user;
         }
+        return $userMock;
+    }
 
-        $mockIsValid = false;
-        if ($mockUser !== null ) {
-            $mockUser->getPassword() === $loginData[1] && $mockIsValid = true;
+    protected function validateMock( ?User $userMock, array $loginData): bool
+    {
+        $isMockValid = false;
+        if ($userMock !== null ) {
+            $userMock->getPassword() === $loginData[1] && $isMockValid = true;
         }
-
-        $mockRepo = $this->prophet->prophesize(UserRepository::class);
-        $mockRepo->findOneBy(Argument::any())->willReturn($mockUser);
-
-        $mockEncoder = $this->prophet->prophesize(UserPasswordEncoderInterface::class);
-        $mockEncoder->isPasswordValid(Argument::cetera())->willReturn($mockIsValid);
-
-        $service = new LoginService($mockEncoder->reveal(), $mockRepo->reveal());
-        return $service->login($loginData[0], $loginData[1]);
+        return $isMockValid;
     }
 
 }

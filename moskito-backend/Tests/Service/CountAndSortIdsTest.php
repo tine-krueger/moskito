@@ -13,12 +13,9 @@ class CountAndSortIdsTest extends TestCase
      * @dataProvider filteredIds
      */
     public function testCountAndSortCampsiteIds(array $filteredIds, array $expectedSortedIds): void {
-        $filteredCampsites = [];
-        foreach ($filteredIds as $id) {
-            $filteredCampsites [] = (new Campsite())->setId($id);
-        }
-
+        $filteredCampsites = $this->mockCampsite($filteredIds);
         $expected = $expectedSortedIds;
+
         $service = new CountAndSortIds();
         $actual = $service->countAndSortCampsiteIds($filteredCampsites);
 
@@ -34,8 +31,13 @@ class CountAndSortIdsTest extends TestCase
         ];
     }
 
+    protected function mockCampsite(array $filteredIds): array {
+        $filteredCampsites = [];
+        foreach ($filteredIds as $id) {
+            $filteredCampsites [] = (new Campsite())->setId($id);
+        }
 
-
-
+        return $filteredCampsites;
+    }
 }
 

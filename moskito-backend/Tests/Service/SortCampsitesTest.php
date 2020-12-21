@@ -7,10 +7,11 @@ use App\Service\SortCampsites;
 use App\Repository\CampsiteRepository;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class SortCampsitesTest extends TestCase 
 {   
-    private $prophet;
+    use ProphecyTrait;
 
     /**
      * @dataProvider arraysForInputAndExcepted
@@ -44,19 +45,16 @@ class SortCampsitesTest extends TestCase
         ];
     } 
 
-    protected function setUp(): void {
-        $this->prophet = new \Prophecy\Prophet;
-    }
-
     protected function innerFunctionSetUp(array $idsArray, array $idsForExpected): array {
         $expected = $this->getArrayFromId($idsForExpected);
-        $mockReturn = $this->getArrayFromOfObjectsId($idsArray);
+        $mockReturn = $this->getArrayFromObjectsId($idsArray);
     
-        $mockRepository = $this->prophet->prophesize(CampsiteRepository::class);
+        $mockRepository = $this->prophesize(CampsiteRepository::class);
         $mockRepository->findBy(Argument::any())->willReturn(...$mockReturn);
 
         $service = new SortCampsites($mockRepository->reveal());
         $actual = $service->sortCampsitesByIds($idsArray);
+        
         return [ 'actual' => $actual, 'expected' => $expected];
     } 
 
@@ -68,14 +66,10 @@ class SortCampsitesTest extends TestCase
         return $campsites;
     }  
 
-    protected function getArrayFromOfObjectsId(array $ids): array {
+    protected function getArrayFromObjectsId(array $ids): array {
         $campsites = [];
         foreach ($ids as $id) {
-            if ($id === null ) { 
-                $campsites [] = null ;
-            } else {
-                $campsites []= [(new Campsite())->setId($id)];
-            }
+            $campsites[] = $id ? [(new Campsite())->setId($id)] : null; 
         }
         return $campsites;
     }

@@ -20,7 +20,6 @@ class UserController extends AbstractController
      */
     public function index( Request $request, UserRepository $userRepository, UserSerializer $serializer, AuthenticationService $authentication ): JsonResponse
     {
-
         if (!$authentication->isValid($request)) {
             return $this->json(['error' => 'Not authorized'], JsonResponse::HTTP_UNAUTHORIZED);
         }
@@ -57,7 +56,6 @@ class UserController extends AbstractController
 
             $errors = (array)  $validator->validate($newUser);
             
-            var_dump($errors); die;
             if (count($errors) > 0) {
                 return new JsonResponse($violationsSerializer->serialize($errors), JsonResponse::HTTP_BAD_REQUEST, [], true );
             } 
