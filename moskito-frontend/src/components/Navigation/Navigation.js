@@ -53,7 +53,7 @@ const NavListItem = styled.li`
     text-align: center;
     border-radius: 10px;
     box-shadow: 2px 4px 8px -4px rgba(0, 0, 0, 0.6), 
-                -2px -2px 2px 0px rgba(255, 255, 255, 0.5);
+                -1px -1px 2px 0px rgba(255, 255, 255, 0.5);
     width: 2.3em;
     height: 2.3em;
     display: flex;
