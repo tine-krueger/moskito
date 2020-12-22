@@ -9,6 +9,7 @@ import useCampsites from './hooks/useCampsites'
 import PrivateRoute from './PrivateRoute'
 import { AuthContext } from './context/auth'
 import Register from './pages/Register'
+import ScrolltoTop from './services/scrollToTop'
 
 export default function App() {
   const { errors, campsites, getCampsites} = useCampsites()
@@ -17,6 +18,7 @@ export default function App() {
   return (
     <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens, deleteTokens, getToken}}>
       <Router>
+        <ScrolltoTop/>
         <Switch>
           <Route exact path="/">
             <Landing/>
