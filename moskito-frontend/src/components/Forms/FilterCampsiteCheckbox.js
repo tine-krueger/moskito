@@ -49,7 +49,7 @@ const Feature = styled.div `
 
     p {
         margin: 0;
-        padding-left: 2.5em;
+        padding: .1em 0 0 2.5em;
         font-size: 1.1em;
     }
 

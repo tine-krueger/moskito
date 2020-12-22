@@ -54,8 +54,8 @@ const NavListItem = styled.li`
     border-radius: 10px;
     box-shadow: 2px 4px 8px -4px rgba(0, 0, 0, 0.6), 
                 -2px -2px 2px 0px rgba(255, 255, 255, 0.5);
-    width: 3em;
-    height: 3em;
+    width: 2.3em;
+    height: 2.3em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,13 +65,13 @@ const NavListItem = styled.li`
         border: none;
     }
     a svg, button svg {
-        width: 2em;
-        height: 2em;
+        width: 1.5em;
+        height: 1.5em;
         stroke: #c97f63;
     }
     button svg{
-        width: 2.3em;
-        height: 2.3em;
+        width: 1.7em;
+        height: 1.7em;
     }
 
     &:hover,

@@ -7,9 +7,11 @@ import Logo from "../components/Logo/Logo";
 export default function Landing() {
 
     return (
-        <>
-            <Logo/>
-            <FrontHeadline>Camping back to the roots</FrontHeadline>
+        <FrontGrid>
+            <div>
+                <Logo/>
+                <FrontHeadline>Camping back to the roots</FrontHeadline>
+            </div>
             <UserButtons>
                 <Link to={'/login'}>
                     <Button>Login </Button> 
@@ -18,14 +20,22 @@ export default function Landing() {
                     <Button>SignUp </Button>
                 </Link>    
             </UserButtons>
-        </>
+        </FrontGrid>
     )
 }
 
-const UserButtons = styled.div`
+const FrontGrid = styled.div`
     display: grid;
-    justify-items: center;
-    margin-top: 4em;
+    grid-template-rows: 2fr 3fr;
+
+
+`
+
+const UserButtons = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     Button {
         margin: .5em;
         width: 10em;

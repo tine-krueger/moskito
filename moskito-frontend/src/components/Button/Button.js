@@ -26,7 +26,7 @@ const ButtonStyled = styled.button`
                 -2px -2px 2px 0px rgba(255,255,255,0.5);
     color: #476c85;
     text-transform: uppercase;
-    margin: 3em auto;
+    margin: 1em auto 3em auto;
 
     &:hover{
         background: linear-gradient(145deg, #A2B2B0, #E2FAF6);

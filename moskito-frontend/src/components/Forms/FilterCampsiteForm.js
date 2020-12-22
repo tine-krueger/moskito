@@ -61,7 +61,7 @@ export default function FilterCampsiteForm({getCampsites}) {
         })
         .catch(() => 
             setSuggestions([
-                { label: 'Ortsuche momentan nicht verfügbar! Bitte versuche es später noch einmal.'}
+                { label: 'Ortsuc zu ungenau. Gib zusätzlich eine PLZ ein oder versuche es zu einem späteren Zeitpunkt nocheinmal.'}
             ]));
         setSuggestions([])
     }
@@ -85,7 +85,7 @@ export default function FilterCampsiteForm({getCampsites}) {
 const FilterCampsite = styled.form `
     max-width: 500px;
     display: grid;
-    margin:2em 2em 5em 2em;
+    margin:2em 2em 3em 2em;
 
     h4 {
         padding-left: .5em;
