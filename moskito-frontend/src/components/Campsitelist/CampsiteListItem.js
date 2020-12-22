@@ -49,7 +49,6 @@ const CampItem = styled.div`
 `
 const Address = styled.div `
     margin-left: .5em;
-    margin-top: 2.5em;
 `
 
 const Contact = styled.div`

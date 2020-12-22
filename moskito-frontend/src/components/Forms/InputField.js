@@ -24,7 +24,7 @@ const Label = styled.label `
     width: 100%;
     text-align: center;
     margin: 0 auto 2em;
-    margin-bottom: ${(props) => props.lessMargin === 'sm' ? '.5em' : '2em'};
+    margin-bottom: ${(props) => props.lessMargin === 'sm' ? '.5em' : '1em'};
     h3 {
         text-align: left;
         padding-left: .5em;
