@@ -8,7 +8,7 @@ export default function Suggestions({suggestions, onClick}) {
     )
 }
 const ListStyled = styled.ul`
-    margin-top: -1.7em;
+    margin-top: -1em;
     padding: 0.5em 1em;
     list-style: none;
     padding-left: 0;
