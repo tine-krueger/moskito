@@ -9,8 +9,8 @@
 /coverage
 
 # production
-# /build
-# /build/.htaccess
+/build
+/build/.htaccess
 
 
 # misc
@@ -20,7 +20,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
-# .env.production
+.env.production
 .env.prodution.bcp
 
 npm-debug.log*
