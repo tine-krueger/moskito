@@ -33,14 +33,14 @@ export default function Navigation() {
 }
 
 const Navbar = styled.nav`
-    width: 100vw;
-    background-color: #c2d6d3;
+    margin: 0 auto;
+    max-width: 500px;
+    background-color: var(--background);
     position: fixed;
     bottom: 0;
     left: 0;
-    box-shadow: 2px 4px 8px -4px rgba(0, 0, 0, 0.6), 
-    -2px -2px 2px 0px rgba(255, 255, 255, 0.5);
-
+    right: 0;
+    box-shadow: 2px 4px 8px -4px rgba(0,0,0,0.6), -2px -2px 2px 0px rgba(255,255,255,0.5);
 `
 
 const NavList = styled.ul`
@@ -61,13 +61,17 @@ const NavListItem = styled.li`
     align-items: center;
 
     button{
-        background-color: #c2d6d3;
+        background-color: transparent;
         border: none;
+        
+    }
+    button:hover {
+        outline: none;
     }
     a svg, button svg {
         width: 1.5em;
         height: 1.5em;
-        stroke: #c97f63;
+        stroke: var(--link);
     }
     button svg{
         width: 1.7em;
@@ -77,9 +81,8 @@ const NavListItem = styled.li`
     &:hover,
     &:active,
     &:focus {
-        background: linear-gradient(145deg, #A2B2B0, #E2FAF6);
-        box-shadow: 2px 4px 8px -4px rgba(0,0,0,0.6), 
-                -2px -2px 2px 0px rgba(255,255,255,0.5);
+        box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2), 
+                inset -3px -4px 6px 0 rgba(255,255,255,0.3);
         outline: none;
     }
 ` 

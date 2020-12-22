@@ -9,9 +9,7 @@
 /coverage
 
 # production
-# /build
-# /build/.htaccess
-
+/build
 
 # misc
 .DS_Store
@@ -20,7 +18,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
-# .env.production
+.env.production
 .env.prodution.bcp
 
 npm-debug.log*
