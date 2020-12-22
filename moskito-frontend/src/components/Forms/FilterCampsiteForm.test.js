@@ -3,7 +3,6 @@ import FilterCampsiteForm from './FilterCampsiteForm'
 
 const getCampsitesMock = jest.fn()
 
-
 describe('Filter Campsite Form', () => {
     
     it('displays the dbName as label', () => {
@@ -13,7 +12,5 @@ describe('Filter Campsite Form', () => {
             />
         )
         expect(getByLabelText('kein W-Lan')).toBeInTheDocument()
-    })
-
-    
+    }) 
 })
