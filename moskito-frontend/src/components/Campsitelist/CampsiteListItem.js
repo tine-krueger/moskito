@@ -11,7 +11,6 @@ CampsiteListItem.propTypes = {
 }
 
 export default function CampsiteListItem({campsite}) {
-    
     return (
         <CampItem>
             <h2>{campsite.name}</h2>

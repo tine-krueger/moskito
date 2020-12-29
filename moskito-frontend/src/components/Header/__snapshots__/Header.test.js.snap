@@ -3,7 +3,7 @@
 exports[`Header renders correctly 1`] = `
 .c0 {
   width: 80%;
-  margin: 1em auto;
+  margin: 2em auto 3em;
   padding: .25em .5em;
   border-radius: 20px;
   text-align: center;
