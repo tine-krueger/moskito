@@ -43,8 +43,8 @@ export default function SignUpForm() {
 
             {!isPasswordEqual && <RedParagraph>Die Passwörter stimmen nicht überein!</RedParagraph>}
             
-            <InputField type={'password'} name='password' value={fields.password} onChange={handleChange} placeholder={'Password'} marginBottom={'sm'}/>
-            <InputField type={'password'} name='passwordControl' value={fields.passwordControl} onChange={handleChange} placeholder={'Password'}/>
+            <InputField type={'password'} name='password' value={fields.password} onChange={handleChange} placeholder={'Passwort'} marginBottom={'sm'}/>
+            <InputField type={'password'} name='passwordControl' value={fields.passwordControl} onChange={handleChange} placeholder={'Passwort Wiederholung'}/>
             <ButtonBackGroup text1={'SignIn'} text2={'Zurück'} onClick={handleClick}/>
         </SigninFormStyled>
     )
