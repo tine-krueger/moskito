@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputField renders correctly 1`] = `
+.c0 {
+  grid-column: 1 / -1;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto 2em;
+  margin-bottom: 1em;
+}
+
+.c0 h3 {
+  text-align: left;
+  padding-left: .5em;
+  margin: 0 0 1em;
+}
+
+.c0 input {
+  width: 100%;
+  padding: 1em;
+  height: 3em;
+  font-size: 1em;
+  border: none;
+  border-radius: 10px;
+  color: #6b717e;
+  background-color: #d8e6e4;
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3);
+}
+
+.c0 input:focus {
+  outline: none;
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3),0 0 0px 1.7px #d3a392;
+}
+
+<div>
+  <label
+    class="c0"
+    data-testid="input-field"
+  >
+    <h3>
+      Address
+    </h3>
+    <input
+      name="address"
+      placeholder="name of street"
+      type="text"
+      value="anystreet"
+    />
+  </label>
+</div>
+`;

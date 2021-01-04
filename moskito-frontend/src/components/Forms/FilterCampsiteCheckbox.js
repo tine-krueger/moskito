@@ -15,6 +15,7 @@ export default function FilterCampsiteCheckbox({feature, filter, setFilter}) {
                 type="checkbox"
                 defaultChecked={feature.isFeature}
                 onChange={handleCheckboxChange}
+                data-testid={feature.dbName}
             />
             <label htmlFor={feature.dbName}>
                 <p>{feature.name}</p>
