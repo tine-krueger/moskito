@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Service;
 
@@ -14,15 +14,16 @@ class SortCampsites {
         $this->campsiteRepository = $campsiteRepository;
     }
 
-    public function sortCampsitesByIds(array $sortedIds):array {
+    public function sortCampsitesByIds(array $sortedIds): array {
         $sortedCampsites = [];
-        foreach($sortedIds as $Id) {
+        foreach($sortedIds as $id) {
             $campsiteObj = $this->campsiteRepository->findBy(
                     [
-                        'id' => $Id
+                        'id' => $id
                     ]
                 );
-            $sortedCampsites[] = $campsiteObj[0];
+
+            $campsiteObj !== null &&  $sortedCampsites[] = $campsiteObj[0];
         }
         return $sortedCampsites;
     }

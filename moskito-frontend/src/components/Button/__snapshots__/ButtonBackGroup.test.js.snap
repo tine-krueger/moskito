@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filter Campsite Checkbox renders correctly 1`] = `
+<div>
+  <div
+    class="ButtonBackGroup__Buttons-yrfass-0 gPvmVA"
+  >
+    <button
+      class="Button__ButtonStyled-sc-1b627y-0 kGytk"
+    >
+      Log in
+    </button>
+    <button
+      class="Button__ButtonStyled-sc-1b627y-0 kGytk"
+    >
+      Zurück
+    </button>
+  </div>
+</div>
+`;
