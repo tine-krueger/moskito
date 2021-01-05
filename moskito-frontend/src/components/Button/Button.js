@@ -29,9 +29,8 @@ const ButtonStyled = styled.button`
     margin: 1em auto 3em auto;
 
     &:hover{
-        background: linear-gradient(145deg, #A2B2B0, #E2FAF6);
-        box-shadow: 2px 4px 8px -4px rgba(0,0,0,0.6), 
-                -2px -2px 2px 0px rgba(255,255,255,0.5);
+        box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2), 
+                inset -3px -4px 6px 0 rgba(255,255,255,0.3);
         outline: none;
     }
 `

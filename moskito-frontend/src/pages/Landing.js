@@ -27,10 +27,7 @@ export default function Landing() {
 const FrontGrid = styled.div`
     display: grid;
     grid-template-rows: 2fr 3fr;
-
-
 `
-
 const UserButtons = styled.div`
     display: flex;
     flex-direction: column;
