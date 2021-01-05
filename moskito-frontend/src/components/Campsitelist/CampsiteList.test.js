@@ -5,6 +5,7 @@ import CampsiteList from './CampsiteList'
 const campsite = [
     {
         id: 1,
+        pinned: false,
         features: []
     }
 ]

@@ -3,6 +3,7 @@ import 'jest-styled-components'
 import CampsiteListItem from './CampsiteListItem'
 
 const campsite = {
+    id: 1,
     name: "Nice Campsite",
     street: "Campsitestreet 1",
     postalCode: "12345",
@@ -10,6 +11,7 @@ const campsite = {
     telephone: "",
     email: "mail@campsiteplace.de",
     web:"",
+    pinned: false,
     features: [
         {
             type: "wlan",

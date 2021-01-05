@@ -5,6 +5,7 @@ import FeatureListItem from './FeatureListItem'
 const feature = {
     type: 'wlan'
 }
+
 describe('Feature List Item', () => {
     it('renders correctly', () => {
         const { container } = render(

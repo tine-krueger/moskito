@@ -7,12 +7,13 @@ InputField.propTypes = {
     value: PropTypes.node,
     onChange: PropTypes.func,
     placeholder: PropTypes.node,
-    children: PropTypes.string
+    children: PropTypes.string,
+    marginBottom: PropTypes.string
 }
 
 export default function InputField({type, name, value, onChange, placeholder, children, marginBottom}) {
     return (
-        <Label lessMargin={marginBottom}>
+        <Label data-testid='input-field' lessMargin={marginBottom}>
             <h3>{children}</h3>
             <input type={type} name={name} value={value} onChange={onChange} placeholder={placeholder} />
         </Label>

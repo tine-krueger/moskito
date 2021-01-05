@@ -61,7 +61,7 @@ export default function FilterCampsiteForm({getCampsites}) {
         })
         .catch(() => 
             setSuggestions([
-                { label: 'Ortsuc zu ungenau. Gib zusätzlich eine PLZ ein oder versuche es zu einem späteren Zeitpunkt nocheinmal.'}
+                { label: 'Ortsuche zu ungenau. Gib zusätzlich eine PLZ ein oder versuche es zu einem späteren Zeitpunkt nocheinmal.'}
             ]));
         setSuggestions([])
     }
