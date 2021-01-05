@@ -7,7 +7,7 @@ Logo.protoTypes = { inputMargin: PropTypes.string }
 
 export default function Logo({inputMargin}) {
     return (
-        <LogoStyled inputMargin={inputMargin}>
+        <LogoStyled data-testid='logo' inputMargin={inputMargin}>
                 <LogoImage src={moskitoLogo} alt="Moskito Logo"/>
         </LogoStyled>
     )

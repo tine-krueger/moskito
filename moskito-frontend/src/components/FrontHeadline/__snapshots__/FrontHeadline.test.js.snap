@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FrontHeadline renders correctly 1`] = `
+.c0 {
+  font-family: 'Hind Madurai';
+  font-size: 1.5em;
+  text-align: center;
+  margin-top: 1em;
+}
+
+<div>
+  <h1
+    class="c0"
+  >
+    Headline
+  </h1>
+</div>
+`;

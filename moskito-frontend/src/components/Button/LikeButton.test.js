@@ -27,7 +27,7 @@ describe ('Like Button', () =>{
         expect(getByTestId('pin')).toHaveStyle('fill: #c97f63')
     })
 
-    it('pin turns transparent, when pinned euqals false', () => {
+    it('pin turns transparent, when pinned equals false', () => {
         const { getByTestId } = render(button)
         expect(getByTestId('pin')).toHaveStyle('fill: #c2d6d3')
     })

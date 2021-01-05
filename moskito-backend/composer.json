@@ -27,7 +27,7 @@
     "require-dev": {
         "phpspec/prophecy-phpunit": "^2.0",
         "phpstan/phpstan": "^0.12.59",
-        "phpunit/phpunit": "^9.5",
+        "phpunit/phpunit": "^9",
         "symfony/maker-bundle": "^1.23"
     },
     "config": {

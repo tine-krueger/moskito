@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Suggestions renders correctly 1`] = `
+.c0 {
+  margin-top: -1em;
+  padding: 0.5em 1em;
+  list-style: none;
+  padding-left: 0;
+  background: #d8e6e4;
+  opacity: .8;
+  border-radius: 10px;
+  box-shadow: inset 2px 1px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,.4);
+}
+
+.c1 {
+  padding: .5em 1em;
+}
+
+.c1:hover,
+.c1:focus,
+.c1:active {
+  color: #d3a392;
+}
+
+<div>
+  <ul
+    class="c0"
+  >
+    <li
+      class="c1"
+    >
+      Berlin
+    </li>
+    <li
+      class="c1"
+    >
+      Hamburg
+    </li>
+    <li
+      class="c1"
+    >
+      Wanne-Eikel
+    </li>
+  </ul>
+</div>
+`;

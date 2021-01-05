@@ -25,8 +25,8 @@ export default function FilterCampsiteForm({getCampsites}) {
 
     return (
         <FilterCampsite onSubmit={handleSubmit}>
-            {errors && <p data-testid={'errors'}>{errors}</p>}
-            <InputField type={'text'} name={'postalCode'} value={fields.postalCode} onChange={handleLocationChange} placeholder={fields.name}>Dein Ziel:</InputField>
+            {errors && <p>{errors}</p>}
+            <InputField data-testid='place' type={'text'} name={'postalCode'} value={fields.postalCode} onChange={handleLocationChange} placeholder={fields.name}>Dein Ziel:</InputField>
             {suggestions.length !== 0 && <Suggestions suggestions={suggestions} onClick={handleClick}/> }
             <InputField type={'number'} name={'distance'} value={fields.distance} onChange={handleChange} placeholder={fields.distance}>Umkreis in km:</InputField>
             <h3>(Keine) Ausstattung:</h3>

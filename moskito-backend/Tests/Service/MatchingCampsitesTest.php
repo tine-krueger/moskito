@@ -24,9 +24,6 @@ class MatchingCampsitesTest
         $campsiteMock = new Campsite();
         $featureMock = (new CampsiteFeature())->setType('wlan')->setValue(true)->setCampsite($campsiteMock);
         
-
-        
-        
         $mockFeatureRepo = $this->prophet->prophesize(CampsiteFeatureRepository::class);
         $mockCampsiteRepo = $this->prophet->prophesize(CampsiteRepository::class);
         $mockFeatureRepo->findBy(Argument::any())->willReturn([$campsiteMock]);

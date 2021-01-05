@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo renders correctly 1`] = `
+.c0 {
+  margin-top: 4em;
+  text-align: center;
+}
+
+.c1 {
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 1em 2em;
+  width: 85%;
+}
+
+<div>
+  <div
+    class="c0"
+    data-testid="logo"
+  >
+    <img
+      alt="Moskito Logo"
+      class="c1"
+      src="moskitoLogo.svg"
+    />
+  </div>
+</div>
+`;

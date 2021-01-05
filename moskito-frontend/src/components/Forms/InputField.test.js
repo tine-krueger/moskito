@@ -44,6 +44,4 @@ describe('InputField', () => {
         const { getByTestId } = render(componentMargin)
         expect(getByTestId('input-field')).toHaveStyle('margin-bottom: .5em')
     })
-
-
 })
