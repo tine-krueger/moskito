@@ -5,7 +5,7 @@ import SignUpForm from "../components/Forms/SignUpForm"
 export default function Register() {
     return (
         <>
-            <Logo inputMargin={'3.5em'}/>
+            <Logo inputMargin={'1.5em'}/>
             <FrontHeadline>Sign Up</FrontHeadline>
             <SignUpForm />
         </>

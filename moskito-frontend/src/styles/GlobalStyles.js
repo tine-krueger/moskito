@@ -27,6 +27,14 @@ export default createGlobalStyle`
         font-style: normal;
     } 
 
+    :root {
+        --background: #c2d6d3;
+        --background-light: #d8e6e4;
+        --paragraph: #6b717e;
+        --link: #c97f63;
+        --link-hover: #d3a392;
+    }
+
     * {
         box-sizing: border-box;
     }   
@@ -36,10 +44,17 @@ export default createGlobalStyle`
         padding: 0;
         font-family: 'Hind Madurai';
         font-size: 16px;
-        color: #6b717e;
-        background-color: #c2d6d3;
+        color: var(--paragraph);
+        background-color: var(--background-light);
         max-width: 500px;
         
+    }
+
+    #root {
+        background-color: var(--background);
+        min-height: 100vh;
+        padding: 2em 0;
+        box-shadow: 2px 4px 8px -4px rgba(0,0,0,0.6), -2px -2px 2px 0px rgba(255,255,255,0.5);
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -64,12 +79,12 @@ export default createGlobalStyle`
     }
 
     a {
-        color: #c97f63;
+        color: var(--link);
         text-decoration: none;
     }
 
     a:hover {
-        color: #d3a392;
+        color: var(--link-hover);
     }
 
     textarea,
