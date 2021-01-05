@@ -1,23 +1,16 @@
 import styled from 'styled-components/macro'
 import { AiFillPushpin } from 'react-icons/ai'
 import PropTypes from 'prop-types'
-import { bookmark } from '../../services/handleBookmarkApi'
-import { useState } from 'react'
 
 LikeButton.propTypes = {
-    id: PropTypes.number.isRequired ,
-    isPinned: PropTypes.bool.isRequired
+    isPinned: PropTypes.bool.isRequired,
+    onClick: PropTypes.func.isRequired
 }
 
-export default function LikeButton({isPinned, id}) {
-    const [ pinned, setPinned ] = useState(isPinned)
+export default function LikeButton({isPinned, onClick}) {
     
-    return <CampsiteLikeButton data-testid='like-button' pinned={pinned} onClick={handleClick}><AiFillPushpin data-testid='pin'/></CampsiteLikeButton>
+    return <CampsiteLikeButton data-testid='like-button' pinned={isPinned} onClick={onClick}><AiFillPushpin data-testid='pin'/></CampsiteLikeButton>
 
-    function handleClick() {
-        setPinned(!pinned)
-        bookmark(id)
-    }
 }
 
 const CampsiteLikeButton = styled.div`

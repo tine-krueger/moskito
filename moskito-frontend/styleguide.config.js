@@ -3,9 +3,10 @@ const path = require('path')
 module.exports = {
   ignore: ['**/App.js', '**/*.test.js', '**/styles/GlobalStyles.js'],
   defaultExample: false,
+  skipComponentsWithoutExample: true,
   exampleMode: 'expand',
   usageMode: 'expand',
-  components: ['src/Components/**/[A-Z]*.js'],
+  components: ['src/components/**/[A-Z]*.js'],
   theme: {
     color: {
       baseBackground: '#c2d6d3',
