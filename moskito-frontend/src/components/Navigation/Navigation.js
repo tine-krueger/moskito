@@ -14,7 +14,7 @@ export default function Navigation() {
                 <NavListItem>
                     <Link to="/find-campsite"><AiOutlineSearch /></Link>
                 </NavListItem>
-                <NavListItem>
+                <NavListItem data-testid='bookmarks'>
                     <Link to="/bookmarks"><AiFillPushpin /></Link>
                 </NavListItem>
                 <NavListItem>

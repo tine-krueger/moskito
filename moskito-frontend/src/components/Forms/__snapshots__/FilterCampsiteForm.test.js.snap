@@ -1,0 +1,429 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filter Campsite Form renders correctly 1`] = `
+.c3 {
+  position: relative;
+  height: 2.5em;
+  margin-bottom: .75em;
+}
+
+.c3 input[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+  visibility: hidden;
+}
+
+.c3 p {
+  margin: 0;
+  padding: .1em 0 0 2.5em;
+  font-size: 1.1em;
+}
+
+.c3 p::before {
+  content: " ";
+  display: inline-block;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: 0;
+  top: 0;
+  -webkit-transition: all .2s ease;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  border-radius: 5px;
+  background-color: #d8e6e4;
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3);
+}
+
+.c3 p::after {
+  content: " ";
+  width: 14px;
+  height: 14px;
+  top: 6px;
+  position: absolute;
+  opacity: 0;
+  background-color: #c97f63;
+  font-weight: 900;
+  border-radius: 2px;
+  display: inline-block;
+  left: 6px;
+}
+
+.c3 input[type="checkbox"]:checked+label>p::after {
+  opacity: 1;
+}
+
+.c3 input[type="checkbox"]:checked+label>p::before {
+  box-shadow: inset 5px 5px 3px -3px rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,.9);
+}
+
+.c4 {
+  padding: 1em 2em;
+  font-family: 'Arvo';
+  font-size: 1.1rem;
+  border-radius: 10px;
+  width: auto;
+  border: none;
+  background: #c2d6d3;
+  box-shadow: 2px 4px 8px -4px rgba(0,0,0,0.6),-2px -2px 2px 0px rgba(255,255,255,0.5);
+  color: #476c85;
+  text-transform: uppercase;
+  margin: 1em auto 3em auto;
+}
+
+.c4:hover {
+  background: linear-gradient(145deg,#A2B2B0,#E2FAF6);
+  box-shadow: 2px 4px 8px -4px rgba(0,0,0,0.6),-2px -2px 2px 0px rgba(255,255,255,0.5);
+  outline: none;
+}
+
+.c1 {
+  grid-column: 1 / -1;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto 2em;
+  margin-bottom: 1em;
+}
+
+.c1 h3 {
+  text-align: left;
+  padding-left: .5em;
+  margin: 0 0 1em;
+}
+
+.c1 input {
+  width: 100%;
+  padding: 1em;
+  height: 3em;
+  font-size: 1em;
+  border: none;
+  border-radius: 10px;
+  color: #6b717e;
+  background-color: #d8e6e4;
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3);
+}
+
+.c1 input:focus {
+  outline: none;
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3),0 0 0px 1.7px #d3a392;
+}
+
+.c0 {
+  max-width: 500px;
+  display: grid;
+  margin: 2em 2em 3em 2em;
+}
+
+.c0 h4 {
+  padding-left: .5em;
+  margin: 0 0 1em;
+}
+
+.c2 {
+  margin-top: 1em;
+  padding-left: .5em;
+}
+
+<div>
+  <form
+    class="c0"
+  >
+    <label
+      class="c1"
+      data-testid="input-field"
+    >
+      <h3>
+        Dein Ziel:
+      </h3>
+      <input
+        name="postalCode"
+        placeholder="PLZ/Ort"
+        type="text"
+        value=""
+      />
+    </label>
+    <label
+      class="c1"
+      data-testid="input-field"
+    >
+      <h3>
+        Umkreis in km:
+      </h3>
+      <input
+        name="distance"
+        placeholder="100"
+        type="number"
+        value="100"
+      />
+    </label>
+    <h3>
+      (Keine) Ausstattung:
+    </h3>
+    <div
+      class="c2"
+    >
+      <div
+        class="c3"
+      >
+        <input
+          data-testid="wlan"
+          id="wlan"
+          type="checkbox"
+        />
+        <label
+          for="wlan"
+        >
+          <p>
+            kein W-Lan
+          </p>
+        </label>
+      </div>
+      <div
+        class="c3"
+      >
+        <input
+          data-testid="music"
+          id="music"
+          type="checkbox"
+        />
+        <label
+          for="music"
+        >
+          <p>
+            keine Bar/Diskothek
+          </p>
+        </label>
+      </div>
+      <div
+        class="c3"
+      >
+        <input
+          data-testid="animation"
+          id="animation"
+          type="checkbox"
+        />
+        <label
+          for="animation"
+        >
+          <p>
+            keine Animation
+          </p>
+        </label>
+      </div>
+      <div
+        class="c3"
+      >
+        <input
+          data-testid="fire"
+          id="fire"
+          type="checkbox"
+        />
+        <label
+          for="fire"
+        >
+          <p>
+            Lagerfeuerstelle
+          </p>
+        </label>
+      </div>
+      <div
+        class="c3"
+      >
+        <input
+          data-testid="path"
+          id="path"
+          type="checkbox"
+        />
+        <label
+          for="path"
+        >
+          <p>
+            Kies- oder Sandwege
+          </p>
+        </label>
+      </div>
+      <div
+        class="c3"
+      >
+        <input
+          data-testid="bulli"
+          id="bulli"
+          type="checkbox"
+        />
+        <label
+          for="bulli"
+        >
+          <p>
+            Bulli-Wiese
+          </p>
+        </label>
+      </div>
+      <div
+        class="c3"
+      >
+        <input
+          data-testid="tents"
+          id="tents"
+          type="checkbox"
+        />
+        <label
+          for="tents"
+        >
+          <p>
+            Zeltbereiche
+          </p>
+        </label>
+      </div>
+      <div
+        class="c3"
+      >
+        <input
+          data-testid="subdevision"
+          id="subdevision"
+          type="checkbox"
+        />
+        <label
+          for="subdevision"
+        >
+          <p>
+            keine Parzellierung
+          </p>
+        </label>
+      </div>
+      <div
+        class="c3"
+      >
+        <input
+          data-testid="permanent"
+          id="permanent"
+          type="checkbox"
+        />
+        <label
+          for="permanent"
+        >
+          <p>
+            wenig/keine Dauercamper
+          </p>
+        </label>
+      </div>
+      <div
+        class="c3"
+      >
+        <input
+          data-testid="size"
+          id="size"
+          type="checkbox"
+        />
+        <label
+          for="size"
+        >
+          <p>
+            mind. 80qm Standfläche
+          </p>
+        </label>
+      </div>
+      <div
+        class="c3"
+      >
+        <input
+          data-testid="bio"
+          id="bio"
+          type="checkbox"
+        />
+        <label
+          for="bio"
+        >
+          <p>
+            Bio/Regionale Lebensmittel
+          </p>
+        </label>
+      </div>
+      <div
+        class="c3"
+      >
+        <input
+          data-testid="snack"
+          id="snack"
+          type="checkbox"
+        />
+        <label
+          for="snack"
+        >
+          <p>
+            Imbiss
+          </p>
+        </label>
+      </div>
+      <div
+        class="c3"
+      >
+        <input
+          data-testid="animals"
+          id="animals"
+          type="checkbox"
+        />
+        <label
+          for="animals"
+        >
+          <p>
+            Hunde erlaubt
+          </p>
+        </label>
+      </div>
+      <div
+        class="c3"
+      >
+        <input
+          data-testid="seaside"
+          id="seaside"
+          type="checkbox"
+        />
+        <label
+          for="seaside"
+        >
+          <p>
+            Zugang zum See/Meer
+          </p>
+        </label>
+      </div>
+      <div
+        class="c3"
+      >
+        <input
+          data-testid="bathing"
+          id="bathing"
+          type="checkbox"
+        />
+        <label
+          for="bathing"
+        >
+          <p>
+            Badestelle für Kinder
+          </p>
+        </label>
+      </div>
+      <div
+        class="c3"
+      >
+        <input
+          data-testid="forest"
+          id="forest"
+          type="checkbox"
+        />
+        <label
+          for="forest"
+        >
+          <p>
+            mit Wald
+          </p>
+        </label>
+      </div>
+    </div>
+    <button
+      class="c4"
+    >
+      Campingplätze finden
+    </button>
+  </form>
+</div>
+`;

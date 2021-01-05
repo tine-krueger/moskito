@@ -30,6 +30,5 @@ describe('Suggestions', () => {
         expect(onClick).toBeCalledWith({label: "Berlin"})
         expect(onClick).not.toBeCalledWith({label: "Wanne-Eikel"})
     })
-   
 
 })
