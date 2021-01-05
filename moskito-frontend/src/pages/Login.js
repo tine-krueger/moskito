@@ -6,7 +6,7 @@ export default function Login() {
 
     return (
         <>
-            <Logo inputMargin={'1.5em'}/>
+            <Logo inputPadding={'1.5em'}/>
             <FrontHeadline>Login</FrontHeadline>
             <LoginForm />
         </>
