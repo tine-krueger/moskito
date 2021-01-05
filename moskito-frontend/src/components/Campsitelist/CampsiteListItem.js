@@ -4,6 +4,8 @@ import { ImPhone, ImEnvelop } from 'react-icons/im'
 import FeatureListItem from './FeatureListItem'
 import LikeButton from '../Button/LikeButton'
 import { filterFeatures }from '../../services/featureService'
+import { bookmark } from '../../services/handleBookmarkApi'
+import { useState } from 'react'
 
 
 CampsiteListItem.propTypes = {
@@ -11,6 +13,7 @@ CampsiteListItem.propTypes = {
 }
 
 export default function CampsiteListItem({campsite}) {
+    const [ pinned, setPinned ] = useState(campsite.pinned)
     return (
         <CampItem>
             <h2>{campsite.name}</h2>
@@ -25,9 +28,14 @@ export default function CampsiteListItem({campsite}) {
             <FeatureList>
                 {filterFeatures(campsite).map(feature => <FeatureListItem key={feature.id} feature={feature}/>)}
             </FeatureList>
-            <LikeButton isPinned={campsite.pinned} id={campsite.id}/>
+            <LikeButton isPinned={pinned} id={campsite.id} onClick={handleClick} />
         </CampItem>
     )
+
+    function handleClick() {
+        setPinned(!pinned)
+        bookmark(campsite.id)
+    }
 
 }
 
