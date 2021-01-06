@@ -168,7 +168,7 @@ exports[`Sign Up Form renders correctly 1`] = `
       <button
         class="c4"
       >
-        SignIn
+        SignUp
       </button>
       <button
         class="c4"

@@ -1,17 +1,17 @@
 import { useState } from 'react'
-import { useAuth } from "../context/auth"
+import { useAuth } from '../context/auth'
 import { signUserIn } from "../services/handleUserApi"
 
-export default function useUserAccess(inputs) {
+export default function useUserAccess() {
     const { setAuthTokens, getToken } = useAuth()
     const [ isRegistered, setIsRegistered ] = useState(false)
     const [ isLoggedIn, setLoggedIn ] = useState(false)
     const [ isError, setIsError ] = useState(false)
-    const [ errors, setErrors ] = useState()
+    const [ loginErrors, setErrors ] = useState()
 
-    return { isRegistered, isLoggedIn, isError, errors, userLogin, userRegistration }
+    return { isRegistered, isLoggedIn, isError, loginErrors, userLogin, userRegistration }
 
-    function userLogin() {
+    function userLogin(inputs) {
         getToken(inputs)
         .then(result => {
             if ( result.validUntil ) {

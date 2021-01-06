@@ -1,11 +1,15 @@
 import styled from 'styled-components/macro'
 import ButtonBackGroup from "../Button/ButtonBackGroup"
 import InputField from './FormElements/InputField'
-import useForm from "../../hooks/useForm"
-import useUserAccess from "../../hooks/useUserAccess"
+import useForm from '../../hooks/useForm'
 import Redirection from './FormElements/Redirection'
 
-export default function SignUpForm() {
+export default function SignUpForm({
+    loginErrors, 
+    isRegistered, 
+    userRegistration
+}) {
+
     const { inputs, isPasswordEqual, handleChange, handleSubmit, handleClick } = useForm({
         firstName: '',
         lastName:'',
@@ -13,12 +17,12 @@ export default function SignUpForm() {
         password:'',
         passwordControl:''
     }, signup)
-    const { errors, isRegistered, userRegistration } = useUserAccess(inputs)
+    
 
     return (
         <SigninFormStyled onSubmit={handleSubmit}>
-            {isRegistered && <Redirection isRegistered={isRegistered}/>}
-            { errors && errors.map((error, index) => <RedParagraph key={index}>{error}</RedParagraph>)}
+            {isRegistered && <Redirection/>}
+            {loginErrors && loginErrors.map((error, index) => <RedParagraph key={index}>{error}</RedParagraph>)}
 
             <InputField type='text' name='firstName' value={inputs.firstName} onChange={handleChange} placeholder={'Vorname'} marginBottom={'sm'}/>
             <InputField type='text' name='lastName' value={inputs.lastName} onChange={handleChange} placeholder={'Nachname'} marginBottom={'sm'}/>
@@ -33,6 +37,7 @@ export default function SignUpForm() {
     )
 
     function signup() {
+        console.log(inputs)
         userRegistration(isPasswordEqual, inputs)
     }
 }

@@ -4,7 +4,7 @@ import Delayed from '../../../hooks/useDelay'
 
 export default function Redirection() {
     return (
-        <RedParagraph>Registrierung erfolgreich, Du wirst zum Login weitergeleitet.
+        <RedParagraph data-testid='redirect'>Registrierung erfolgreich, Du wirst zum Login weitergeleitet.
             <Delayed waitBeforeShow={2500}>
                 <Redirect to="/login"/>
             </Delayed>
