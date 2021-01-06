@@ -12,7 +12,6 @@ export default function LoginForm() {
         password: ''
     }, login)
    
-
     if (isLoggedIn) {
         return <Redirect to="/find-campsite"/>
     }

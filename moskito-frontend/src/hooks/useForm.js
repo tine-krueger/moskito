@@ -1,11 +1,16 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom' 
 
 export default function useForm(initialState, callback) {
     const [ inputs, setInputs ] = useState(initialState)
+    const [ isPasswordEqual, setIsPasswordEqual ] = useState(true)
     const history = useHistory()
 
-    return { inputs, setInputs, handleChange, handleSubmit, handleClick }
+    useEffect(() => {
+        setIsPasswordEqual(inputs.password === inputs.passwordControl)
+    }, [inputs])
+
+    return { inputs, isPasswordEqual, setInputs, handleChange, handleSubmit, handleClick }
     
     function handleChange(event) {
         setInputs({

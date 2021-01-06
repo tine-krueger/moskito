@@ -1,31 +1,20 @@
 import styled from 'styled-components/macro'
-import { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import ButtonBackGroup from "../Button/ButtonBackGroup"
 import InputField from './InputField'
 import Delayed from '../../hooks/useDelay'
 import useForm from "../../hooks/useForm"
-import { signUserIn } from "../../services/handleUserApi"
+import useUserAccess from "../../hooks/useUserAccess"
 
 export default function SignUpForm() {
-    //handle Sumbit
-    const { inputs, handleChange, handleSubmit, handleClick } = useForm({
+    const { inputs, isPasswordEqual, handleChange, handleSubmit, handleClick } = useForm({
         firstName: '',
         lastName:'',
         email:'',
         password:'',
         passwordControl:''
     }, signup)
-
-    const [ isPasswordEqual, setIsPasswordEqual ] = useState(true)
-    const [ isRegistered, setIsRegistered ] = useState(false)
-    const [ errors, setErrors ] = useState()
-
-    useEffect(() => {
-        setIsPasswordEqual(inputs.password === inputs.passwordControl)
-    }, [inputs])
-
-
+    const { errors, isRegistered, userRegistration } = useUserAccess(inputs)
 
     return (
         <SigninFormStyled onSubmit={handleSubmit}>
@@ -51,15 +40,7 @@ export default function SignUpForm() {
     )
 
     function signup() {
-        isPasswordEqual && signUserIn(inputs)
-        .then(result => {
-                if (result.errors) {
-                    setErrors(result.errors)
-                } else { 
-                    setIsRegistered(true)
-                }
-            })
-        .catch(error => console.log('error', error)); 
+        userRegistration(isPasswordEqual, inputs)
     }
 }
 
