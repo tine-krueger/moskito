@@ -1,16 +1,16 @@
 import styled from 'styled-components/macro'
 import { Redirect } from 'react-router-dom'
 import ButtonBackGroup from "../Button/ButtonBackGroup"
-import InputField from './InputField'
+import InputField from './FormElements/InputField'
 import useForm from "../../hooks/useForm"
 import useUserAccess from "../../hooks/useUserAccess"
 
-export default function LoginForm() {
-    const { isLoggedIn, isError, userLogin } = useUserAccess() 
+export default function LoginForm() { 
     const { inputs, handleChange, handleSubmit, handleClick } = useForm({
         email: '',
         password: ''
     }, login)
+    const { isLoggedIn, isError, userLogin } = useUserAccess(inputs)
    
     if (isLoggedIn) {
         return <Redirect to="/find-campsite"/>

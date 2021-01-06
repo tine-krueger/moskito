@@ -1,10 +1,9 @@
 import styled from 'styled-components/macro'
-import { Redirect } from 'react-router-dom'
 import ButtonBackGroup from "../Button/ButtonBackGroup"
-import InputField from './InputField'
-import Delayed from '../../hooks/useDelay'
+import InputField from './FormElements/InputField'
 import useForm from "../../hooks/useForm"
 import useUserAccess from "../../hooks/useUserAccess"
+import Redirection from './FormElements/Redirection'
 
 export default function SignUpForm() {
     const { inputs, isPasswordEqual, handleChange, handleSubmit, handleClick } = useForm({
@@ -18,13 +17,7 @@ export default function SignUpForm() {
 
     return (
         <SigninFormStyled onSubmit={handleSubmit}>
-            {isRegistered && <RedParagraph>Registrierung ergolgreich, Du wirst zum Login weitergeleitet.
-                    <Delayed waitBeforeShow={2500}>
-                        <Redirect to="/login"/>
-                    </Delayed>
-                </RedParagraph>
-            }
-
+            {isRegistered && <Redirection isRegistered={isRegistered}/>}
             { errors && errors.map((error, index) => <RedParagraph key={index}>{error}</RedParagraph>)}
 
             <InputField type='text' name='firstName' value={inputs.firstName} onChange={handleChange} placeholder={'Vorname'} marginBottom={'sm'}/>
@@ -35,7 +28,7 @@ export default function SignUpForm() {
             
             <InputField type={'password'} name='password' value={inputs.password} onChange={handleChange} placeholder={'Passwort'} marginBottom={'sm'}/>
             <InputField type={'password'} name='passwordControl' value={inputs.passwordControl} onChange={handleChange} placeholder={'Passwort Wiederholung'}/>
-            <ButtonBackGroup text1={'SignIn'} text2={'Zurück'} onClick={handleClick}/>
+            <ButtonBackGroup text1={'SignUp'} text2={'Zurück'} onClick={handleClick}/>
         </SigninFormStyled>
     )
 
@@ -50,5 +43,5 @@ const SigninFormStyled = styled.form`
     margin:2em;
 `
 const RedParagraph = styled.p`
-    color: #c97f63;
+    color: var(--link);
 `
