@@ -121,7 +121,7 @@ exports[`LoginForm renders correctly 1`] = `
       <h3 />
       <input
         name="password"
-        placeholder="Password"
+        placeholder="Passwort"
         type="password"
         value=""
       />

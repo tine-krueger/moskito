@@ -4,17 +4,16 @@ import LikeButton from './LikeButton'
 
 const campsite = {
     pinned: false,
-    id: 1
 }
 
 const button = <LikeButton
 isPinned={campsite.pinned}
-id={campsite.id}
+onClick={jest.fn()}
 />
 
 const truthyButton = <LikeButton
 isPinned={!campsite.pinned}
-id={campsite.id}
+onClick={jest.fn()}
 />
 
 describe ('Like Button', () =>{
