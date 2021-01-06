@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import 'jest-styled-components'
 import Redirection from './Redirection'
 import renderWithRouter from '../../../testSetup/setupTests'
@@ -16,7 +16,5 @@ describe('Redirection', () => {
         const { history } = renderWithRouter(<Redirection />)
         await waitFor(() => expect(history.location.pathname).toEqual('/login'), {timeout: 3000})
     })
-
-    
 
 })

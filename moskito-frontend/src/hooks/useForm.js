@@ -10,7 +10,7 @@ export default function useForm(initialState, callback) {
         setIsPasswordEqual(inputs.password === inputs.passwordControl)
     }, [inputs])
 
-    return { inputs, isPasswordEqual, setInputs, handleChange, handleSubmit, handleClick }
+    return { inputs, isPasswordEqual, handleChange, handleSubmit, handleClick }
     
     function handleChange(event) {
         setInputs({

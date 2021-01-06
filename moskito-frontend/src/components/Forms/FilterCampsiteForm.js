@@ -6,10 +6,8 @@ import Feature from './FilterCampsiteCheckbox'
 import Suggestions from './FormElements/Suggestions'
 import Button from '../Button/Button'
 import InputField from './FormElements/InputField'
-import useForm from '../../hooks/useForm'
-import getInitialCampsiteFilter from '../../services/getInitialCampsiteFilter'
-import { getGeocode, autocomplete} from '../../services/getGeocode'
-
+import getInitialCampsiteFilter from '../../services/getInitialCampsiteFilter' // weg
+import useFilterForm from '../../hooks/useFilterForm'
 
 FilterCampsiteForm.propTypes = {
     getCampsites: PropTypes.func.isRequired
@@ -17,9 +15,16 @@ FilterCampsiteForm.propTypes = {
 
 export default function FilterCampsiteForm({getCampsites}) {
     const initialFilter = getInitialCampsiteFilter()
-    const { inputs, setInputs, handleChange, handleSubmit } = useForm(initialFilter, findCampsite) 
+    const {
+        inputs, 
+        suggestions, 
+        handleChange, 
+        handleClick, 
+        handleSubmit, 
+        handleLocationChange,
+        handleCheckboxChange
+    } = useFilterForm(findCampsite)
     const history = useHistory()
-    const [ suggestions, setSuggestions ] = useState([])
     const [ errors, setErrors ] = useState()
 
 
@@ -32,7 +37,7 @@ export default function FilterCampsiteForm({getCampsites}) {
             <h3>(Keine) Ausstattung:</h3>
             <Checkboxes>
                 {initialFilter.features.map(feature => 
-                        <Feature key={feature.id} feature={feature} filter={inputs} setFilter={setInputs} />
+                        <Feature key={feature.id} feature={feature} setFilter={handleCheckboxChange} />
                     )}
             </Checkboxes>  
             <Button>Campingplätze finden</Button>
@@ -42,42 +47,6 @@ export default function FilterCampsiteForm({getCampsites}) {
     function findCampsite(){
         getCampsites(inputs, setErrors)
         history.push('/campsites')
-    }
-
-    function handleClick(suggestion) {
-        const place = suggestion.address.postalCode + " " + suggestion.address.city
-        getGeocode(place)
-        .then(result => {
-            const geocodes = result.Response.View[0].Result[0].Location.DisplayPosition
-            setInputs(
-                {
-                    ...inputs,
-                    latitude: geocodes.Latitude,
-                    longitude: geocodes.Longitude,
-                    postalCode: place
-                }
-            )
-        })
-        .catch(() => 
-            setSuggestions([
-                { label: 'Ortsuche zu ungenau. Gib zusätzlich eine PLZ ein oder versuche es zu einem späteren Zeitpunkt nocheinmal.'}
-            ]));
-        setSuggestions([])
-    }
-
-    function handleLocationChange(event) {
-        setInputs({
-            ...inputs,
-            [event.target.name]: event.target.value
-        })
-        inputs.postalCode.length > 2 ?
-        autocomplete(inputs.postalCode)
-        .then(results => setSuggestions(results.suggestions)) 
-        .catch(() =>
-          setSuggestions([
-            { label: 'Service nicht verfügbar' },
-          ])
-        ) : setSuggestions([])
     }
 }
 
