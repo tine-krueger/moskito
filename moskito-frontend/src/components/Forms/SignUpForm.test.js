@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event'
 import SignUpForm from './SignUpForm'
 import renderWithRouter from '../../testSetup/setupTests'
 
-jest.setTimeout(3000)
+jest.setTimeout(7000)
 
 describe('Sign Up Form', () => {
 
@@ -13,7 +13,7 @@ describe('Sign Up Form', () => {
         expect(container).toMatchSnapshot()
     })
 
-    it('shows password not equal text, if passwords are not the same', () => {
+    it('shows password-not-equal-text, if passwords are not the same', () => {
         const { getByPlaceholderText, queryByText } = render(<SignUpForm />)
         userEvent.type(getByPlaceholderText('Passwort'), 'SavePasswort')
         userEvent.type(getByPlaceholderText('Passwort Wiederholung'), 'UnsavePasswort')
@@ -21,7 +21,7 @@ describe('Sign Up Form', () => {
         expect(queryByText('Die Passwörter stimmen überein!')).not.toBeInTheDocument()
     })
 
-    it('shows no password not equal text, if passwords are the same', () => {
+    it('shows no password-not-equal-text, if passwords are the same', () => {
         const { getByPlaceholderText, queryByText } = render(<SignUpForm />)
         userEvent.type(getByPlaceholderText('Passwort'), 'SavePasswort')
         userEvent.type(getByPlaceholderText('Passwort Wiederholung'), 'SavePasswort')
@@ -49,7 +49,6 @@ describe('Sign Up Form', () => {
         await waitFor(() => expect(history.location.pathname).toEqual('/login'), {timeout: 3000})
     })
 
-    
     it('calls handleSubmit with the right parameters', () => {
         const mockUserRegistration = jest.fn()
         const isPasswordEqual = true
