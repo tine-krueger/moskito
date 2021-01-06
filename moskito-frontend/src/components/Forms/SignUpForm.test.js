@@ -3,8 +3,6 @@ import 'jest-styled-components'
 import userEvent from '@testing-library/user-event'
 import SignUpForm from './SignUpForm'
 
-
-
 describe('Sign Up Form', () => {
 
     it('renders correctly', () => {
@@ -47,6 +45,34 @@ describe('Sign Up Form', () => {
         )
         expect(getByTestId('redirect')).toBeInTheDocument()
         expect(queryByTestId('noredirect')).not.toBeInTheDocument()
+    })
+
+    
+    it('calls handleSubmit with the right parameters', () => {
+        const mockUserRegistration = jest.fn()
+        const isPasswordEqual = true
+        const { getByPlaceholderText, getByText } = render(
+            <SignUpForm 
+                userRegistration={mockUserRegistration}
+            />
+        )
+        userEvent.type(getByPlaceholderText('Vorname'), 'Jane')
+        userEvent.type(getByPlaceholderText('Nachname'), 'Doe')
+        userEvent.type(getByPlaceholderText('E-Mail'), 'jane@doe.de')
+        userEvent.type(getByPlaceholderText('Passwort'), 'qwer12!')
+        userEvent.type(getByPlaceholderText('Passwort Wiederholung'), 'qwer12!')
+        userEvent.click(getByText('SignUp'))
+        
+        expect(mockUserRegistration).toHaveBeenCalled()
+        expect(mockUserRegistration).toHaveBeenCalledWith(
+            isPasswordEqual,
+            {
+                firstName: 'Jane',
+                lastName: 'Doe',
+                email: 'jane@doe.de',
+                password: 'qwer12!',
+                passwordControl: 'qwer12!'
+            })
     })
 
 })

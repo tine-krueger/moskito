@@ -37,7 +37,6 @@ export default function SignUpForm({
     )
 
     function signup() {
-        console.log(inputs)
         userRegistration(isPasswordEqual, inputs)
     }
 }
