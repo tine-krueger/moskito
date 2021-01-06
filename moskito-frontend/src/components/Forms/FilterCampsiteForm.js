@@ -17,7 +17,7 @@ FilterCampsiteForm.propTypes = {
 
 export default function FilterCampsiteForm({getCampsites}) {
     const initialFilter = getInitialCampsiteFilter()
-    const { fields, setValues, handleChange } = useForm(initialFilter) 
+    const { inputs, setInputs, handleChange, handleSubmit } = useForm(initialFilter, findCampsite) 
     const history = useHistory()
     const [ suggestions, setSuggestions ] = useState([])
     const [ errors, setErrors ] = useState()
@@ -26,22 +26,21 @@ export default function FilterCampsiteForm({getCampsites}) {
     return (
         <FilterCampsite onSubmit={handleSubmit}>
             {errors && <p>{errors}</p>}
-            <InputField data-testid='place' type={'text'} name={'postalCode'} value={fields.postalCode} onChange={handleLocationChange} placeholder={fields.name}>Dein Ziel:</InputField>
-            {suggestions.length !== 0 && <Suggestions data-testid='suggestions' suggestions={suggestions} onClick={handleClick}/> }
-            <InputField type={'number'} name={'distance'} value={fields.distance} onChange={handleChange} placeholder={fields.distance}>Umkreis in km:</InputField>
+            <InputField data-testid='place' type={'text'} name={'postalCode'} value={inputs.postalCode} onChange={handleLocationChange} placeholder={inputs.name}>Dein Ziel:</InputField>
+            {suggestions.length !== 0 && <Suggestions data-testid='place' suggestions={suggestions} onClick={handleClick}/> }
+            <InputField type={'number'} name={'distance'} value={inputs.distance} onChange={handleChange} placeholder={inputs.distance}>Umkreis in km:</InputField>
             <h3>(Keine) Ausstattung:</h3>
             <Checkboxes>
                 {initialFilter.features.map(feature => 
-                        <Feature key={feature.id} feature={feature} filter={fields} setFilter={setValues} />
+                        <Feature key={feature.id} feature={feature} filter={inputs} setFilter={setInputs} />
                     )}
             </Checkboxes>  
             <Button>Campingplätze finden</Button>
         </FilterCampsite>
     )
 
-    function handleSubmit(event){
-        event.preventDefault()
-        getCampsites(fields, setErrors)
+    function findCampsite(){
+        getCampsites(inputs, setErrors)
         history.push('/campsites')
     }
 
@@ -50,9 +49,9 @@ export default function FilterCampsiteForm({getCampsites}) {
         getGeocode(place)
         .then(result => {
             const geocodes = result.Response.View[0].Result[0].Location.DisplayPosition
-            setValues(
+            setInputs(
                 {
-                    ...fields,
+                    ...inputs,
                     latitude: geocodes.Latitude,
                     longitude: geocodes.Longitude,
                     postalCode: place
@@ -67,12 +66,12 @@ export default function FilterCampsiteForm({getCampsites}) {
     }
 
     function handleLocationChange(event) {
-        setValues({
-            ...fields,
+        setInputs({
+            ...inputs,
             [event.target.name]: event.target.value
         })
-        fields.postalCode.length > 2 ?
-        autocomplete(fields.postalCode)
+        inputs.postalCode.length > 2 ?
+        autocomplete(inputs.postalCode)
         .then(results => setSuggestions(results.suggestions)) 
         .catch(() =>
           setSuggestions([
