@@ -1,11 +1,9 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import 'jest-styled-components'
 import userEvent from '@testing-library/user-event'
 import LoginForm from './LoginForm'
 import renderWithRouter from '../../testSetup/setupTests'
-
-
 
 describe('LoginForm', () => {
 
@@ -51,7 +49,7 @@ describe('LoginForm', () => {
                 isLoggedIn={mockIsLoggedIn}
             />
         )
-        expect(history.location.pathname).toEqual('/')
+        expect(history.location.pathname).toEqual('/testroute')
     })
 
     it('calls userLogin with the right parameters', () => { 
@@ -71,4 +69,12 @@ describe('LoginForm', () => {
             password: '1234qwer!'
         })
     })
+
+    it('pushes back, when button "Zurück" is clicked', () => {
+        const { history } = renderWithRouter(<LoginForm/>)
+        userEvent.click(screen.getByText('Zurück'))
+        expect(history.location.pathname).toEqual('/')
+        expect(history.location.pathname).not.toEqual('/testroute')
+    })
+
 })

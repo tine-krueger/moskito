@@ -5,7 +5,7 @@ import { createMemoryHistory } from 'history'
 function renderWithRouter(
   ui,
   {
-    route = '/',
+    route = '/testroute',
     history = createMemoryHistory({ initialEntries: [route] }),
   } = {}
 ) {

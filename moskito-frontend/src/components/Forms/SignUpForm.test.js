@@ -1,7 +1,10 @@
-import { render } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import 'jest-styled-components'
 import userEvent from '@testing-library/user-event'
 import SignUpForm from './SignUpForm'
+import renderWithRouter from '../../testSetup/setupTests'
+
+jest.setTimeout(3000)
 
 describe('Sign Up Form', () => {
 
@@ -36,15 +39,14 @@ describe('Sign Up Form', () => {
         expect(getByText('It has more errors')).toBeInTheDocument()
     })
 
-    it('redirects if user is registered', () => {
+    it('shows redirection hint if user registration was successful and redirects after 2.5 seconds', async() => {
         const mockIsRegistered = true
-        const { getByTestId, queryByTestId } = render(
-            <SignUpForm 
-                isRegistered={mockIsRegistered}
-            />
+        const { history } = renderWithRouter(
+            <SignUpForm isRegistered={mockIsRegistered}/>
         )
-        expect(getByTestId('redirect')).toBeInTheDocument()
-        expect(queryByTestId('noredirect')).not.toBeInTheDocument()
+        expect(screen.getByTestId('redirect')).toBeInTheDocument()
+        expect(screen.queryByTestId('noredirect')).not.toBeInTheDocument()
+        await waitFor(() => expect(history.location.pathname).toEqual('/login'), {timeout: 3000})
     })
 
     
@@ -62,7 +64,7 @@ describe('Sign Up Form', () => {
         userEvent.type(getByPlaceholderText('Passwort'), 'qwer12!')
         userEvent.type(getByPlaceholderText('Passwort Wiederholung'), 'qwer12!')
         userEvent.click(getByText('SignUp'))
-        
+
         expect(mockUserRegistration).toHaveBeenCalled()
         expect(mockUserRegistration).toHaveBeenCalledWith(
             isPasswordEqual,
@@ -73,6 +75,13 @@ describe('Sign Up Form', () => {
                 password: 'qwer12!',
                 passwordControl: 'qwer12!'
             })
+    })
+
+    it('pushes back, when button "Zurück" is clicked', () => {
+        const { history } = renderWithRouter(<SignUpForm/>)
+        userEvent.click(screen.getByText('Zurück'))
+        expect(history.location.pathname).toEqual('/')
+        expect(history.location.pathname).not.toEqual('/testroute')
     })
 
 })

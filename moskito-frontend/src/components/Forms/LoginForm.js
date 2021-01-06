@@ -22,7 +22,6 @@ export default function LoginForm(
         return <Redirect data-testId="redirect" to="find-campsite"/>
     }
     
-
     return (
         <LoginFormStyled onSubmit={handleSubmit}>
             {isError && <p>E-Mail oder Password-Eingabe nicht korrekt!</p> }
