@@ -29,7 +29,7 @@ const CampsiteLikeButton = styled.div`
         height: 1.7em;
         stroke: var(--link);
         stroke-width: 3em;
-        fill: ${pops => pops.pinned ? 'var(--link)' : 'var(--background'};
+        fill: ${pops => pops.pinned ? 'var(--link)' : 'var(--background)'};
         align-self: center;
         margin-bottom: 3px;
     }

@@ -1,14 +1,16 @@
 import { render } from '@testing-library/react'
+import 'jest-styled-components'
 import ButtonBackGroup from './ButtonBackGroup'
+import userEvent from '@testing-library/user-event'
 
 const text1 = "Log in"
 const text2 = "Zurück"
-const onClick = jest.fn()
+const mockOnClick = jest.fn()
 
 const component = <ButtonBackGroup
 text1={text1}
 text2={text2}
-onClick={onClick}
+onClick={mockOnClick}
 />
 
 describe('Filter Campsite Checkbox', () => {
@@ -27,6 +29,12 @@ describe('Filter Campsite Checkbox', () => {
         const { queryByText } = render(component)
         expect(queryByText('Log out')).not.toBeInTheDocument()
         expect(queryByText(/Zuruck/i)).not.toBeInTheDocument() 
+    })
+
+    it('calls mockOnClick, when text2-button is clicked', () => {
+        const { getByText } = render(component)
+        userEvent.click(getByText('Zurück'))
+        expect(mockOnClick).toHaveBeenCalledTimes(1)
     })
 
 })

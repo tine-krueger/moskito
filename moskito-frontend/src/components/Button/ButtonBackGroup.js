@@ -5,7 +5,7 @@ export default function ButtonBackGroup({text1, text2, onClick}) {
     return (
         <Buttons>
             <Button >{text1}</Button>
-            <Button type="button" onClick={onClick}>{text2}</Button>
+            <Button data-testid="no-form-button" type="button" onClick={onClick}>{text2}</Button>
         </Buttons>
     )
 }

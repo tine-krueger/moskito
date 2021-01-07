@@ -101,6 +101,3 @@ export default createGlobalStyle`
             -webkit-appearance: none;
         }
 `
-
-
-
