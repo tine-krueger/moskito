@@ -11,6 +11,7 @@ export default function FilterCampsiteCheckbox({feature, setFilter}) {
         <Feature key={feature.id} >
             <input 
                 id={feature.dbName}
+                name={feature.dbName}
                 type="checkbox"
                 defaultChecked={feature.isFeature}
                 onChange={setFilter}

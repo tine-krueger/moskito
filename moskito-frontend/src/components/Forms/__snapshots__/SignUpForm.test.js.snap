@@ -108,6 +108,7 @@ exports[`Sign Up Form renders correctly 1`] = `
     >
       <h3 />
       <input
+        data-testid="firstName"
         name="firstName"
         placeholder="Vorname"
         type="text"
@@ -120,6 +121,7 @@ exports[`Sign Up Form renders correctly 1`] = `
     >
       <h3 />
       <input
+        data-testid="lastName"
         name="lastName"
         placeholder="Nachname"
         type="text"
@@ -132,6 +134,7 @@ exports[`Sign Up Form renders correctly 1`] = `
     >
       <h3 />
       <input
+        data-testid="email"
         name="email"
         placeholder="E-Mail"
         type="text"
@@ -144,6 +147,7 @@ exports[`Sign Up Form renders correctly 1`] = `
     >
       <h3 />
       <input
+        data-testid="password"
         name="password"
         placeholder="Passwort"
         type="password"
@@ -156,6 +160,7 @@ exports[`Sign Up Form renders correctly 1`] = `
     >
       <h3 />
       <input
+        data-testid="passwordControl"
         name="passwordControl"
         placeholder="Passwort Wiederholung"
         type="password"

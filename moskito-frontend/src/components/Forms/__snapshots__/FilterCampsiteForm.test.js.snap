@@ -31,7 +31,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
   -webkit-transition: all .2s ease;
   transition: all .2s ease;
   border-radius: 5px;
-  background-color: #d8e6e4;
+  background-color: var(--background-light);
   box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3);
 }
 
@@ -42,7 +42,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
   top: 6px;
   position: absolute;
   opacity: 0;
-  background-color: #c97f63;
+  background-color: var(--link);
   font-weight: 900;
   border-radius: 2px;
   display: inline-block;
@@ -135,6 +135,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
         Dein Ziel:
       </h3>
       <input
+        data-testid="postalCode"
         name="postalCode"
         placeholder="PLZ/Ort"
         type="text"
@@ -149,6 +150,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
         Umkreis in km:
       </h3>
       <input
+        data-testid="distance"
         name="distance"
         placeholder="100"
         type="number"
@@ -167,6 +169,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
         <input
           data-testid="wlan"
           id="wlan"
+          name="wlan"
           type="checkbox"
         />
         <label
@@ -183,6 +186,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
         <input
           data-testid="music"
           id="music"
+          name="music"
           type="checkbox"
         />
         <label
@@ -199,6 +203,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
         <input
           data-testid="animation"
           id="animation"
+          name="animation"
           type="checkbox"
         />
         <label
@@ -215,6 +220,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
         <input
           data-testid="fire"
           id="fire"
+          name="fire"
           type="checkbox"
         />
         <label
@@ -231,6 +237,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
         <input
           data-testid="path"
           id="path"
+          name="path"
           type="checkbox"
         />
         <label
@@ -247,6 +254,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
         <input
           data-testid="bulli"
           id="bulli"
+          name="bulli"
           type="checkbox"
         />
         <label
@@ -263,6 +271,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
         <input
           data-testid="tents"
           id="tents"
+          name="tents"
           type="checkbox"
         />
         <label
@@ -279,6 +288,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
         <input
           data-testid="subdevision"
           id="subdevision"
+          name="subdevision"
           type="checkbox"
         />
         <label
@@ -295,6 +305,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
         <input
           data-testid="permanent"
           id="permanent"
+          name="permanent"
           type="checkbox"
         />
         <label
@@ -311,6 +322,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
         <input
           data-testid="size"
           id="size"
+          name="size"
           type="checkbox"
         />
         <label
@@ -327,6 +339,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
         <input
           data-testid="bio"
           id="bio"
+          name="bio"
           type="checkbox"
         />
         <label
@@ -343,6 +356,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
         <input
           data-testid="snack"
           id="snack"
+          name="snack"
           type="checkbox"
         />
         <label
@@ -359,6 +373,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
         <input
           data-testid="animals"
           id="animals"
+          name="animals"
           type="checkbox"
         />
         <label
@@ -375,6 +390,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
         <input
           data-testid="seaside"
           id="seaside"
+          name="seaside"
           type="checkbox"
         />
         <label
@@ -391,6 +407,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
         <input
           data-testid="bathing"
           id="bathing"
+          name="bathing"
           type="checkbox"
         />
         <label
@@ -407,6 +424,7 @@ exports[`Filter Campsite Form renders correctly 1`] = `
         <input
           data-testid="forest"
           id="forest"
+          name="forest"
           type="checkbox"
         />
         <label

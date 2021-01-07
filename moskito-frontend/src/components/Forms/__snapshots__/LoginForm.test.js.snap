@@ -108,6 +108,7 @@ exports[`LoginForm renders correctly 1`] = `
     >
       <h3 />
       <input
+        data-testid="email"
         name="email"
         placeholder="E-Mail"
         type="text"
@@ -120,6 +121,7 @@ exports[`LoginForm renders correctly 1`] = `
     >
       <h3 />
       <input
+        data-testid="password"
         name="password"
         placeholder="Passwort"
         type="password"

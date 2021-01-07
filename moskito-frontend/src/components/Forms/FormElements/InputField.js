@@ -15,7 +15,7 @@ export default function InputField({type, name, value, onChange, placeholder, ch
     return (
         <Label data-testid='input-field' lessMargin={marginBottom}>
             <h3>{children}</h3>
-            <input type={type} name={name} value={value} onChange={onChange} placeholder={placeholder} />
+            <input data-testid={name} type={type} name={name} value={value} onChange={onChange} placeholder={placeholder} />
         </Label>
     )
 }

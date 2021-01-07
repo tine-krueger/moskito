@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { getGeocode, autocomplete} from '../services/getGeocode'
 import getInitialCampsiteFilter from '../services/getInitialCampsiteFilter'
 
-export default function useFilterForm(initialState, callback) {
+export function useFilterForm(callback) {
     const initialFilter = getInitialCampsiteFilter()
     const [ inputs, setInputs ] = useState(initialFilter)
     const [ suggestions, setSuggestions ] = useState([])
