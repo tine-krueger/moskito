@@ -1,8 +1,16 @@
 import styled from 'styled-components/macro'
+import PropTypes from 'prop-types'
 import ButtonBackGroup from "../Button/ButtonBackGroup"
 import InputField from './FormElements/InputField'
 import useForm from '../../hooks/useForm'
 import Redirection from './FormElements/Redirection'
+import RedParagraph from '../TextElements/RedParagraph'
+
+SignUpForm.propTypes = {
+    loginErrors: PropTypes.array,
+    isRegistered: PropTypes.bool,
+    userRegistration: PropTypes.func
+}
 
 export default function SignUpForm({
     loginErrors, 
@@ -22,7 +30,7 @@ export default function SignUpForm({
     return (
         <SigninFormStyled onSubmit={handleSubmit}>
             {isRegistered && <Redirection/>}
-            {loginErrors && loginErrors.map((error, index) => <RedParagraph key={index}>{error}</RedParagraph>)}
+            {loginErrors && loginErrors.map((error, index) => <RedParagraph key={index} textAlign={'left'}>{error}</RedParagraph>)}
 
             <InputField type='text' name='firstName' value={inputs.firstName} onChange={handleChange} placeholder={'Vorname'} marginBottom={'sm'}/>
             <InputField type='text' name='lastName' value={inputs.lastName} onChange={handleChange} placeholder={'Nachname'} marginBottom={'sm'}/>
@@ -46,6 +54,4 @@ const SigninFormStyled = styled.form`
     display: grid;
     margin:2em;
 `
-const RedParagraph = styled.p`
-    color: var(--link);
-`
+

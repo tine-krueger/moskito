@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
+import RedParagraph from '../TextElements/RedParagraph'
 import CampsiteListItem from './CampsiteListItem'
 
 
@@ -12,7 +13,7 @@ export default function CampsiteList({campsites, errors}) {
 
     return (
         <CampList>
-            {errors &&<p data-testid='error'>{errors.errors}</p>}
+            {errors && <RedParagraph data-testid='error'>{errors.errors}</RedParagraph>}
             {campsites.map(campsite => <CampsiteListItem key={campsite.id} campsite={campsite}/>)}
         </CampList>
     )
@@ -20,4 +21,5 @@ export default function CampsiteList({campsites, errors}) {
 
 const CampList = styled.div`
     margin-bottom: 6em;
+    padding: 0 2em
 `

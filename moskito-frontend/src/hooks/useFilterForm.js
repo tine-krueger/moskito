@@ -1,10 +1,9 @@
 import { useState } from 'react' 
 import { getGeocode, autocomplete} from '../services/getGeocode'
-import getInitialCampsiteFilter from '../services/getInitialCampsiteFilter'
+import campsiteBasisData from '../data/campsiteBasisData.json'
 
 export function useFilterForm(callback) {
-    const initialFilter = getInitialCampsiteFilter()
-    const [ inputs, setInputs ] = useState(initialFilter)
+    const [ inputs, setInputs ] = useState(campsiteBasisData)
     const [ suggestions, setSuggestions ] = useState([])
     
     return { inputs, suggestions, handleChange, handleSubmit, handleClick, handleLocationChange, handleCheckboxChange }

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RedParagraph renders correctly 1`] = `
+.c0 {
+  color: var(--link);
+  text-align: center;
+}
+
+<div>
+  <p
+    class="c0"
+    data-testid="eyecatcher"
+  >
+    This is a nice text!
+  </p>
+</div>
+`;

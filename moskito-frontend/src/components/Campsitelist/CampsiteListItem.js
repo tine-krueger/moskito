@@ -43,7 +43,7 @@ const CampItem = styled.div`
     box-shadow: 2px 4px 8px -4px rgba(0, 0, 0, 0.6), 
                 -2px -2px 2px 0px rgba(255, 255, 255, 0.5);
     border-radius: 20px;
-    margin: 2em 1em;
+    margin: 2em 0;
     padding: .5em 1em;
     position: relative;
 

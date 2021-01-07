@@ -1,5 +1,12 @@
 import styled from 'styled-components/macro'
+import PropTypes from 'prop-types'
 import Button from "./Button";
+
+ButtonBackGroup.propTypes = {
+    text1: PropTypes.string.isRequired,
+    text2: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired
+}
 
 export default function ButtonBackGroup({text1, text2, onClick}) {
     return (

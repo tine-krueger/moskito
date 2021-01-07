@@ -6,15 +6,15 @@ import Feature from './FilterCampsiteCheckbox'
 import Suggestions from './FormElements/Suggestions'
 import Button from '../Button/Button'
 import InputField from './FormElements/InputField'
-import getInitialCampsiteFilter from '../../services/getInitialCampsiteFilter'
+import campsiteBasisData from '../../data/campsiteBasisData.json'
 import { useFilterForm } from '../../hooks/useFilterForm'
+import RedParagraph from '../TextElements/RedParagraph'
 
 FilterCampsiteForm.propTypes = {
     getCampsites: PropTypes.func.isRequired
 }
 
 export default function FilterCampsiteForm({getCampsites}) {
-    const initialFilter = getInitialCampsiteFilter()
     const {
         inputs, 
         suggestions, 
@@ -30,7 +30,7 @@ export default function FilterCampsiteForm({getCampsites}) {
 
     return (
         <FilterCampsite onSubmit={handleSubmit}>
-            {errors && <p>{errors}</p>}
+            {errors && <RedParagraph>{errors}</RedParagraph>}
 
             <InputField 
             type={'text'} 
@@ -56,7 +56,7 @@ export default function FilterCampsiteForm({getCampsites}) {
             
             <h3>(Keine) Ausstattung:</h3>
             <Checkboxes>
-                {initialFilter.features.map(feature => 
+                {campsiteBasisData.features.map(feature => 
                         <Feature key={feature.id} feature={feature} setFilter={handleCheckboxChange} />
                     )}
             </Checkboxes>  
