@@ -3,11 +3,11 @@ import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import 'jest-styled-components'
 import FilterCampsiteForm from './FilterCampsiteForm'
-import getInitialCampsiteFilter from '../../services/getInitialCampsiteFilter'
+import campsiteBasisData from '../../data/campsiteBasisData.json'
 
 const mockGetCampsites = jest.fn()
 const mockHistoryPush = jest.fn()
-const mockInputs = getInitialCampsiteFilter()
+const mockInputs = campsiteBasisData
 let mockSuggestions = []
 const mockHandleCheckboxChange = jest.fn()
 const mockHandleSubmit = jest.fn()
