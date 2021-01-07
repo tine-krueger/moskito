@@ -33,6 +33,7 @@ export default createGlobalStyle`
         --paragraph: #6b717e;
         --link: #c97f63;
         --link-hover: #d3a392;
+        --headline: #476c85;
     }
 
     * {
@@ -59,7 +60,7 @@ export default createGlobalStyle`
 
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Arvo';
-        color: #476c85;
+        color: var(--headline);
     }
 
     h1 {

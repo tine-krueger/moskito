@@ -4,9 +4,6 @@ import userEvent from '@testing-library/user-event'
 import 'jest-styled-components'
 import FilterCampsiteForm from './FilterCampsiteForm'
 import getInitialCampsiteFilter from '../../services/getInitialCampsiteFilter'
-//import { useFilterForm } from '../../hooks/useFilterForm'
-//import * as hooks from '../../hooks/useFilterForm'
-
 
 const mockGetCampsites = jest.fn()
 const mockHistoryPush = jest.fn()
@@ -17,7 +14,6 @@ const mockHandleSubmit = jest.fn()
 const mockHandleChange = jest.fn()
 const mockHandleLocationChange = jest.fn()
 const mockHandleClick = jest.fn()
-
 
 jest.mock('../../hooks/useFilterForm.js', () => ({
   ...jest.requireActual('../../hooks/useFilterForm.js'),
@@ -72,7 +68,7 @@ describe('Filter Campsite Form', () => {
       mockHandleSubmit.mockImplementation(event => {
         event.preventDefault()
       })
-      const { getByTestId, getByText } = render(component)
+      const { getByText } = render(component)
       userEvent.click(getByText('Campingplätze finden'))
       expect(mockHandleSubmit).toHaveBeenCalledTimes(1)
     })
