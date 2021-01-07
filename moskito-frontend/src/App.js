@@ -14,6 +14,7 @@ import ScrolltoTop from './services/scrollToTop'
 export default function App() {
   const { errors, campsites, getCampsites} = useCampsites()
   const { authTokens, setTokens, deleteTokens, getToken } = useToken()
+  
 
   return (
     <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens, deleteTokens, getToken}}>
@@ -26,8 +27,8 @@ export default function App() {
           <Route path="/login">
             <Login/>
           </Route>
-          <Route path="/signin">
-            <Register/>
+          <Route path="/signup">
+            <Register />
           </Route>
           <PrivateRoute path="/find-campsite" component={() => <FilterCampsite headline={'Deine Suche'} getCampsites={getCampsites} />}/>
           <PrivateRoute path="/campsites" component={() => <Campsites headline={'Die Vorschläge'} campsites={campsites} errors={errors} />}/>

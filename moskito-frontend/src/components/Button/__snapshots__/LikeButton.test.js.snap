@@ -22,9 +22,9 @@ exports[`Like Button renders correctly 1`] = `
 .c0 svg {
   width: 1.7em;
   height: 1.7em;
-  stroke: #c97f63;
+  stroke: var(--link);
   stroke-width: 3em;
-  fill: #c2d6d3;
+  fill: var(--background);
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;

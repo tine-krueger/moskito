@@ -4,7 +4,8 @@ import CampsiteListItem from './CampsiteListItem'
 
 
 CampsiteList.propTypes = {
-    campsites: PropTypes.arrayOf(PropTypes.object).isRequired
+    campsites: PropTypes.arrayOf(PropTypes.object).isRequired,
+    errors: PropTypes.object
 }
 
 export default function CampsiteList({campsites, errors}) {

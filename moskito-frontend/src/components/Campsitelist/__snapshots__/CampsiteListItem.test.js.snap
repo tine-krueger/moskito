@@ -22,9 +22,9 @@ exports[`Campsite-list item renders correctly 1`] = `
 .c4 svg {
   width: 1.7em;
   height: 1.7em;
-  stroke: #c97f63;
+  stroke: var(--link);
   stroke-width: 3em;
-  fill: #c2d6d3;
+  fill: var(--background);
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
@@ -56,7 +56,7 @@ exports[`Campsite-list item renders correctly 1`] = `
 .c2 svg {
   width: 20px;
   height: 20px;
-  color: #476c85;
+  color: var(--headline);
   position: absolute;
   top: 0;
   left: 0;

@@ -51,10 +51,11 @@ class UserController extends AbstractController
             $emailExists = $userRepository->findBy(['email' => $newUser->getEmail()]);
 
             if(sizeof($emailExists) > 0) {
-                return $this->json(['errors'=>'This E-Mail is already registered.'], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
+                return $this->json(['errors'=>['This E-Mail is already registered.']], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
             }
 
-            $errors = (array)  $validator->validate($newUser);
+            $errors = $validator->validate($newUser);
+            $errors = (array) $errors->getIterator();
             
             if (count($errors) > 0) {
                 return new JsonResponse($violationsSerializer->serialize($errors), JsonResponse::HTTP_BAD_REQUEST, [], true );

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Redirection renders correctly 1`] = `
+.c0 {
+  color: var(--link);
+}
+
+<div>
+  <p
+    class="c0"
+    data-testid="redirect"
+  >
+    Registrierung erfolgreich, Du wirst zum Login weitergeleitet.
+  </p>
+</div>
+`;

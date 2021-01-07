@@ -8,9 +8,11 @@ class ViolationsSerializer {
     private array $serializedViolations = [];
 
     public function serialize(array $violations): string {
-
+    
         foreach ($violations as $violation) {
-            $errorMessage = $violation['propertyPath'] . ': '  . $violation['message'];
+            $property = $violation->getPropertyPath();
+            $message = $violation->getMessage();
+            $errorMessage = $property . ': '  . $message;
             $this->serializedViolations[] = $errorMessage;
         }
 

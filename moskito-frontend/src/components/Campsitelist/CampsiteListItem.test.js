@@ -29,7 +29,7 @@ describe('Campsite-list item', () => {
         expect(container).toMatchSnapshot()
     })
 
-    it('shown the correct campsite information', () => {
+    it('shows the correct campsite information', () => {
         const { getByText, queryByTestId } = render(
             <CampsiteListItem
                 campsite={campsite}

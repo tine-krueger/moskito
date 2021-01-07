@@ -1,14 +1,15 @@
-import { render } from '@testing-library/react'
+import { getByTestId, render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import 'jest-styled-components'
 import InputField from './InputField'
 
 
-const onChange = jest.fn()
+const mockOnChange = jest.fn()
 const component = <InputField 
 type='text' 
 name='address' 
 value='anystreet' 
-onChange={onChange} 
+onChange={mockOnChange} 
 placeholder='name of street' 
 children='Address'
 />
@@ -17,7 +18,7 @@ const componentMargin = <InputField
 type='text' 
 name='address' 
 value='anystreet' 
-onChange={onChange} 
+onChange={mockOnChange} 
 placeholder='name of street' 
 children='Address'
 marginBottom='sm'
@@ -44,4 +45,10 @@ describe('InputField', () => {
         const { getByTestId } = render(componentMargin)
         expect(getByTestId('input-field')).toHaveStyle('margin-bottom: .5em')
     })
+
+    it('calls onChange-function, when user types something in', () => {
+        const { getByTestId } = render(component)
+        userEvent.type(getByTestId('address'), 'Nicestreet 1')
+        expect(mockOnChange).toHaveBeenCalledTimes(12)
+    }) 
 })

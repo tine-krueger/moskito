@@ -29,9 +29,11 @@ describe('Filter Campsite Checkbox', () => {
         expect(getByLabelText('kein W-Lan')).toBeInTheDocument()
     })
 
-    it('checkbox will be checked after click', () => {
+    it('checkbox will be checked after click and setFilter will be called', () => {
         const { getByTestId } = render(component)
         userEvent.click(getByTestId(feature.dbName))
         expect(getByTestId(feature.dbName)).toBeChecked()
+        expect(setFilter).toBeCalledTimes(1)
+
     })
 })

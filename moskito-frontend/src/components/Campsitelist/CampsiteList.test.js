@@ -11,7 +11,7 @@ const campsite = [
 ]
 describe('Campsite-list', () => {
 
-    it('shows error, is one exists', () => {
+    it('shows error, if one exists', () => {
         const { getByText } = render(
             <CampsiteList
                 campsites={campsite}

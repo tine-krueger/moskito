@@ -16,7 +16,7 @@ export default function Landing() {
                 <Link to={'/login'}>
                     <Button>Login </Button> 
                 </Link>
-                <Link to={'/signin'}>
+                <Link to={'/signup'}>
                     <Button>SignUp </Button>
                 </Link>    
             </UserButtons>

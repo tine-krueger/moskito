@@ -3,13 +3,11 @@ import { useState } from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import Feature from './FilterCampsiteCheckbox'
-import Suggestions from './Suggestions'
+import Suggestions from './FormElements/Suggestions'
 import Button from '../Button/Button'
-import InputField from './InputField'
-import useForm from '../../hooks/useForm'
+import InputField from './FormElements/InputField'
 import getInitialCampsiteFilter from '../../services/getInitialCampsiteFilter'
-import { getGeocode, autocomplete} from '../../services/getGeocode'
-
+import { useFilterForm } from '../../hooks/useFilterForm'
 
 FilterCampsiteForm.propTypes = {
     getCampsites: PropTypes.func.isRequired
@@ -17,68 +15,58 @@ FilterCampsiteForm.propTypes = {
 
 export default function FilterCampsiteForm({getCampsites}) {
     const initialFilter = getInitialCampsiteFilter()
-    const { fields, setValues, handleChange } = useForm(initialFilter) 
+    const {
+        inputs, 
+        suggestions, 
+        handleChange, 
+        handleClick, 
+        handleSubmit, 
+        handleLocationChange,
+        handleCheckboxChange
+    } = useFilterForm(findCampsite)
     const history = useHistory()
-    const [ suggestions, setSuggestions ] = useState([])
     const [ errors, setErrors ] = useState()
 
 
     return (
         <FilterCampsite onSubmit={handleSubmit}>
             {errors && <p>{errors}</p>}
-            <InputField data-testid='place' type={'text'} name={'postalCode'} value={fields.postalCode} onChange={handleLocationChange} placeholder={fields.name}>Dein Ziel:</InputField>
-            {suggestions.length !== 0 && <Suggestions data-testid='suggestions' suggestions={suggestions} onClick={handleClick}/> }
-            <InputField type={'number'} name={'distance'} value={fields.distance} onChange={handleChange} placeholder={fields.distance}>Umkreis in km:</InputField>
+
+            <InputField 
+            type={'text'} 
+            name={'postalCode'} 
+            value={inputs.postalCode} 
+            onChange={handleLocationChange} 
+            placeholder={inputs.name}
+            >Dein Ziel:</InputField>
+
+            {suggestions.length !== 0 && <Suggestions 
+            data-testid='suggestions' 
+            suggestions={suggestions} 
+            onClick={handleClick}
+            /> }
+
+            <InputField 
+            type={'number'} 
+            name={'distance'} 
+            value={inputs.distance} 
+            onChange={handleChange} 
+            placeholder={inputs.distance}
+            >Umkreis in km:</InputField>
+            
             <h3>(Keine) Ausstattung:</h3>
             <Checkboxes>
                 {initialFilter.features.map(feature => 
-                        <Feature key={feature.id} feature={feature} filter={fields} setFilter={setValues} />
+                        <Feature key={feature.id} feature={feature} setFilter={handleCheckboxChange} />
                     )}
             </Checkboxes>  
             <Button>Campingplätze finden</Button>
         </FilterCampsite>
     )
 
-    function handleSubmit(event){
-        event.preventDefault()
-        getCampsites(fields, setErrors)
+    function findCampsite(){
+        getCampsites(inputs, setErrors)
         history.push('/campsites')
-    }
-
-    function handleClick(suggestion) {
-        const place = suggestion.address.postalCode + " " + suggestion.address.city
-        getGeocode(place)
-        .then(result => {
-            const geocodes = result.Response.View[0].Result[0].Location.DisplayPosition
-            setValues(
-                {
-                    ...fields,
-                    latitude: geocodes.Latitude,
-                    longitude: geocodes.Longitude,
-                    postalCode: place
-                }
-            )
-        })
-        .catch(() => 
-            setSuggestions([
-                { label: 'Ortsuche zu ungenau. Gib zusätzlich eine PLZ ein oder versuche es zu einem späteren Zeitpunkt nocheinmal.'}
-            ]));
-        setSuggestions([])
-    }
-
-    function handleLocationChange(event) {
-        setValues({
-            ...fields,
-            [event.target.name]: event.target.value
-        })
-        fields.postalCode.length > 2 ?
-        autocomplete(fields.postalCode)
-        .then(results => setSuggestions(results.suggestions)) 
-        .catch(() =>
-          setSuggestions([
-            { label: 'Service nicht verfügbar' },
-          ])
-        ) : setSuggestions([])
     }
 }
 

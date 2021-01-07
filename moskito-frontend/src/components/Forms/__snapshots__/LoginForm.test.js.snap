@@ -8,9 +8,9 @@ exports[`LoginForm renders correctly 1`] = `
   border-radius: 10px;
   width: auto;
   border: none;
-  background: #c2d6d3;
+  background: var(--background);
   box-shadow: 2px 4px 8px -4px rgba(0,0,0,0.6),-2px -2px 2px 0px rgba(255,255,255,0.5);
-  color: #476c85;
+  color: var(--headline);
   text-transform: uppercase;
   margin: 1em auto 3em auto;
 }
@@ -108,6 +108,7 @@ exports[`LoginForm renders correctly 1`] = `
     >
       <h3 />
       <input
+        data-testid="email"
         name="email"
         placeholder="E-Mail"
         type="text"
@@ -120,8 +121,9 @@ exports[`LoginForm renders correctly 1`] = `
     >
       <h3 />
       <input
+        data-testid="password"
         name="password"
-        placeholder="Password"
+        placeholder="Passwort"
         type="password"
         value=""
       />

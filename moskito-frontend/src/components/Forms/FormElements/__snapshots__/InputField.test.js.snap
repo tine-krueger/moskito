@@ -41,6 +41,7 @@ exports[`InputField renders correctly 1`] = `
       Address
     </h3>
     <input
+      data-testid="address"
       name="address"
       placeholder="name of street"
       type="text"

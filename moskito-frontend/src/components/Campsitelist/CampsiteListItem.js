@@ -67,7 +67,7 @@ const Contact = styled.div`
     svg {
         width: 20px;
         height: 20px;
-        color: #476c85;
+        color: var(--headline);
         position: absolute;
         top: 0;
         left: 0;
