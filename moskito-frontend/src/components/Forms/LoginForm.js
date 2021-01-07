@@ -1,17 +1,23 @@
 import styled from 'styled-components/macro'
 import { Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import ButtonBackGroup from "../Button/ButtonBackGroup"
 import InputField from './FormElements/InputField'
 import useForm from "../../hooks/useForm"
 import RedParagraph from '../TextElements/RedParagraph'
+
+LoginForm.propTypes = {
+    isLoggedIn: PropTypes.bool,
+    isError: PropTypes.bool,
+    userLogin: PropTypes.func
+}
 
 export default function LoginForm(
     {
         isLoggedIn,
         isError,
         userLogin
-    }
-) { 
+    }) { 
 
     const { inputs, handleChange, handleSubmit, handleClick } = useForm({
         email: '',

@@ -3,7 +3,9 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import moskitoLogo from '../../images/moskitoLogo.svg'
 
-Logo.protoTypes = { inputPadding: PropTypes.string }
+Logo.protoTypes = { 
+    inputPadding: PropTypes.string 
+}
 
 export default function Logo({inputPadding}) {
     return (
