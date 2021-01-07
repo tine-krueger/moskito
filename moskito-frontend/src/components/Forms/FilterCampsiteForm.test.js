@@ -20,6 +20,7 @@ const mockHandleClick = jest.fn()
 
 
 jest.mock('../../hooks/useFilterForm.js', () => ({
+  ...jest.requireActual('../../hooks/useFilterForm.js'),
     useFilterForm: () => ({
       inputs: mockInputs,
       suggestions: mockSuggestions,
@@ -72,11 +73,8 @@ describe('Filter Campsite Form', () => {
         event.preventDefault()
       })
       const { getByTestId, getByText } = render(component)
-      userEvent.type(getByTestId('postalCode'), 'Hamburg')
-      userEvent.type(getByTestId('distance'), '50')
       userEvent.click(getByText('Campingplätze finden'))
       expect(mockHandleSubmit).toHaveBeenCalledTimes(1)
-      
     })
 
     it('shows suggestions, when they are not empty', () => {
@@ -85,6 +83,5 @@ describe('Filter Campsite Form', () => {
       expect(getByText('Place 1')).toBeInTheDocument()
       expect(getByText('Place 2')).toBeInTheDocument()
     })
-
-    
+ 
 })
