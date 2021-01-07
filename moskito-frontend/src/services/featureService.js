@@ -1,15 +1,17 @@
+import featureBasisData from '../data/featureBasisData.json'
+
 export function filterFeatures(campsite) {
     const features =  campsite.features.filter(feature => feature.value)
     return features
 }
 
 export function nameReturn(feature) {
-    const featureBase = getFeatureBase()
-    const foundFeature = featureBase.find(baseFeature => baseFeature.dbName === feature.type )
+    const foundFeature = featureBasisData.find(baseFeature => baseFeature.dbName === feature.type )
     return foundFeature.name
 }
 
-export function getFeatureBase() {
+//weg
+/*export function getFeatureBase() {
     const features = [
         {
             id: 1,
@@ -111,3 +113,4 @@ export function getFeatureBase() {
     
     return features
 }
+*/

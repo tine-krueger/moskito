@@ -1,4 +1,4 @@
-import { getFeatureBase } from './featureService'
+import featureBasisData from '../data/featureBasisData.json'
 
 export default function getInitialCampsiteFilter() {
     const initialFilter = 
@@ -9,7 +9,7 @@ export default function getInitialCampsiteFilter() {
             distance: 100,
             latitude: null,
             longitude: null,
-            features: getFeatureBase()
+            features: featureBasisData
         }
     return initialFilter
 }
