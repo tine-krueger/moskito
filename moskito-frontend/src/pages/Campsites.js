@@ -13,7 +13,7 @@ export default function Campsites({headline, campsites, errors}) {
     return (
         <>
             <Header children={headline}/>
-            <CampsiteList campsites={campsites} errors={errors}/>
+            <CampsiteList isCampsite={true} campsites={campsites} errors={errors}/>
             <Navigation/>
         </>
     )   

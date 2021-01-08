@@ -34,10 +34,11 @@ export default function FilterCampsiteForm({getCampsites}) {
 
             <InputField 
             type={'text'} 
-            name={'postalCode'} 
+            name={'postalCode'}
             value={inputs.postalCode} 
             onChange={handleLocationChange} 
             placeholder={inputs.name}
+            autocomplete={'off'}
             >Dein Ziel:</InputField>
 
             {suggestions.length !== 0 && <Suggestions 
@@ -47,12 +48,13 @@ export default function FilterCampsiteForm({getCampsites}) {
             /> }
 
             <InputField 
-            type={'number'} 
-            name={'distance'} 
+            type={'range'}
+            name={'distance'}
+            min={5}
+            max={200}
             value={inputs.distance} 
             onChange={handleChange} 
-            placeholder={inputs.distance}
-            >Umkreis in km:</InputField>
+            >Umkreis in km: {inputs.distance}</InputField>
             
             <h3>(Keine) Ausstattung:</h3>
             <Checkboxes>
