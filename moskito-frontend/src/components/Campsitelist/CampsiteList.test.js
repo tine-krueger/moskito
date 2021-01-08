@@ -33,12 +33,24 @@ describe('Campsite-list', () => {
         expect(queryByTestId('error')).not.toBeInTheDocument()
     })
 
-    it('shows text with hints, if campsites-array is empty', () => {
-        const { getByText } = render(
+    it('shows text with hints for bookmarks, if campsites-array is empty and it is not the results-page', () => {
+        const { queryByText, getByText } = render(
             <CampsiteList
                 campsites={[]}
             />
         )
+        expect(getByText(/Noch keine Lieblingsplätze gespeichert!/i)).toBeInTheDocument()
+        expect(queryByText(/Leider konnten wir zu Deiner Anfrage keine Campingplätze finden/i)).not.toBeInTheDocument()
+    })
+
+    it('shows text with hints for search-results page, if campsites-array is empty', () => {
+        const { queryByText, getByText } = render(
+            <CampsiteList
+                campsites={[]}
+                isCampsite={true}
+            />
+        )
+        expect(queryByText(/Noch keine Lieblingsplätze gespeichert!/i)).not.toBeInTheDocument()
         expect(getByText(/Leider konnten wir zu Deiner Anfrage keine Campingplätze finden/i)).toBeInTheDocument()
     })
     

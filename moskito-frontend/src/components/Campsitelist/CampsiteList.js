@@ -6,16 +6,24 @@ import CampsiteListItem from './CampsiteListItem'
 
 CampsiteList.propTypes = {
     campsites: PropTypes.arrayOf(PropTypes.object).isRequired,
-    errors: PropTypes.object
+    errors: PropTypes.object,
+    isCampsite: PropTypes.bool
 }
 
-export default function CampsiteList({campsites, errors}) {
+export default function CampsiteList({isCampsite, campsites, errors}) {
 
     return (
         <CampList>
             {errors && <RedParagraph data-testid='error'>{errors.errors}</RedParagraph>}
-            {campsites.length === 0 && <RedParagraph>Leider konnten wir zu Deiner Anfrage keine Campingplätze finden. 
-                Vielleicht ist ja auch die Region zwischen Berlin und Hamburg was für Dich, da wirst Du bestimmt fündig!</RedParagraph>}
+            {isCampsite ? campsites.length === 0 && 
+            <RedParagraph>
+                Leider konnten wir zu Deiner Anfrage keine Campingplätze finden. 
+                Vielleicht ist ja auch die Region zwischen Berlin und Hamburg was für Dich, 
+                da wirst Du bestimmt fündig!
+            </RedParagraph> : campsites.length === 0 && 
+            <RedParagraph>
+                Noch keine Lieblingsplätze gespeichert!
+            </RedParagraph>} 
             {campsites.map(campsite => <CampsiteListItem key={campsite.id} campsite={campsite}/>)}
         </CampList>
     )
