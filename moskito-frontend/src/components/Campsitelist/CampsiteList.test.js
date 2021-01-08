@@ -9,6 +9,7 @@ const campsite = [
         features: []
     }
 ]
+
 describe('Campsite-list', () => {
 
     it('shows error, if one exists', () => {
@@ -27,9 +28,26 @@ describe('Campsite-list', () => {
         const { queryByTestId } = render(
             <CampsiteList
                 campsites={campsite}
-            
             />
         )
         expect(queryByTestId('error')).not.toBeInTheDocument()
+    })
+
+    it('shows text with hints, if campsites-array is empty', () => {
+        const { getByText } = render(
+            <CampsiteList
+                campsites={[]}
+            />
+        )
+        expect(getByText(/Leider konnten wir zu Deiner Anfrage keine Campingplätze finden/i)).toBeInTheDocument()
+    })
+    
+    it('shows no text with hints, if campsites-array is not empty', () => {
+        const { queryByText } = render(
+            <CampsiteList
+                campsites={campsite}
+            />
+        )
+        expect(querycd ~ByText(/Leider konnten wir zu Deiner Anfrage keine Campingplätze finden/i)).not.toBeInTheDocument()
     })
 })
