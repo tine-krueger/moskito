@@ -35,8 +35,8 @@ describe('Sign Up Form', () => {
                 loginErrors={mockErrors}
             />
         )
-        expect(getByText('It has errors')).toBeInTheDocument()
-        expect(getByText('It has more errors')).toBeInTheDocument()
+        expect(getByText(/It has errors/i)).toBeInTheDocument()
+        expect(getByText(/It has more errors/i)).toBeInTheDocument()
     })
 
     it('shows redirection hint if user registration was successful and redirects after 2.5 seconds', async() => {
@@ -78,7 +78,7 @@ describe('Sign Up Form', () => {
 
     it('pushes back, when button "Zurück" is clicked', () => {
         const { history } = renderWithRouter(<SignUpForm/>)
-        userEvent.click(screen.getByText('Zurück'))
+        userEvent.click(screen.getByText(/Zurück/i))
         expect(history.location.pathname).toEqual('/')
         expect(history.location.pathname).not.toEqual('/testroute')
     })

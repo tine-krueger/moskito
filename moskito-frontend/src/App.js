@@ -4,12 +4,13 @@ import FilterCampsite from './pages/FindCampsitesPage'
 import Bookmarks from './pages/Bookmarks'
 import Landing from './pages/Landing'
 import Login from './pages/Login'
+import Register from './pages/Register'
 import useToken from './hooks/useToken'
 import useCampsites from './hooks/useCampsites'
 import PrivateRoute from './PrivateRoute'
 import { AuthContext } from './context/auth'
-import Register from './pages/Register'
 import ScrolltoTop from './services/scrollToTop'
+import NotFound from './pages/NotFound'
 
 export default function App() {
   const { errors, campsites, getCampsites} = useCampsites()
@@ -33,6 +34,9 @@ export default function App() {
           <PrivateRoute path="/find-campsite" component={() => <FilterCampsite headline={'Deine Suche'} getCampsites={getCampsites} />}/>
           <PrivateRoute path="/campsites" component={() => <Campsites headline={'Die Vorschläge'} campsites={campsites} errors={errors} />}/>
           <PrivateRoute path="/bookmarks" component={() => <Bookmarks headline={'Deine Lieblinge'}/>}/>
+          <Route>
+            <NotFound/>
+          </Route>
         </Switch>
       </Router>
     </AuthContext.Provider>
