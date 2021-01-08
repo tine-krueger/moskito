@@ -48,6 +48,6 @@ describe('Campsite-list', () => {
                 campsites={campsite}
             />
         )
-        expect(querycd ~ByText(/Leider konnten wir zu Deiner Anfrage keine Campingplätze finden/i)).not.toBeInTheDocument()
+        expect(queryByText(/Leider konnten wir zu Deiner Anfrage keine Campingplätze finden/i)).not.toBeInTheDocument()
     })
 })
