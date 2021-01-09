@@ -1,5 +1,4 @@
 import { useHistory } from 'react-router-dom'
-import { useState } from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import Feature from './FilterCampsiteCheckbox'
@@ -8,7 +7,6 @@ import Button from '../Button/Button'
 import InputField from './FormElements/InputField'
 import campsiteBasisData from '../../data/campsiteBasisData.json'
 import { useFilterForm } from '../../hooks/useFilterForm'
-import RedParagraph from '../TextElements/RedParagraph'
 
 FilterCampsiteForm.propTypes = {
     getCampsites: PropTypes.func.isRequired
@@ -25,12 +23,9 @@ export default function FilterCampsiteForm({getCampsites}) {
         handleCheckboxChange
     } = useFilterForm(findCampsite)
     const history = useHistory()
-    const [ errors, setErrors ] = useState()
-
 
     return (
         <FilterCampsite onSubmit={handleSubmit}>
-            {errors && <RedParagraph>{errors}</RedParagraph>}
 
             <InputField 
             type={'text'} 
@@ -67,7 +62,7 @@ export default function FilterCampsiteForm({getCampsites}) {
     )
 
     function findCampsite(){
-        getCampsites(inputs, setErrors)
+        getCampsites(inputs)
         history.push('/campsites')
     }
 }

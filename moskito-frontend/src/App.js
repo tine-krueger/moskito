@@ -13,7 +13,7 @@ import ScrolltoTop from './services/scrollToTop'
 import NotFound from './pages/NotFound'
 
 export default function App() {
-  const { errors, campsites, getCampsites} = useCampsites()
+  const { errors, campsites, isLoading, setIsLoading, getCampsites} = useCampsites()
   const { authTokens, setTokens, deleteTokens, getToken } = useToken()
   
 
@@ -31,8 +31,8 @@ export default function App() {
           <Route path="/signup">
             <Register />
           </Route>
-          <PrivateRoute path="/find-campsite" component={() => <FilterCampsite headline={'Deine Suche'} getCampsites={getCampsites} />}/>
-          <PrivateRoute path="/campsites" component={() => <Campsites headline={'Die Vorschläge'} campsites={campsites} errors={errors} />}/>
+          <PrivateRoute path="/find-campsite" component={() => <FilterCampsite headline={'Deine Suche'} setLoading={setIsLoading} getCampsites={getCampsites} />}/>
+          <PrivateRoute path="/campsites" component={() => <Campsites headline={'Die Vorschläge'} isLoading={isLoading} campsites={campsites} errors={errors} />}/>
           <PrivateRoute path="/bookmarks" component={() => <Bookmarks headline={'Deine Lieblinge'}/>}/>
           <Route>
             <NotFound/>

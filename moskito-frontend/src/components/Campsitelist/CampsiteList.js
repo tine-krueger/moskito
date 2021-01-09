@@ -4,6 +4,7 @@ import RedParagraph from '../TextElements/RedParagraph'
 import CampsiteListItem from './CampsiteListItem'
 
 
+
 CampsiteList.propTypes = {
     campsites: PropTypes.arrayOf(PropTypes.object).isRequired,
     errors: PropTypes.object,
@@ -11,10 +12,12 @@ CampsiteList.propTypes = {
 }
 
 export default function CampsiteList({isCampsite, campsites, errors}) {
-
+    
+    if(errors) {
+        return <RedParagraph data-testid='error'>{errors.errors}</RedParagraph>
+    }
     return (
         <CampList>
-            {errors && <RedParagraph data-testid='error'>{errors.errors}</RedParagraph>}
             {isCampsite ? campsites.length === 0 && 
             <RedParagraph>
                 Leider konnten wir zu Deiner Anfrage keine Campingplätze finden. 
@@ -27,6 +30,7 @@ export default function CampsiteList({isCampsite, campsites, errors}) {
             {campsites.map(campsite => <CampsiteListItem key={campsite.id} campsite={campsite}/>)}
         </CampList>
     )
+    
 }
 
 const CampList = styled.div`

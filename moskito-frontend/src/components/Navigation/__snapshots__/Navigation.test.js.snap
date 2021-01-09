@@ -103,9 +103,9 @@ exports[`Navigation renders correctly 1`] = `
       </li>
       <li
         class="c2"
-        data-testid="bookmarks"
       >
         <a
+          data-testid="bookmarks"
           href="/bookmarks"
         >
           <svg
@@ -126,7 +126,9 @@ exports[`Navigation renders correctly 1`] = `
       <li
         class="c2"
       >
-        <button>
+        <button
+          data-testid="logout"
+        >
           <svg
             fill="none"
             height="1em"
