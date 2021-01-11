@@ -14,10 +14,10 @@ Bookmarks.propTypes = {
 
 export default function Bookmarks({headline}) {
     const { bookmarks, isLoading, setBookmarks } = useCampsites()
-    /*useEffect(() => {
-        setBookmarks()
+    useEffect(() => {
+       // setBookmarks()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])*/
+    }, [])
 
     return (
         <>
