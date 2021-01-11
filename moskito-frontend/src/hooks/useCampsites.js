@@ -1,15 +1,14 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import { setFilter, getTrueFilter }from '../services/filterServices'
 import { getBookmarks } from '../services/handleBookmarkApi'
 
-export default function useCampsites() {
+export function useCampsites() {
 
     const [ campsites, setCampsites ] = useState([])
-    const [ bookmarks, setResponseBookmarks ] = useState([])
+    const [ bookmarks, setResponseBookmarks ] = useState()
     const [ errors, setErrors ] = useState()
     const [ isLoading, setIsLoading ] = useState(true)
    
-
     function getCampsites(filter) {
         const trueFilter = getTrueFilter(filter)
         const filterData = {
@@ -43,5 +42,5 @@ export default function useCampsites() {
         .catch(error => console.log('error', error));
     }
 
-    return  { errors, campsites, bookmarks, isLoading, getCampsites, setBookmarks, setIsLoading }
+    return  { errors, campsites, bookmarks, isLoading, getCampsites, setIsLoading, setBookmarks }
 }

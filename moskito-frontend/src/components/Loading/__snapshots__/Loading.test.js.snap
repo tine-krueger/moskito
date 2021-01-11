@@ -47,5 +47,6 @@ exports[`Loading renders correctly 1`] = `
 
 <div
   class="c0"
+  data-testid="loading-spinner"
 />
 `;

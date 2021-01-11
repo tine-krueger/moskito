@@ -43,8 +43,8 @@ describe('Find Campsites Page', () => {
         expect(history.location.pathname).toBe('/bookmarks')
     })
 
-    it('navigates to Login, when clicking on nav-button', () => {
-        const { getByTestId, history } = renderWithRouter(component)
+    it('logs out by deleting tokens, when clicking on nav-button', () => {
+        const { getByTestId } = renderWithRouter(component)
         userEvent.click(getByTestId('logout'))
         expect(mocksetAuthTokens).toHaveBeenCalledTimes(1)
         expect(mockDeleteTokens).toHaveBeenCalledTimes(1)

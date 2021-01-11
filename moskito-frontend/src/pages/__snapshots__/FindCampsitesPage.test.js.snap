@@ -650,6 +650,7 @@ exports[`Find Campsites Page renders correctly 1`] = `
         class="c8"
       >
         <a
+          data-testid="find-campsite"
           href="/find-campsite"
         >
           <svg

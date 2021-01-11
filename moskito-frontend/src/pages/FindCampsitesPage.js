@@ -14,6 +14,7 @@ FindCampsitesPages.propTypes = {
 export default function FindCampsitesPages({getCampsites, headline, setLoading}) {
     useEffect(() => {
         setLoading(true)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
     return (

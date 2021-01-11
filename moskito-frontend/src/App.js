@@ -6,7 +6,7 @@ import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import useToken from './hooks/useToken'
-import useCampsites from './hooks/useCampsites'
+import { useCampsites } from './hooks/useCampsites'
 import PrivateRoute from './PrivateRoute'
 import { AuthContext } from './context/auth'
 import ScrolltoTop from './services/scrollToTop'
@@ -33,7 +33,7 @@ export default function App() {
           </Route>
           <PrivateRoute path="/find-campsite" component={() => <FilterCampsite headline={'Deine Suche'} setLoading={setIsLoading} getCampsites={getCampsites} />}/>
           <PrivateRoute path="/campsites" component={() => <Campsites headline={'Die Vorschläge'} isLoading={isLoading} campsites={campsites} errors={errors} />}/>
-          <PrivateRoute path="/bookmarks" component={() => <Bookmarks headline={'Deine Lieblinge'}/>}/>
+          <PrivateRoute path="/bookmarks" component={() => <Bookmarks headline={'Deine Lieblinge'} />}/>
           <Route>
             <NotFound/>
           </Route>

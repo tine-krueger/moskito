@@ -12,10 +12,10 @@ export default function Navigation() {
         <Navbar>
             <NavList>
                 <NavListItem>
-                    <Link to="/find-campsite"><AiOutlineSearch /></Link>
+                    <Link data-testid='find-campsite' to='/find-campsite'><AiOutlineSearch /></Link>
                 </NavListItem>
                 <NavListItem >
-                    <Link data-testid='bookmarks' to="/bookmarks"><AiFillPushpin /></Link>
+                    <Link data-testid='bookmarks' to='/bookmarks'><AiFillPushpin /></Link>
                 </NavListItem>
                 <NavListItem>
                     <button data-testid='logout' onClick={logOut}><FiLogOut /></button>

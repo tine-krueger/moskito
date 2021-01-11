@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components/macro'
 
 export default function Loading() {
     return(
-        <Spinner />
+        <Spinner data-testid={'loading-spinner'}/>
     )
 }
 

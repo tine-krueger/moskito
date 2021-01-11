@@ -7,6 +7,8 @@ import Navigation from '../components/Navigation/Navigation'
 Campsites.propTypes = {
     headline: PropTypes.string.isRequired,
     campsites: PropTypes.arrayOf(PropTypes.object).isRequired,
+    errors: PropTypes.object,
+    isLoading: PropTypes.bool.isRequired
 }
 
 export default function Campsites({headline, campsites, errors, isLoading}) {
