@@ -10,12 +10,12 @@ export default function FilterCampsiteCheckbox({feature, setFilter}) {
     return (
         <Feature key={feature.id} >
             <input 
-                id={feature.dbName}
-                name={feature.dbName}
-                type="checkbox"
-                defaultChecked={feature.isFeature}
-                onChange={setFilter}
-                data-testid={feature.dbName}
+            id={feature.dbName}
+            name={feature.dbName}
+            type="checkbox"
+            defaultChecked={feature.isFeature}
+            onChange={setFilter}
+            data-testid={feature.dbName}
             />
             <label htmlFor={feature.dbName}>
                 <p>{feature.name}</p>

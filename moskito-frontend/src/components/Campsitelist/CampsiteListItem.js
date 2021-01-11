@@ -14,6 +14,7 @@ CampsiteListItem.propTypes = {
 
 export default function CampsiteListItem({campsite}) {
     const [ pinned, setPinned ] = useState(campsite.pinned)
+    
     return (
         <CampItem>
             <h2>{campsite.name}</h2>
