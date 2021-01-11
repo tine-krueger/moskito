@@ -1,0 +1,434 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register renders correctly 1`] = `
+.c0 {
+  padding-top: 1.5em;
+  text-align: center;
+}
+
+.c1 {
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 1em 2em;
+  width: 85%;
+}
+
+.c2 {
+  font-family: 'Hind Madurai';
+  font-size: 1.5em;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.c7 {
+  padding: 1em 2em;
+  font-family: 'Arvo';
+  font-size: 1.1rem;
+  border-radius: 10px;
+  width: auto;
+  border: none;
+  background: var(--background);
+  box-shadow: 2px 4px 8px -4px rgba(0,0,0,0.6),-2px -2px 2px 0px rgba(255,255,255,0.5);
+  color: var(--headline);
+  text-transform: uppercase;
+  margin: 1em auto 3em auto;
+}
+
+.c7:hover {
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3);
+  outline: none;
+}
+
+.c6 {
+  display: grid;
+  justify-items: center;
+}
+
+.c6 Button {
+  margin: .5em;
+  width: 10em;
+}
+
+.c4 {
+  grid-column: 1 / -1;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto 2em;
+  margin-bottom: .5em;
+}
+
+.c4 h3 {
+  text-align: left;
+  padding-left: .5em;
+  margin: 0 0 1em;
+}
+
+.c4 input {
+  width: 100%;
+  padding: 1em;
+  height: 3em;
+  font-size: 1em;
+  border: none;
+  border-radius: 10px;
+  color: #6b717e;
+  background-color: #d8e6e4;
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3);
+}
+
+.c4 input:focus {
+  outline: none;
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3),0 0 0px 1.7px #d3a392;
+}
+
+.c4 input[type=range] {
+  width: 100%;
+  margin: 4.05px 0;
+  background-color: transparent;
+  -webkit-appearance: none;
+  box-shadow: none;
+}
+
+.c4 input[type=range]:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.c4 input[type=range]::-webkit-slider-runnable-track {
+  background: var(--background-light);
+  border: 0;
+  border-radius: 25px;
+  width: 100%;
+  height: 1.5em;
+  cursor: pointer;
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3);
+}
+
+.c4 input[type=range]::-webkit-slider-thumb {
+  margin-top: -4.05px;
+  width: 2em;
+  height: 2em;
+  background: var(--link);
+  border: 0;
+  border-radius: 2em;
+  cursor: pointer;
+  -webkit-appearance: none;
+  box-shadow: 1.5px 1.5px 4px -1px rgba(0,0,0,0.6),-1px -1px 2px 0px rgba(255,255,255,0.5);
+}
+
+.c4 input[type=range]:focus::-webkit-slider-runnable-track {
+  background: var(--background-light);
+}
+
+.c4 input[type=range]::-moz-range-track {
+  background: var(--background-light);
+  border: 0;
+  border-radius: 25px;
+  width: 100%;
+  height: 1.5em;
+  cursor: pointer;
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3);
+}
+
+.c4 input[type=range]::-moz-range-thumb {
+  width: 2em;
+  height: 2em;
+  background: var(--link);
+  border: 0;
+  border-radius: 2em;
+  cursor: pointer;
+  box-shadow: 1.5px 1.5px 4px -1px rgba(0,0,0,0.6),-1px -1px 2px 0px rgba(255,255,255,0.5);
+}
+
+.c4 input[type=range]::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  border-width: 9.65px 0;
+  color: transparent;
+  width: 100%;
+  height: 1.5em;
+  cursor: pointer;
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3);
+}
+
+.c4 input[type=range]::-ms-fill-lower {
+  background: var(--background-light);
+  border: 0;
+  border-radius: 50px;
+}
+
+.c4 input[type=range]::-ms-fill-upper {
+  background: var(--background-light);
+  border: 0;
+  border-radius: 50px;
+}
+
+.c4 input[type=range]::-ms-thumb {
+  width: 2em;
+  height: 2em;
+  background: var(--link);
+  border: 0;
+  border-radius: 2em;
+  cursor: pointer;
+  margin-top: 0px;
+  box-shadow: 1.5px 1.5px 4px -1px rgba(0,0,0,0.6),-1px -1px 2px 0px rgba(255,255,255,0.5);
+}
+
+.c4 input[type=range]:focus::-ms-fill-lower {
+  background: var(--background-light);
+}
+
+.c4 input[type=range]:focus::-ms-fill-upper {
+  background: var(--background-light);
+}
+
+.c5 {
+  grid-column: 1 / -1;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto 2em;
+  margin-bottom: 1em;
+}
+
+.c5 h3 {
+  text-align: left;
+  padding-left: .5em;
+  margin: 0 0 1em;
+}
+
+.c5 input {
+  width: 100%;
+  padding: 1em;
+  height: 3em;
+  font-size: 1em;
+  border: none;
+  border-radius: 10px;
+  color: #6b717e;
+  background-color: #d8e6e4;
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3);
+}
+
+.c5 input:focus {
+  outline: none;
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3),0 0 0px 1.7px #d3a392;
+}
+
+.c5 input[type=range] {
+  width: 100%;
+  margin: 4.05px 0;
+  background-color: transparent;
+  -webkit-appearance: none;
+  box-shadow: none;
+}
+
+.c5 input[type=range]:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.c5 input[type=range]::-webkit-slider-runnable-track {
+  background: var(--background-light);
+  border: 0;
+  border-radius: 25px;
+  width: 100%;
+  height: 1.5em;
+  cursor: pointer;
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3);
+}
+
+.c5 input[type=range]::-webkit-slider-thumb {
+  margin-top: -4.05px;
+  width: 2em;
+  height: 2em;
+  background: var(--link);
+  border: 0;
+  border-radius: 2em;
+  cursor: pointer;
+  -webkit-appearance: none;
+  box-shadow: 1.5px 1.5px 4px -1px rgba(0,0,0,0.6),-1px -1px 2px 0px rgba(255,255,255,0.5);
+}
+
+.c5 input[type=range]:focus::-webkit-slider-runnable-track {
+  background: var(--background-light);
+}
+
+.c5 input[type=range]::-moz-range-track {
+  background: var(--background-light);
+  border: 0;
+  border-radius: 25px;
+  width: 100%;
+  height: 1.5em;
+  cursor: pointer;
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3);
+}
+
+.c5 input[type=range]::-moz-range-thumb {
+  width: 2em;
+  height: 2em;
+  background: var(--link);
+  border: 0;
+  border-radius: 2em;
+  cursor: pointer;
+  box-shadow: 1.5px 1.5px 4px -1px rgba(0,0,0,0.6),-1px -1px 2px 0px rgba(255,255,255,0.5);
+}
+
+.c5 input[type=range]::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  border-width: 9.65px 0;
+  color: transparent;
+  width: 100%;
+  height: 1.5em;
+  cursor: pointer;
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3);
+}
+
+.c5 input[type=range]::-ms-fill-lower {
+  background: var(--background-light);
+  border: 0;
+  border-radius: 50px;
+}
+
+.c5 input[type=range]::-ms-fill-upper {
+  background: var(--background-light);
+  border: 0;
+  border-radius: 50px;
+}
+
+.c5 input[type=range]::-ms-thumb {
+  width: 2em;
+  height: 2em;
+  background: var(--link);
+  border: 0;
+  border-radius: 2em;
+  cursor: pointer;
+  margin-top: 0px;
+  box-shadow: 1.5px 1.5px 4px -1px rgba(0,0,0,0.6),-1px -1px 2px 0px rgba(255,255,255,0.5);
+}
+
+.c5 input[type=range]:focus::-ms-fill-lower {
+  background: var(--background-light);
+}
+
+.c5 input[type=range]:focus::-ms-fill-upper {
+  background: var(--background-light);
+}
+
+.c3 {
+  max-width: 500px;
+  display: grid;
+  margin: 2em;
+}
+
+@supports (-ms-ime-align:auto) {
+  .c4 input[type=range] {
+    margin: 0;
+  }
+}
+
+@supports (-ms-ime-align:auto) {
+  .c5 input[type=range] {
+    margin: 0;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+    data-testid="logo"
+  >
+    <img
+      alt="Moskito Logo"
+      class="c1"
+      src="moskitoLogo.svg"
+    />
+  </div>
+  <h1
+    class="c2"
+  >
+    Sign Up
+  </h1>
+  <form
+    class="c3"
+  >
+    <label
+      class="c4"
+      data-testid="input-field"
+    >
+      <h3 />
+      <input
+        data-testid="firstName"
+        name="firstName"
+        placeholder="Vorname"
+        type="text"
+        value=""
+      />
+    </label>
+    <label
+      class="c4"
+      data-testid="input-field"
+    >
+      <h3 />
+      <input
+        data-testid="lastName"
+        name="lastName"
+        placeholder="Nachname"
+        type="text"
+        value=""
+      />
+    </label>
+    <label
+      class="c4"
+      data-testid="input-field"
+    >
+      <h3 />
+      <input
+        data-testid="email"
+        name="email"
+        placeholder="E-Mail"
+        type="text"
+        value=""
+      />
+    </label>
+    <label
+      class="c4"
+      data-testid="input-field"
+    >
+      <h3 />
+      <input
+        data-testid="password"
+        name="password"
+        placeholder="Passwort"
+        type="password"
+        value=""
+      />
+    </label>
+    <label
+      class="c5"
+      data-testid="input-field"
+    >
+      <h3 />
+      <input
+        data-testid="passwordControl"
+        name="passwordControl"
+        placeholder="Passwort Wiederholung"
+        type="password"
+        value=""
+      />
+    </label>
+    <div
+      class="c6"
+    >
+      <button
+        class="c7"
+      >
+        SignUp
+      </button>
+      <button
+        class="c7"
+      >
+        Zurück
+      </button>
+    </div>
+  </form>
+</div>
+`;

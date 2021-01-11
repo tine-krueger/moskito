@@ -1,14 +1,14 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import { setFilter, getTrueFilter }from '../services/filterServices'
 import { getBookmarks } from '../services/handleBookmarkApi'
 
-export default function useCampsites() {
+export function useCampsites() {
 
     const [ campsites, setCampsites ] = useState([])
-    const [ bookmarks, setResponseBookmarks ] = useState([])
+    const [ bookmarks, setResponseBookmarks ] = useState()
     const [ errors, setErrors ] = useState()
+    const [ isLoading, setIsLoading ] = useState(true)
    
-
     function getCampsites(filter) {
         const trueFilter = getTrueFilter(filter)
         const filterData = {
@@ -17,26 +17,30 @@ export default function useCampsites() {
             distance: filter.distance,
             trueFeatures: trueFilter}
         setFilter(filterData)
-        .then(result => {
+        .then( result => {
             if (result.errors) {
                 setErrors(result)
                 setCampsites([])
+                setTimeout(() => setIsLoading(false), 2000)
             } else {
                 setCampsites(result)
                 setErrors()
+                setTimeout(() => setIsLoading(false), 2000)
             } 
         })
         .catch(error => {
             console.log('error', error)
         })
       }
-      
+
     function setBookmarks(){
         getBookmarks()
-        .then(result => {setResponseBookmarks(result)
-        console.log(result)})
+        .then(result => {
+            setResponseBookmarks(result)
+            setTimeout(() => setIsLoading(false), 1000)
+            console.log(result)})
         .catch(error => console.log('error', error));
     }
-    
-    return  { errors, campsites, bookmarks, getCampsites, setBookmarks}
+
+    return  { errors, campsites, bookmarks, isLoading, getCampsites, setIsLoading, setBookmarks }
 }

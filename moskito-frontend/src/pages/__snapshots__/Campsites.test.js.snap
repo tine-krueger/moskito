@@ -1,7 +1,116 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navigation renders correctly 1`] = `
+exports[`Campsites Page renders correctly 1`] = `
+.c6 {
+  border-radius: 10px;
+  display: inline-block;
+  box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3);
+  padding: .5em 1em;
+  margin: .3em;
+}
+
+.c7 {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  height: 2.5em;
+  width: 2.5em;
+  border-radius: 10px;
+  box-shadow: 2px 4px 8px -4px rgba(0,0,0,0.6),-2px -2px 2px 0px rgba(255,255,255,0.5);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c7 svg {
+  width: 1.7em;
+  height: 1.7em;
+  stroke: var(--link);
+  stroke-width: 3em;
+  fill: var(--background);
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  margin-bottom: 3px;
+}
+
+.c2 {
+  box-shadow: 2px 4px 8px -4px rgba(0,0,0,0.6),-2px -2px 2px 0px rgba(255,255,255,0.5);
+  border-radius: 20px;
+  margin: 2em 0;
+  padding: .5em 1em;
+  position: relative;
+}
+
+.c2 h2 {
+  width: 75%;
+  margin-left: .3em;
+}
+
+.c3 {
+  margin-left: .5em;
+}
+
+.c4 p {
+  position: relative;
+  padding-left: 2em;
+}
+
+.c4 svg {
+  width: 20px;
+  height: 20px;
+  color: var(--headline);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c4 a {
+  display: block;
+  margin-top: 1em;
+}
+
+.c5 {
+  list-style: none;
+  padding-left: 0;
+  position: relative;
+  margin-top: 3em;
+}
+
+.c5::before {
+  content: " ";
+  display: inline-block;
+  position: absolute;
+  width: 90%;
+  height: 5px;
+  left: 5%;
+  top: -25px;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  border-radius: 5px;
+  box-shadow: 0.5px 0.5px 2px 0px rgba(0,0,0,0.4),-1.25px -1.25px 2px 0px rgba(255,255,255,0.5);
+}
+
+.c1 {
+  margin-bottom: 6em;
+  padding: 0 2em;
+}
+
 .c0 {
+  width: 80%;
+  margin: 2em auto 3em;
+  padding: .25em .5em;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 2px 4px 8px -4px rgba(0,0,0,0.6),-2px -2px 2px 0px rgba(255,255,255,0.5);
+}
+
+.c8 {
   margin: 0 auto;
   max-width: 500px;
   background-color: var(--background);
@@ -12,7 +121,7 @@ exports[`Navigation renders correctly 1`] = `
   box-shadow: 2px 4px 8px -4px rgba(0,0,0,0.6),-2px -2px 2px 0px rgba(255,255,255,0.5);
 }
 
-.c1 {
+.c9 {
   padding-left: 0;
   list-style-type: none;
   display: -webkit-box;
@@ -25,7 +134,7 @@ exports[`Navigation renders correctly 1`] = `
   justify-content: space-around;
 }
 
-.c2 {
+.c10 {
   text-align: center;
   border-radius: 10px;
   box-shadow: 2px 4px 8px -4px rgba(0,0,0,0.6),-1px -1px 2px 0px rgba(255,255,255,0.5);
@@ -45,43 +154,105 @@ exports[`Navigation renders correctly 1`] = `
   align-items: center;
 }
 
-.c2 button {
+.c10 button {
   background-color: transparent;
   border: none;
 }
 
-.c2 button:hover {
+.c10 button:hover {
   outline: none;
 }
 
-.c2 a svg,
-.c2 button svg {
+.c10 a svg,
+.c10 button svg {
   width: 1.5em;
   height: 1.5em;
   stroke: var(--link);
 }
 
-.c2 button svg {
+.c10 button svg {
   width: 1.7em;
   height: 1.7em;
 }
 
-.c2:hover,
-.c2:active,
-.c2:focus {
+.c10:hover,
+.c10:active,
+.c10:focus {
   box-shadow: inset 4px 4px 6px 0 rgba(0,0,0,0.2),inset -3px -4px 6px 0 rgba(255,255,255,0.3);
   outline: none;
 }
 
 <div>
-  <nav
+  <div
     class="c0"
   >
+    <h1>
+      Headline
+    </h1>
+  </div>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2"
+    >
+      <h2>
+        Test Campsite
+      </h2>
+      <div
+        class="c3"
+      >
+        <p>
+          , 
+           
+        </p>
+        <div
+          class="c4"
+        >
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+          />
+        </div>
+      </div>
+      <ul
+        class="c5"
+      >
+        <li
+          class="c6"
+        >
+          kein W-Lan
+        </li>
+      </ul>
+      <div
+        class="c7"
+        data-testid="like-button"
+      >
+        <svg
+          data-testid="pin"
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 1024 1024"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M878.3 392.1L631.9 145.7c-6.5-6.5-15-9.7-23.5-9.7s-17 3.2-23.5 9.7L423.8 306.9c-12.2-1.4-24.5-2-36.8-2-73.2 0-146.4 24.1-206.5 72.3-15.4 12.3-16.6 35.4-2.7 49.4l181.7 181.7-215.4 215.2a15.8 15.8 0 0 0-4.6 9.8l-3.4 37.2c-.9 9.4 6.6 17.4 15.9 17.4.5 0 1 0 1.5-.1l37.2-3.4c3.7-.3 7.2-2 9.8-4.6l215.4-215.4 181.7 181.7c6.5 6.5 15 9.7 23.5 9.7 9.7 0 19.3-4.2 25.9-12.4 56.3-70.3 79.7-158.3 70.2-243.4l161.1-161.1c12.9-12.8 12.9-33.8 0-46.8z"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <nav
+    class="c8"
+  >
     <ul
-      class="c1"
+      class="c9"
     >
       <li
-        class="c2"
+        class="c10"
       >
         <a
           data-testid="find-campsite"
@@ -103,7 +274,7 @@ exports[`Navigation renders correctly 1`] = `
         </a>
       </li>
       <li
-        class="c2"
+        class="c10"
       >
         <a
           data-testid="bookmarks"
@@ -125,7 +296,7 @@ exports[`Navigation renders correctly 1`] = `
         </a>
       </li>
       <li
-        class="c2"
+        class="c10"
       >
         <button
           data-testid="logout"

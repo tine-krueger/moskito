@@ -17,7 +17,6 @@ export default function SignUpForm({
     isRegistered, 
     userRegistration
 }) {
-
     const { inputs, isPasswordEqual, handleChange, handleSubmit, handleClick } = useForm({
         firstName: '',
         lastName:'',

@@ -9,7 +9,11 @@ LikeButton.propTypes = {
 
 export default function LikeButton({isPinned, onClick}) {
     
-    return <CampsiteLikeButton data-testid='like-button' pinned={isPinned} onClick={onClick}><AiFillPushpin data-testid='pin'/></CampsiteLikeButton>
+    return ( 
+        <CampsiteLikeButton data-testid='like-button' pinned={isPinned} onClick={onClick}>
+            <AiFillPushpin data-testid='pin'/>
+        </CampsiteLikeButton>
+    )
 
 }
 
