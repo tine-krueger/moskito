@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.js": "/static/js/main.dad1bfe9.chunk.js",
+    "main.js.map": "/static/js/main.dad1bfe9.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.4094e65b.js",
+    "runtime-main.js.map": "/static/js/runtime-main.4094e65b.js.map",
+    "static/js/2.87e0bc34.chunk.js": "/static/js/2.87e0bc34.chunk.js",
+    "static/js/2.87e0bc34.chunk.js.map": "/static/js/2.87e0bc34.chunk.js.map",
+    "static/js/3.d368365d.chunk.js": "/static/js/3.d368365d.chunk.js",
+    "static/js/3.d368365d.chunk.js.map": "/static/js/3.d368365d.chunk.js.map",
+    "index.html": "/index.html",
+    "static/js/2.87e0bc34.chunk.js.LICENSE.txt": "/static/js/2.87e0bc34.chunk.js.LICENSE.txt",
+    "static/media/arvoBold.01f011cc.woff": "/static/media/arvoBold.01f011cc.woff",
+    "static/media/arvoBold2.891ffc5d.woff2": "/static/media/arvoBold2.891ffc5d.woff2",
+    "static/media/hindMaduraiRegular.88397b1b.woff": "/static/media/hindMaduraiRegular.88397b1b.woff",
+    "static/media/hindMaduraiRegular2.464f2397.woff2": "/static/media/hindMaduraiRegular2.464f2397.woff2",
+    "static/media/moskitoLogo.c505e5fa.svg": "/static/media/moskitoLogo.c505e5fa.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4094e65b.js",
+    "static/js/2.87e0bc34.chunk.js",
+    "static/js/main.dad1bfe9.chunk.js"
+  ]
+}
